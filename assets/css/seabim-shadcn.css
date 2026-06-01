@@ -1,0 +1,121 @@
+/* Surcharge des tokens shadcn + branding SEABIM Editor.
+ *
+ * Source des couleurs : scripts/seabim/ui/theme.py (constante COLORS).
+ * Le thème mkdocs-shadcn définit ses tokens en oklch dans `css/base.css`
+ * (sélecteurs :root clair / .dark sombre). Ce fichier est chargé APRÈS
+ * base.css (via extra_css) et hors @layer : nos valeurs gagnent.
+ *
+ * Important : shadcn est un thème NEUTRE — par défaut il ne colore quasiment
+ * rien avec --primary (les liens de contenu sont en `color: inherit`). On
+ * applique donc le navy/orange explicitement sur les éléments visibles.
+ */
+
+/* ---------- Tokens de marque ---------- */
+
+:root {
+  --primary: #213b6a; /* navy SEABIM */
+  --primary-foreground: #ffffff;
+  --ring: #213b6a;
+  --sidebar-primary: #213b6a;
+  --sidebar-primary-foreground: #ffffff;
+
+  --seabim-orange: #ff9d34; /* accent signature */
+}
+
+/* Surface bleutée signature du launcher (theme.py: COLORS["bg"]) — MODE CLAIR
+   UNIQUEMENT. `:root:not(.dark)` a une spécificité supérieure à `.dark`, donc
+   ça n'écrase pas le fond sombre de shadcn (sinon : texte clair sur fond clair).
+   On garde --card en blanc pour que tableaux/encarts ressortent. */
+:root:not(.dark) {
+  --background: #f4f6fb;
+  --card: #ffffff;
+}
+
+.dark {
+  /* Navy éclairci pour rester lisible sur fond sombre. */
+  --primary: #6f93cf;
+  --primary-foreground: #0f1b35;
+  --ring: #6f93cf;
+  --sidebar-primary: #6f93cf;
+  --sidebar-primary-foreground: #0f1b35;
+
+  --seabim-orange: #ffb56a;
+}
+
+/* ---------- Branding visible ---------- */
+
+/* Bandeau orange signature en haut de la top bar (rappel du « point »
+   orange de l'identité SEABIM). */
+header {
+  border-top: 3px solid var(--seabim-orange);
+}
+
+/* Titres de contenu en navy : porte l'identité SEABIM sur toute la page. */
+article h1,
+article h2,
+article h3 {
+  color: var(--primary);
+}
+
+/* Liens de contenu en navy (shadcn les laisse en couleur héritée).
+   On exclut les liens "boutons" du thème (data-slot) et l'ancre ¶. */
+article a:not([data-slot]):not(.headerlink) {
+  color: var(--primary);
+  text-decoration-color: color-mix(in oklab, var(--primary) 40%, transparent);
+}
+article a:not([data-slot]):not(.headerlink):hover {
+  text-decoration-color: var(--seabim-orange);
+}
+
+/* Élément de navigation / sommaire actif : navy + gras + pastille teintée. */
+[aria-current="page"],
+[aria-current="true"] {
+  color: var(--primary);
+  font-weight: 600;
+}
+[aria-current="page"] {
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+}
+
+/* Filets de citation (admonitions/blockquote) teintés navy. */
+article blockquote {
+  border-inline-start-color: var(--primary);
+}
+
+/* ---------- Sélecteur de langue (injecté par lang-switch.js) ---------- */
+
+.seabim-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  margin-inline-end: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 0.5rem);
+  overflow: hidden;
+  background: var(--background);
+}
+
+.seabim-lang-switch__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 1.75rem;
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--muted-foreground);
+  text-decoration: none;
+}
+
+.seabim-lang-switch__item:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Langue active : pastille navy. */
+.seabim-lang-switch__item[aria-current="true"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
