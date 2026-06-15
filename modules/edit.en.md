@@ -93,6 +93,28 @@ Removes the selected blocks while keeping an **undo checkpoint**. Unlike
 direct deletion via CloudCompare, this action lets you roll back via the
 [`Undo`](header.md#undo) button of the [Header](header.md).
 
+## Mark missing block { #mark-missing-block }
+
+Flags a block that **exists physically on the structure but cannot be
+modelled** from the point cloud (missing or insufficient data). Because
+CloudCompare does not expose 3D picking in the viewport, the position is
+taken from a **neighbouring block**:
+
+1. Select the existing block closest to the gap.
+2. Click `Mark missing block`.
+3. A red **placeholder** (block type `Missing`) is created at that
+   block's position.
+4. Reposition it over the actual gap with CloudCompare's native
+   transformation tool — the new position is read back automatically.
+
+Placeholders are excluded from quality computations (accuracy,
+differential, overlap, density), from registration, and from the
+placement exports: they only record the gap. They are synchronised to the
+cloud viewer through their `Missing` type, so completeness statistics can
+account for them, and they show up under **Missing** in
+[`Display by type`](filters.md). To remove a misplaced placeholder, use
+[`Safe delete`](#safe-delete).
+
 ## Group / Ungroup { #group--ungroup }
 
 Reorganises the display of the structure in CloudCompare's tree by

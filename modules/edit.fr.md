@@ -95,6 +95,28 @@ Contrairement à une suppression directe via CloudCompare, cette action
 permet de revenir en arrière via le bouton [`Annuler la dernière
 action`](header.md#undo) du [Header](header.md).
 
+## Marquer un bloc manquant { #mark-missing-block }
+
+Signale un bloc qui **existe physiquement sur l'ouvrage mais qu'on
+n'arrive pas à modéliser** depuis le nuage de points (données absentes ou
+insuffisantes). CloudCompare n'exposant pas le picking 3D dans la vue, la
+position est reprise d'un **bloc voisin** :
+
+1. Sélectionnez le bloc existant le plus proche du trou.
+2. Cliquez sur `Marquer un bloc manquant`.
+3. Un **placeholder** rouge (type de bloc `Missing`) est créé à la
+   position de ce bloc.
+4. Repositionnez-le sur le trou réel avec l'outil de transformation natif
+   de CloudCompare — la nouvelle position est relue automatiquement.
+
+Les placeholders sont exclus des calculs qualité (précision, différentiel,
+recouvrement, densité), du recalage et des exports de pose : ils ne servent
+qu'à enregistrer le trou. Ils sont synchronisés vers le cloud-viewer via
+leur type `Missing`, afin que les statistiques de complétude puissent en
+tenir compte, et apparaissent sous **Missing** dans
+[`Display by type`](filters.md). Pour retirer un placeholder mal placé,
+utilisez la [`Suppression sécurisée`](#safe-delete).
+
 ## Grouper / Dégrouper { #group--ungroup }
 
 Réorganise l'affichage de la structure dans l'arborescence CloudCompare en

@@ -455,7 +455,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-03T12:36:46+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -581,6 +581,26 @@ correspondre leur position 3D à un <strong>plan de pose</strong> au format CSV.
 Contrairement à une suppression directe via CloudCompare, cette action
 permet de revenir en arrière via le bouton <a href="../header/#undo"><code>Annuler la dernière
 action</code></a> du <a href="../header/">Header</a>.</p>
+<h2 id="mark-missing-block">Marquer un bloc manquant<a class="headerlink" href="#mark-missing-block" title="Permanent link">¶</a></h2>
+<p>Signale un bloc qui <strong>existe physiquement sur l'ouvrage mais qu'on
+n'arrive pas à modéliser</strong> depuis le nuage de points (données absentes ou
+insuffisantes). CloudCompare n'exposant pas le picking 3D dans la vue, la
+position est reprise d'un <strong>bloc voisin</strong> :</p>
+<ol>
+<li>Sélectionnez le bloc existant le plus proche du trou.</li>
+<li>Cliquez sur <code>Marquer un bloc manquant</code>.</li>
+<li>Un <strong>placeholder</strong> rouge (type de bloc <code>Missing</code>) est créé à la
+   position de ce bloc.</li>
+<li>Repositionnez-le sur le trou réel avec l'outil de transformation natif
+   de CloudCompare — la nouvelle position est relue automatiquement.</li>
+</ol>
+<p>Les placeholders sont exclus des calculs qualité (précision, différentiel,
+recouvrement, densité), du recalage et des exports de pose : ils ne servent
+qu'à enregistrer le trou. Ils sont synchronisés vers le cloud-viewer via
+leur type <code>Missing</code>, afin que les statistiques de complétude puissent en
+tenir compte, et apparaissent sous <strong>Missing</strong> dans
+<a href="../filters/"><code>Display by type</code></a>. Pour retirer un placeholder mal placé,
+utilisez la <a href="#safe-delete"><code>Suppression sécurisée</code></a>.</p>
 <h2 id="group--ungroup">Grouper / Dégrouper<a class="headerlink" href="#group--ungroup" title="Permanent link">¶</a></h2>
 <p>Réorganise l'affichage de la structure dans l'arborescence CloudCompare en
 <strong>regroupant</strong> les blocs par panneau ou par lot, ou en <strong>dissociant</strong> des
@@ -848,6 +868,12 @@ blocs voisins (par exemple 2 m³ vs 3 m³).</p>
         
         <a href="#safe-delete" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#safe-delete');">
             Suppression sécurisée
+        </a>
+        
+
+        
+        <a href="#mark-missing-block" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#mark-missing-block');">
+            Marquer un bloc manquant
         </a>
         
 

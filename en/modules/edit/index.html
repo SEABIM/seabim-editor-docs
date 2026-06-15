@@ -455,7 +455,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-03T12:36:46+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -579,6 +579,26 @@ block's 3D position to a <strong>placement plan</strong> in CSV format.</p>
 <p>Removes the selected blocks while keeping an <strong>undo checkpoint</strong>. Unlike
 direct deletion via CloudCompare, this action lets you roll back via the
 <a href="../header/#undo"><code>Undo</code></a> button of the <a href="../header/">Header</a>.</p>
+<h2 id="mark-missing-block">Mark missing block<a class="headerlink" href="#mark-missing-block" title="Permanent link">¶</a></h2>
+<p>Flags a block that <strong>exists physically on the structure but cannot be
+modelled</strong> from the point cloud (missing or insufficient data). Because
+CloudCompare does not expose 3D picking in the viewport, the position is
+taken from a <strong>neighbouring block</strong>:</p>
+<ol>
+<li>Select the existing block closest to the gap.</li>
+<li>Click <code>Mark missing block</code>.</li>
+<li>A red <strong>placeholder</strong> (block type <code>Missing</code>) is created at that
+   block's position.</li>
+<li>Reposition it over the actual gap with CloudCompare's native
+   transformation tool — the new position is read back automatically.</li>
+</ol>
+<p>Placeholders are excluded from quality computations (accuracy,
+differential, overlap, density), from registration, and from the
+placement exports: they only record the gap. They are synchronised to the
+cloud viewer through their <code>Missing</code> type, so completeness statistics can
+account for them, and they show up under <strong>Missing</strong> in
+<a href="../filters/"><code>Display by type</code></a>. To remove a misplaced placeholder, use
+<a href="#safe-delete"><code>Safe delete</code></a>.</p>
 <h2 id="group--ungroup">Group / Ungroup<a class="headerlink" href="#group--ungroup" title="Permanent link">¶</a></h2>
 <p>Reorganises the display of the structure in CloudCompare's tree by
 <strong>grouping</strong> blocks by panel or package, or <strong>ungrouping</strong> existing
@@ -846,6 +866,12 @@ neighboring block types (for example 2 m³ vs 3 m³).</p>
         
         <a href="#safe-delete" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#safe-delete');">
             Safe delete
+        </a>
+        
+
+        
+        <a href="#mark-missing-block" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#mark-missing-block');">
+            Mark missing block
         </a>
         
 
