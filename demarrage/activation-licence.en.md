@@ -19,7 +19,7 @@ the right sidebar of CloudCompare. As long as no license has been
 activated in CodeMeter Runtime, clicking that icon displays the
 no-license message:
 
-![No active license](../assets/images/01_licence.png)
+![No active license](../assets/images/licence_01.png)
 
 ## 2. Import the `.lif` file
 
@@ -27,9 +27,9 @@ no-license message:
 2. Open **CodeMeter Control Center**.
 3. Drag and drop the `.lif` file into the application window.
 
-![Drag and drop the .lif file](../assets/images/02_licence.png)
+![Drag and drop the .lif file](../assets/images/licence_02.png)
 
-![Import confirmation](../assets/images/03_licence.png)
+![Import confirmation](../assets/images/licence_03.png)
 
 The license then appears in the list: a **CmContainer** has just been
 created on your workstation.
@@ -43,13 +43,13 @@ SEABIM team will use to issue your final license.
    right.
 2. Follow the wizard screens:
 
-![Wizard start](../assets/images/04_licence.png)
+![Wizard start](../assets/images/licence_04.png)
 
-![Generating the RaC file](../assets/images/06_licence.png)
+![Generating the RaC file](../assets/images/licence_06.png)
 
-![Choose the output folder](../assets/images/07_licence.png)
+![Choose the output folder](../assets/images/licence_07.png)
 
-![Generation confirmation](../assets/images/08_licence.png)
+![Generation confirmation](../assets/images/licence_08.png)
 
 3. Send the resulting **`.RaC`** file to the SEABIM team.
 
@@ -57,16 +57,16 @@ In return, you will receive a **`.RaU`** file to import in CodeMeter
 Control Center following the same procedure (drag-and-drop or via the
 update wizard).
 
-![Import the RaU file](../assets/images/09_licence.png)
+![Import the RaU file](../assets/images/licence_09.png)
 
-![Activation completed](../assets/images/10_licence.png)
+![Activation completed](../assets/images/licence_10.png)
 
 ## 4. Check the license in CodeMeter WebAdmin
 
 You can check at any time the detailed information of your license from
 **CodeMeter WebAdmin**:
 
-![License information in WebAdmin](../assets/images/11_licence.png)
+![License information in WebAdmin](../assets/images/licence_11.png)
 
 ## 5. Confirm activation in CloudCompare
 
@@ -74,7 +74,7 @@ To finalize, open CloudCompare and click the **SEABIM** icon in the
 sidebar. A summary window opens with the license information:
 activation is successful.
 
-![License active in SEABIM Editor](../assets/images/12_licence.png)
+![License active in SEABIM Editor](../assets/images/licence_12.png)
 
 At that point you can move on to creating your [first
 project](premier-projet.md).

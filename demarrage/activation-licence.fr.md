@@ -19,7 +19,7 @@ dans la barre latérale droite de CloudCompare. Tant qu'aucune licence n'a
 été activée dans CodeMeter Runtime, un clic sur cette icône affiche le
 message d'absence de licence :
 
-![Aucune licence active](../assets/images/01_licence.png)
+![Aucune licence active](../assets/images/licence_01.png)
 
 ## 2. Importer le fichier `.lif`
 
@@ -27,9 +27,9 @@ message d'absence de licence :
 2. Ouvrez **CodeMeter Control Center**.
 3. Glissez-déposez le fichier `.lif` dans la fenêtre de l'application.
 
-![Glisser-déposer du fichier .lif](../assets/images/02_licence.png)
+![Glisser-déposer du fichier .lif](../assets/images/licence_02.png)
 
-![Confirmation de l'import](../assets/images/03_licence.png)
+![Confirmation de l'import](../assets/images/licence_03.png)
 
 La licence apparaît alors dans la liste : un **CmContainer** vient d'être
 créé sur votre poste.
@@ -44,13 +44,13 @@ définitive.
    licence »** en bas à droite.
 2. Suivez les écrans de l'assistant :
 
-![Lancement de l'assistant](../assets/images/04_licence.png)
+![Lancement de l'assistant](../assets/images/licence_04.png)
 
-![Génération du fichier RaC](../assets/images/06_licence.png)
+![Génération du fichier RaC](../assets/images/licence_06.png)
 
-![Sélection du dossier de sortie](../assets/images/07_licence.png)
+![Sélection du dossier de sortie](../assets/images/licence_07.png)
 
-![Confirmation de la génération](../assets/images/08_licence.png)
+![Confirmation de la génération](../assets/images/licence_08.png)
 
 3. Transmettez le fichier **`.RaC`** ainsi obtenu à l'équipe SEABIM.
 
@@ -58,16 +58,16 @@ En retour, vous recevrez un fichier **`.RaU`** à importer dans CodeMeter
 Control Center selon la même procédure (glisser-déposer ou via l'assistant
 de mise à jour).
 
-![Import du fichier RaU](../assets/images/09_licence.png)
+![Import du fichier RaU](../assets/images/licence_09.png)
 
-![Activation finalisée](../assets/images/10_licence.png)
+![Activation finalisée](../assets/images/licence_10.png)
 
 ## 4. Vérifier la licence dans CodeMeter WebAdmin
 
 Vous pouvez à tout moment consulter les informations détaillées de votre
 licence depuis **CodeMeter WebAdmin** :
 
-![Informations de licence dans WebAdmin](../assets/images/11_licence.png)
+![Informations de licence dans WebAdmin](../assets/images/licence_11.png)
 
 ## 5. Valider l'activation dans CloudCompare
 
@@ -75,7 +75,7 @@ Pour finaliser, ouvrez CloudCompare et cliquez sur l'icône **SEABIM** dans
 la barre latérale. Une fenêtre récapitulative s'ouvre avec les
 informations de votre licence : l'activation est réussie.
 
-![Licence active dans SEABIM Editor](../assets/images/12_licence.png)
+![Licence active dans SEABIM Editor](../assets/images/licence_12.png)
 
 À ce stade, vous pouvez enchaîner sur la création de votre [premier
 projet](premier-projet.md).
