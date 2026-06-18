@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Synchronisation
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -528,12 +546,24 @@ n'apparaît pas dans l'onglet Import.</p>
 un script métier) sans repasser par la détection automatique. Les blocs
 créés sont placés aux positions du CSV ; leur recalage fin sur le nuage
 reste à faire via le module <a href="../edit/">Édition</a>.</p>
+<p>La modale d'import facilite la lecture de fichiers hétérogènes :</p>
+<ul>
+<li><strong>Choix du séparateur</strong> : <code>Auto</code> (détection automatique), <code>,</code>, <code>;</code> ou
+  tabulation. Le mode <code>Auto</code> analyse les premières lignes pour deviner le
+  bon séparateur.</li>
+<li><strong>Aperçu interprété</strong> : les premières lignes du fichier sont affichées
+  telles qu'elles seront lues, pour vérifier le découpage en colonnes avant
+  de valider.</li>
+<li><strong>Offset automatique</strong> : pour de grandes coordonnées (UTM par exemple), un
+  offset est proposé pour ramener les positions dans une plage exploitable.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Format du CSV</p>
+<p>Le CSV attend une ligne par bloc et <strong>16 colonnes</strong> dans l'ordre
+<code>Id;Plan;Section;BlockNr;Type;Volume;…;BlockR;BlockP;BlockH</code>. Le format
+précis est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Formats de fichiers § Fichiers
+CSV</a>.</p>
 </div>
-<p>Le CSV attend une colonne par champ métadonnée (typiquement
-position X/Y/Z, type, volume, numéro de plot, …). Le format précis
-est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Formats de fichiers § Fichiers CSV</a>.</p>
   </div>
   
   <script>
@@ -618,6 +648,12 @@ est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Forma
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Page d'accueil
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -687,6 +723,12 @@ est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Forma
                         <a class="text-2xl font-medium" href="../output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Synchronisation
                             
                         </a>
                         

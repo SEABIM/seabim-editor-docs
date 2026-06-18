@@ -86,8 +86,17 @@ by a business script) without going through automatic detection. The
 blocks are created at the CSV positions; their fine registration on the
 cloud still needs to be done via the [Edit](edit.md) module.
 
+The import dialog makes reading heterogeneous files easier:
+
+- **Separator choice**: `Auto` (automatic detection), `,`, `;` or tab. The
+  `Auto` mode analyzes the first lines to guess the right separator.
+- **Interpreted preview**: the first lines of the file are shown as they
+  will be read, to check the column splitting before confirming.
+- **Automatic offset**: for large coordinates (UTM for example), an offset
+  is proposed to bring positions back into a workable range.
+
 !!! note "CSV format"
-    The CSV expects one column per metadata field (typically X/Y/Z
-    position, type, volume, plot number, …). The exact format is
-    documented in [File formats § CSV
+    The CSV expects one row per block and **16 columns** in the order
+    `Id;Plan;Section;BlockNr;Type;Volume;…;BlockR;BlockP;BlockH`. The exact
+    format is documented in [File formats § CSV
     files](../workflow/formats-fichiers.md#csv-files).

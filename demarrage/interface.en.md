@@ -10,10 +10,10 @@ plugin and is organised in **tabs** by functional domain.
 
 ```text
 ┌────────────────────────────────────────────────────┐
-│  ↶  ↷  ⟳  🎨  ⚙  ▭  ❓   ← Header (7 actions)    │
+│  ↶ ↷ ⟳ 🎨 👁 📏 ⚙ ▭ ❓   ← Header (cross-cutting) │
 ├────────────────────────────────────────────────────┤
-│ Import | Edit | Quality control | Filters |        │
-│ Metadata | Export   ← Module tabs                  │
+│ Home | Import | Edit | Quality control |           │
+│ Filters | Metadata | Export   ← Tabs               │
 ├────────────────────────────────────────────────────┤
 │                                                    │
 │   [Action button 1]  [Action button 2]  …          │
@@ -23,11 +23,11 @@ plugin and is organised in **tabs** by functional domain.
 └────────────────────────────────────────────────────┘
 ```
 
-- The **header** exposes 7 cross-cutting actions accessible from any tab
+- The **header** exposes cross-cutting actions accessible from any tab
   (see [Header module](../modules/header.md)).
-- The **tabs** correspond to the business modules: `Import`, `Edit`,
-  `Quality control`, `Filters`, `Metadata`, `Export` (and `Sync` if
-  enabled by license).
+- The **tabs**: a `Home` tab (license status), then the business modules
+  `Import`, `Edit`, `Quality control`, `Filters`, `Metadata`, `Export` —
+  and `Sync` at the end if enabled by license.
 - The **action area** displays the buttons of the active module, either
   as a vertical list or as a grid (the case of the
   [Filters](../modules/filters.md) module which exposes 11 actions as a
@@ -37,12 +37,17 @@ plugin and is organised in **tabs** by functional domain.
 
 | Tab               | Purpose                  | Detail                                            |
 | ----------------- | ------------------------ | ------------------------------------------------- |
+| `Home`            | License status           | Start date and enabled options                    |
 | `Import`          | Loading structures       | [Import module](../modules/input.md)              |
 | `Edit`            | Block editing            | [Edit module](../modules/edit.md)                 |
 | `Quality control` | Quality metrics          | [Quality control module](../modules/quality.md)   |
 | `Filters`         | Geometric filters        | [Filters module](../modules/filters.md)           |
 | `Metadata`        | Metadata editing         | [Metadata module](../modules/metadata.md)         |
 | `Export`          | Saving and exporting     | [Export module](../modules/output.md)             |
+| `Sync` ⃰          | Exchange with SEABIM cloud | [Sync module](../modules/sync.md)               |
+
+⃰ The `Sync` tab only appears if the matching license bit is active (see
+[License activation](activation-licence.md)).
 
 ## Header — cross-cutting actions
 
@@ -54,6 +59,8 @@ The header is always visible:
 | ↷     | [Redo](../modules/header.md#redo)                                                 | ++ctrl+y++ (alias ++ctrl+shift+z++) |
 | ⟳     | [Update view](../modules/header.md#update-view)                                   | ++ctrl+r++                          |
 | 🎨    | [Change color scale](../modules/header.md#change-color-scale)                     | ++ctrl+l++                          |
+| 👁    | [Display by type](../modules/header.md#display-by-type)                           | ++ctrl+d++                          |
+| 📏    | [Switch to meters / feet](../modules/header.md#switch-units)                      | ++ctrl+u++                          |
 | ⚙     | [Settings](../modules/header.md#settings)                                         | ++ctrl++,                           |
 | ▭     | [Reduce window size](../modules/header.md#reduire-la-taille-de-fenetre)           | —                                   |
 | ❓    | [Shortcuts help](../modules/header.md#affichage-des-raccourcis)                   | ++f1++                              |

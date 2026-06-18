@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Sync
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -537,11 +555,20 @@ appear in the Import tab.</p>
 by a business script) without going through automatic detection. The
 blocks are created at the CSV positions; their fine registration on the
 cloud still needs to be done via the <a href="../edit/">Edit</a> module.</p>
+<p>The import dialog makes reading heterogeneous files easier:</p>
+<ul>
+<li><strong>Separator choice</strong>: <code>Auto</code> (automatic detection), <code>,</code>, <code>;</code> or tab. The
+  <code>Auto</code> mode analyzes the first lines to guess the right separator.</li>
+<li><strong>Interpreted preview</strong>: the first lines of the file are shown as they
+  will be read, to check the column splitting before confirming.</li>
+<li><strong>Automatic offset</strong>: for large coordinates (UTM for example), an offset
+  is proposed to bring positions back into a workable range.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">CSV format</p>
-<p>The CSV expects one column per metadata field (typically X/Y/Z
-position, type, volume, plot number, …). The exact format is
-documented in <a href="../../workflow/formats-fichiers/#csv-files">File formats § CSV
+<p>The CSV expects one row per block and <strong>16 columns</strong> in the order
+<code>Id;Plan;Section;BlockNr;Type;Volume;…;BlockR;BlockP;BlockH</code>. The exact
+format is documented in <a href="../../workflow/formats-fichiers/#csv-files">File formats § CSV
 files</a>.</p>
 </div>
   </div>
@@ -628,6 +655,12 @@ files</a>.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -697,6 +730,12 @@ files</a>.</p>
                         <a class="text-2xl font-medium" href="../output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Sync
                             
                         </a>
                         

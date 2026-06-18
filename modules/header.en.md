@@ -1,7 +1,7 @@
 # Header (top bar)
 
 The **header** is the row of icons at the top of the SEABIM Editor
-launcher. Its 7 actions are **cross-cutting**: they are accessible from
+launcher. Its actions are **cross-cutting**: they are accessible from
 any tab and each one comes with a keyboard shortcut.
 
 ![Header](../assets/images/cc_header.png)
@@ -56,6 +56,33 @@ control](quality.md) modules: computing a filter produces a scalar field,
 
 ![Color scale](../assets/images/cc_color_panel.png)
 
+## Display by type { #display-by-type }
+
+**Shortcut: ++ctrl+d++**
+
+Opens a dialog that lets you **show only certain block types and certain
+volumes**. This is a **non-destructive** display filter: it neither deletes
+nor modifies any block, it temporarily hides those that don't match the
+selection.
+
+Handy to visually isolate a category (for example a single block type, a
+single volume, or the `Missing` blocks) in a dense structure, without
+touching the structure itself.
+
+## Switch to meters / feet { #switch-units }
+
+**Shortcut: ++ctrl+u++**
+
+Toggles the **working length unit** between **meters** and **feet**. The
+button label reflects the unit you are switching to ("Switch to feet" when
+in meters, and vice versa).
+
+!!! warning "Re-run detection after switching"
+    Switching the unit does not automatically reconvert block sizes that
+    have already been detected. After switching, **re-run
+    [`Find blocks in a point cloud`](input.md#find-blocks-in-a-point-cloud)**
+    so block sizes are recomputed in the new unit.
+
 ## Settings { #settings }
 
 **Shortcut: ++ctrl++,**
@@ -108,8 +135,9 @@ click goes back to normal view.
 Opens a window listing **every keyboard shortcut** available in the
 current session, grouped by origin:
 
-- The 7 header actions (Undo, Redo, Update view, Change color scale,
-  Settings, Reduce window, Shortcuts help).
+- The header actions (Undo, Redo, Update view, Change color scale,
+  Display by type, Switch to meters / feet, Settings, Reduce window,
+  Shortcuts help).
 - The actions of the modules that declare a shortcut (for example
   [`Register selection - Adaptive
   dist`](edit.md#register-selection---adaptive-dist) with ++ctrl+e++ or

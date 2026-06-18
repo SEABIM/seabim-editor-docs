@@ -356,7 +356,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -469,8 +469,9 @@ Edit, Quality control, Filters, Metadata, Export).</dd>
 <h2 id="n">N<a class="headerlink" href="#n" title="Permanent link">¶</a></h2>
 <dl>
 <dt><strong>Point cloud (PCD)</strong></dt>
-<dd>Set of 3D points coming from a survey. Mandatory format for SEABIM
-Editor: <code>.pcd</code>. See <a href="../../workflow/formats-fichiers/#point-clouds">File
+<dd>Set of 3D points coming from a survey. The cloud is loaded <strong>by
+CloudCompare</strong> (any format it can read: PCD, LAS, BIN, …); <code>.pcd</code> is the
+<strong>recommended delivery</strong> format, not a plugin constraint. See <a href="../../workflow/formats-fichiers/#point-clouds">File
 formats</a>.</dd>
 </dl>
 <h2 id="o">O<a class="headerlink" href="#o" title="Permanent link">¶</a></h2>
@@ -603,6 +604,12 @@ anvil</code></a> filters.</dd>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -672,6 +679,12 @@ anvil</code></a> filters.</dd>
                         <a class="text-2xl font-medium" href="../../modules/output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/sync/">
+                            
+                            Sync
                             
                         </a>
                         

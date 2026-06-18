@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Sync
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -432,7 +450,7 @@
           </a>
           
           
-          <a data-slot="button" id="next-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../../reference/raccourcis/">
+          <a data-slot="button" id="next-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../sync/">
             <span class="sr-only">Next</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
               <path d="M5 12l14 0"></path>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -490,9 +508,51 @@ unified dialog:</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_csv_1.png" data-desc-position="bottom"><img alt="Export CSV (step 1)" src="../../../assets/images/cc_export_csv_1.png"></a>
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_csv_2.png" data-desc-position="bottom"><img alt="Export CSV (step 2)" src="../../../assets/images/cc_export_csv_2.png"></a></p>
 <h2 id="export-final-render">Export final render<a class="headerlink" href="#export-final-render" title="Permanent link">¶</a></h2>
-<p>Generates a <strong>final render</strong> as CloudCompare BIN files ready for
-delivery, integrating the quality control filters.</p>
+<p>Generates the <strong>final delivery render</strong> as <strong>CloudCompare BIN</strong> files, split
+into parts. A dialog lets you choose precisely <strong>which blocks</strong> to export,
+<strong>how</strong> to split them and <strong>which fields</strong> to keep.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_final.png" data-desc-position="bottom"><img alt="Export final render" src="../../../assets/images/cc_export_final.png"></a></p>
+<h3 id="splitting-options">Splitting options<a class="headerlink" href="#splitting-options" title="Permanent link">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Blocks per part</code></td>
+<td>Number of blocks per BIN file. Pre-filled from the parameters (<code>n_blocks_final_render</code>), editable here.</td>
+</tr>
+<tr>
+<td><code>Group by panel</code></td>
+<td>Names each part after its <strong>panel</strong> (e.g. <code>M24</code>) instead of <code>Part 1</code>, <code>Part 2</code>… On by default.</td>
+</tr>
+<tr>
+<td><code>Sort blocks alphabetically</code></td>
+<td>Orders the blocks within each part. On by default.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Oversized panels</p>
+<p>In "Group by panel" mode, if a panel exceeds the blocks-per-part limit, a
+window offers to <strong>split</strong> it (<code>M24</code>, <code>M24_2</code>…) or <strong>keep it whole</strong> (a
+single part for that panel).</p>
+</div>
+<h3 id="selection-filters">Selection filters<a class="headerlink" href="#selection-filters" title="Permanent link">¶</a></h3>
+<p>When the structure contains <strong>several types</strong> or <strong>several volumes</strong> of blocks,
+<strong><code>Block types</code></strong> and <strong><code>Volumes</code></strong> sections appear: only blocks whose <strong>type
+AND volume</strong> are checked are exported. If there is only one type (or volume),
+the matching section is hidden and all blocks are kept on that side.</p>
+<h3 id="fields-to-export">Fields to export<a class="headerlink" href="#fields-to-export" title="Permanent link">¶</a></h3>
+<p>Scalar fields are grouped into collapsible sections: <strong>Block main properties</strong>
+(<code>panel</code>), <strong>Quality control</strong>, <strong>Placement filters</strong>, <strong>Displacement</strong> and
+<strong>Other</strong>. Check the ones to keep in the delivered render. A field <strong>not
+computed</strong> on the blocks appears greyed out and marked "(not computed)": there
+is nothing to export for it.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_final_modal.png" data-desc-position="bottom"><img alt="Final render dialog" src="../../../assets/images/cc_export_final_modal.png"></a></p>
 <div class="admonition note">
 <p class="admonition-title">Final step of the workflow</p>
 <p>This action is the final step described in the <a href="../../workflow/procedure-courante/#final-render">standard
@@ -522,8 +582,8 @@ without gaps before delivery.</p>
     </a>
     
     
-    <a data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none" href="../../reference/raccourcis/">
-        <span class="max-[500px]:hidden">Shortcuts</span>
+    <a data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none" href="../sync/">
+        <span class="max-[500px]:hidden">Sync</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right ">
             <path d="M5 12l14 0"></path>
             <path d="M13 18l6 -6"></path>
@@ -583,6 +643,12 @@ without gaps before delivery.</p>
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
                             
                         </a>
                         
@@ -658,6 +724,12 @@ without gaps before delivery.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Sync
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -715,6 +787,20 @@ without gaps before delivery.</p>
         <a href="#export-final-render" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#export-final-render');">
             Export final render
         </a>
+        
+        
+        <a href="#splitting-options" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#splitting-options');">
+            Splitting options
+        </a>
+        
+        <a href="#selection-filters" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#selection-filters');">
+            Selection filters
+        </a>
+        
+        <a href="#fields-to-export" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fields-to-export');">
+            Fields to export
+        </a>
+        
         
 
         

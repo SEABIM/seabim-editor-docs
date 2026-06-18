@@ -116,8 +116,10 @@ Export).
 ## N
 
 **Nuage de points (PCD)**
-: Ensemble de points 3D issu d'un levé. Format obligatoire pour SEABIM
-Editor : `.pcd`. Voir [Formats de fichiers](../workflow/formats-fichiers.md#point-clouds).
+: Ensemble de points 3D issu d'un levé. Le nuage est chargé **par
+CloudCompare** (tout format qu'il sait lire : PCD, LAS, BIN, …) ; `.pcd` est
+le format de **livraison recommandé**, pas une contrainte du plugin. Voir
+[Formats de fichiers](../workflow/formats-fichiers.md#point-clouds).
 
 ## O
 

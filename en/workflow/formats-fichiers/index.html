@@ -365,7 +365,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -379,6 +379,13 @@ right formats is required to ensure the software works correctly.</p>
 <h2 id="point-clouds">Point clouds<a class="headerlink" href="#point-clouds" title="Permanent link">¶</a></h2>
 <p>Point clouds hold a set of coordinates in space, sometimes with extra
 information: colors, scalar fields or normals.</p>
+<div class="admonition note">
+<p class="admonition-title">Loading delegated to CloudCompare</p>
+<p>The cloud is <strong>loaded by CloudCompare</strong>, which reads many formats (PCD,
+LAS, BIN, …). SEABIM Editor then works on the cloud already present in
+the scene. The <code>.pcd</code> below is the recommended <strong>naming / delivery</strong>
+convention, not a technical constraint of the plugin.</p>
+</div>
 <h3 id="pcd-naming">Recommended naming convention<a class="headerlink" href="#pcd-naming" title="Permanent link">¶</a></h3>
 <p>For point clouds coming from a survey and fed into SEABIM:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PROJECT_YYYYMMDD_COMPANY_SOURCE_Vm3_SECTION_subsampleYcm_pX.pcd
@@ -673,6 +680,12 @@ written in this format.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -742,6 +755,12 @@ written in this format.</p>
                         <a class="text-2xl font-medium" href="../../modules/output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/sync/">
+                            
+                            Sync
                             
                         </a>
                         

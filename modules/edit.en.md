@@ -10,26 +10,69 @@ once a structure has been loaded (from JSON) or detected automatically
 (via [`Find blocks in a point
 cloud`](input.md#find-blocks-in-a-point-cloud)).
 
-## Register selection - Adaptive dist { #register-selection---adaptive-dist }
+## Register selection { #register-selection---adaptive-dist }
 
 **Shortcut: ++ctrl+e++**
 
-Realigns (registration) the selected blocks on the reference point cloud
-using **adaptive distances** defined in the project parameters. Each
-block is adjusted independently to minimise its distance to the cloud.
+Realigns (registration) the selected blocks on the reference point cloud.
+Each block is adjusted independently to minimise its distance to the cloud.
+Use after automatic detection or after manually moving a block, to refine its
+position.
 
-To use after automatic detection or after manually moving a block, to
-refine its position.
-
-The action exposes a **`Registration report` badge** to the right of the
-button:
-
-- Enabled: a report detailing the moves (translations, rotations, scores)
-  opens automatically at the end of each registration.
-- Disabled: no pop-up, but clicking the badge re-enables it and shows the
-  last report produced in this session.
+Everything goes through **a single button**: by default it registers using
+**adaptive distance**, and its **small sliders icon** gives access to three
+custom modes. A **`Registration report` badge** rounds out the action.
 
 ![Register selection](../assets/images/cc_edit_register.png)
+
+### "Registration report" badge
+
+To the right of the button:
+
+- **Enabled**: a report detailing the moves (translations, rotations, scores)
+  opens automatically at the end of each registration.
+- **Disabled**: no pop-up; clicking the badge re-enables it and shows the last
+  report produced in this session.
+
+### Registration modes
+
+The **small sliders icon** next to the button does not register on its own: it
+**configures the mode** that `Register selection` (++ctrl+e++) will then apply.
+
+| Mode                  | Effect                                                                                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Adaptive distance** | Default mode. **Adaptive** cloud distances, defined in the project parameters.                                                              |
+| **Custom distance**   | Registers with a **fixed cloud distance** instead of the adaptive distances. **Persistent** override for the session.                       |
+| **New block volume**  | **Assigns a new volume** to the selection (a different size than the detected one), then registers. Useful when two neighboring volumes were confused (e.g. 2 m³ vs 3 m³). |
+| **Zone registration** | Registers using only a **small portion of the cloud** delimited by a box (see below).                                                       |
+
+For the **Custom distance** and **Volume** modes, the entered value is
+remembered for the session: the icon stays **orange** and each `Register
+selection` reapplies the mode without re-entering it. Selecting "clear" in the
+dialog goes back to the adaptive mode.
+
+![Custom registration modes](../assets/images/cc_edit_register_personal.png)
+
+### Zone registration { #register-selection---zone }
+
+**Zone registration** restricts the adjustment to a **portion of the cloud**
+rather than to all the points around the block. This is useful when only part
+of the cloud is reliable (noisy zone, parasitic neighboring blocks, interface
+between two surveys).
+
+When you pick this mode, a **dedicated panel** opens and spawns a **box** in
+the CloudCompare scene:
+
+1. Position and size the box around the portion of cloud to keep (or to
+   exclude).
+2. Choose to keep the cloud **inside** or **outside** the box.
+3. Confirm: registration only considers the retained points. The crop
+   distance stays **adaptive**.
+
+Unlike the Distance / Volume modes, zone registration **is not a persistent
+override**: the box is spatial and placed by hand on each use.
+
+![Zone registration](../assets/images/cc_edit_register_zone.png)
 
 ## Help register { #help-register }
 
@@ -112,7 +155,7 @@ differential, overlap, density), from registration, and from the
 placement exports: they only record the gap. They are synchronised to the
 cloud viewer through their `Missing` type, so completeness statistics can
 account for them, and they show up under **Missing** in
-[`Display by type`](filters.md). To remove a misplaced placeholder, use
+[`Display by type`](header.md#display-by-type). To remove a misplaced placeholder, use
 [`Safe delete`](#safe-delete).
 
 ## Group / Ungroup { #group--ungroup }
@@ -131,17 +174,3 @@ A single dialog exposes the 4 operations:
 | `Ungroup all`     | Splits every grouping (panel + package).                                |
 
 ![Group / Ungroup](../assets/images/cc_edit_group_ungroup.png)
-
-## Register selection - Custom { #register-selection---custom }
-
-Variant of the registration that lets you:
-
-- Specify a **custom distance** to the cloud (instead of the default
-  adaptive distances).
-- Or **assign a new block volume** to the selection (a different size
-  than the detected one).
-
-Useful for zones where the automatic detection has confused two
-neighboring block types (for example 2 m³ vs 3 m³).
-
-![Register selection - Custom](../assets/images/cc_edit_register_personal.png)

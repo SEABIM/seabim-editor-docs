@@ -1,7 +1,7 @@
 # Header (barre supérieure)
 
 Le **header** est la barre d'icônes en haut du launcher SEABIM Editor.
-Ses 7 actions sont **transversales** : elles sont accessibles depuis
+Ses actions sont **transversales** : elles sont accessibles depuis
 n'importe quel onglet et chacune dispose d'un raccourci clavier.
 
 ![Header](../assets/images/cc_header.png)
@@ -57,6 +57,33 @@ scalaire, `Changer l'échelle de couleurs` permet de le visualiser.
 
 ![Échelle de couleurs](../assets/images/cc_color_panel.png)
 
+## Afficher par type { #display-by-type }
+
+**Raccourci : ++ctrl+d++**
+
+Ouvre une modale qui permet de **n'afficher que certains types de blocs et
+certains volumes**. C'est un filtre d'affichage **non destructif** : il ne
+supprime ni ne modifie aucun bloc, il masque temporairement ceux qui ne
+correspondent pas à la sélection.
+
+Pratique pour isoler visuellement une catégorie (par exemple un seul type
+de bloc, un seul volume, ou les blocs `Missing`) dans une structure dense,
+sans toucher à la structure elle-même.
+
+## Basculer mètres / pieds { #switch-units }
+
+**Raccourci : ++ctrl+u++**
+
+Bascule l'**unité de longueur de travail** entre les **mètres** et les
+**pieds**. Le libellé du bouton reflète l'unité vers laquelle on bascule
+(« Basculer en pieds » quand on est en mètres, et inversement).
+
+!!! warning "Relancer la détection après une bascule"
+    Le changement d'unité ne reconvertit pas automatiquement les tailles de
+    blocs déjà détectées. Après avoir basculé, **relancez
+    [`Détecter les blocs dans un nuage`](input.md#find-blocks-in-a-point-cloud)**
+    pour que les tailles de blocs soient recalculées dans la nouvelle unité.
+
 ## Paramètres { #settings }
 
 **Raccourci : ++ctrl++,**
@@ -111,9 +138,9 @@ deuxième clic ramène à la vue normale.
 Ouvre une fenêtre qui liste **tous les raccourcis clavier** disponibles
 dans la session courante, regroupés par origine :
 
-- Les 7 actions du header (Annuler, Rétablir, Rafraîchir la vue, Changer
-  l'échelle de couleurs, Paramètres, Réduire la fenêtre, Affichage des
-  raccourcis).
+- Les actions du header (Annuler, Rétablir, Rafraîchir la vue, Changer
+  l'échelle de couleurs, Afficher par type, Basculer mètres / pieds,
+  Paramètres, Réduire la fenêtre, Affichage des raccourcis).
 - Les actions des modules ayant un raccourci déclaré (par exemple
   [`Recaler la sélection - Distance
   adaptative`](edit.md#register-selection---adaptive-dist) avec

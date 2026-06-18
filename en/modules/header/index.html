@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Sync
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -465,7 +483,7 @@
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
     <p>The <strong>header</strong> is the row of icons at the top of the SEABIM Editor
-launcher. Its 7 actions are <strong>cross-cutting</strong>: they are accessible from
+launcher. Its actions are <strong>cross-cutting</strong>: they are accessible from
 any tab and each one comes with a keyboard shortcut.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_header.png" data-desc-position="bottom"><img alt="Header" src="../../../assets/images/cc_header.png"></a></p>
 <h2 id="undo">Undo<a class="headerlink" href="#undo" title="Permanent link">¶</a></h2>
@@ -505,6 +523,27 @@ didn't propagate).</p>
 control</a> modules: computing a filter produces a scalar field,
 <code>Change color scale</code> lets you visualize it.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_color_panel.png" data-desc-position="bottom"><img alt="Color scale" src="../../../assets/images/cc_color_panel.png"></a></p>
+<h2 id="display-by-type">Display by type<a class="headerlink" href="#display-by-type" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></strong></p>
+<p>Opens a dialog that lets you <strong>show only certain block types and certain
+volumes</strong>. This is a <strong>non-destructive</strong> display filter: it neither deletes
+nor modifies any block, it temporarily hides those that don't match the
+selection.</p>
+<p>Handy to visually isolate a category (for example a single block type, a
+single volume, or the <code>Missing</code> blocks) in a dense structure, without
+touching the structure itself.</p>
+<h2 id="switch-units">Switch to meters / feet<a class="headerlink" href="#switch-units" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></strong></p>
+<p>Toggles the <strong>working length unit</strong> between <strong>meters</strong> and <strong>feet</strong>. The
+button label reflects the unit you are switching to ("Switch to feet" when
+in meters, and vice versa).</p>
+<div class="admonition warning">
+<p class="admonition-title">Re-run detection after switching</p>
+<p>Switching the unit does not automatically reconvert block sizes that
+have already been detected. After switching, <strong>re-run
+<a href="../input/#find-blocks-in-a-point-cloud"><code>Find blocks in a point cloud</code></a></strong>
+so block sizes are recomputed in the new unit.</p>
+</div>
 <h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">¶</a></h2>
 <p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd></span>,</strong></p>
 <p>Opens the <strong>Settings</strong> dialog which edits the plugin's internal
@@ -550,8 +589,9 @@ session starts in normal view.</p>
 <p>Opens a window listing <strong>every keyboard shortcut</strong> available in the
 current session, grouped by origin:</p>
 <ul>
-<li>The 7 header actions (Undo, Redo, Update view, Change color scale,
-  Settings, Reduce window, Shortcuts help).</li>
+<li>The header actions (Undo, Redo, Update view, Change color scale,
+  Display by type, Switch to meters / feet, Settings, Reduce window,
+  Shortcuts help).</li>
 <li>The actions of the modules that declare a shortcut (for example
   <a href="../edit/#register-selection---adaptive-dist"><code>Register selection - Adaptive
   dist</code></a> with <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span> or
@@ -648,6 +688,12 @@ when the focus is on a child dialog.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -720,6 +766,12 @@ when the focus is on a child dialog.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Sync
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -782,6 +834,18 @@ when the focus is on a child dialog.</p>
         
         <a href="#change-color-scale" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#change-color-scale');">
             Change color scale
+        </a>
+        
+
+        
+        <a href="#display-by-type" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#display-by-type');">
+            Display by type
+        </a>
+        
+
+        
+        <a href="#switch-units" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#switch-units');">
+            Switch to meters / feet
         </a>
         
 

@@ -365,7 +365,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -381,6 +381,14 @@ le bon fonctionnement du logiciel.</p>
 <p>Les nuages de points contiennent un ensemble de coordonnées dans l'espace,
 avec parfois des informations supplémentaires : couleurs, champs scalaires
 ou normales.</p>
+<div class="admonition note">
+<p class="admonition-title">Chargement délégué à CloudCompare</p>
+<p>Le nuage est <strong>chargé par CloudCompare</strong>, qui lit de nombreux formats
+(PCD, LAS, BIN, …). SEABIM Editor travaille ensuite sur le nuage
+déjà présent dans la scène. Le <code>.pcd</code> ci-dessous est la convention de
+<strong>nommage / livraison</strong> recommandée, non une contrainte technique du
+plugin.</p>
+</div>
 <h3 id="pcd-naming">Nomenclature recommandée<a class="headerlink" href="#pcd-naming" title="Permanent link">¶</a></h3>
 <p>Pour les nuages de points issus d'un levé et donnés en entrée à SEABIM :</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PROJET_YYYYMMDD_ENTREPRISE_SOURCE_Vm3_SECTION_subsampleYcm_pX.pcd
@@ -675,6 +683,12 @@ CloudCompare.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Page d'accueil
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -744,6 +758,12 @@ CloudCompare.</p>
                         <a class="text-2xl font-medium" href="../../modules/output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/sync/">
+                            
+                            Synchronisation
                             
                         </a>
                         

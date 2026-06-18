@@ -10,6 +10,13 @@ Les nuages de points contiennent un ensemble de coordonnées dans l'espace,
 avec parfois des informations supplémentaires : couleurs, champs scalaires
 ou normales.
 
+!!! note "Chargement délégué à CloudCompare"
+    Le nuage est **chargé par CloudCompare**, qui lit de nombreux formats
+    (PCD, LAS, BIN, …). SEABIM Editor travaille ensuite sur le nuage
+    déjà présent dans la scène. Le `.pcd` ci-dessous est la convention de
+    **nommage / livraison** recommandée, non une contrainte technique du
+    plugin.
+
 ### Nomenclature recommandée { #pcd-naming }
 
 Pour les nuages de points issus d'un levé et donnés en entrée à SEABIM :

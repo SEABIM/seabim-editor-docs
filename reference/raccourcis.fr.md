@@ -13,6 +13,8 @@ bouton correspondant dans le launcher.
 | ++ctrl+shift+z++ | [Rétablir](../modules/header.md#redo) (alias)                             | Convention Mac / Linux pour Rétablir.         |
 | ++ctrl+r++       | [Rafraîchir la vue](../modules/header.md#update-view)                     | Rafraîchit l'affichage de tous les blocs.     |
 | ++ctrl+l++       | [Changer l'échelle de couleurs](../modules/header.md#change-color-scale)  | Ouvre la modale de coloration.                |
+| ++ctrl+d++       | [Afficher par type](../modules/header.md#display-by-type)                 | Masque/affiche les blocs par type et volume.  |
+| ++ctrl+u++       | [Basculer mètres / pieds](../modules/header.md#switch-units)              | Change l'unité de longueur de travail.        |
 | ++ctrl++,        | [Paramètres](../modules/header.md#settings)                               | Ouvre les préférences.                        |
 | ++f1++           | [Affichage des raccourcis](../modules/header.md#affichage-des-raccourcis) | Ouvre la fenêtre listant tous les raccourcis. |
 

@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Synchronisation
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -465,7 +483,7 @@
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
     <p>Le <strong>header</strong> est la barre d'icônes en haut du launcher SEABIM Editor.
-Ses 7 actions sont <strong>transversales</strong> : elles sont accessibles depuis
+Ses actions sont <strong>transversales</strong> : elles sont accessibles depuis
 n'importe quel onglet et chacune dispose d'un raccourci clavier.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_header.png" data-desc-position="bottom"><img alt="Header" src="../../assets/images/cc_header.png"></a></p>
 <h2 id="undo">Annuler la dernière action<a class="headerlink" href="#undo" title="Permanent link">¶</a></h2>
@@ -506,6 +524,27 @@ changement de paramètres d'affichage qui ne s'est pas propagé).</p>
 <a href="../quality/">Contrôle qualité</a> : calculer un filtre produit un champ
 scalaire, <code>Changer l'échelle de couleurs</code> permet de le visualiser.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_color_panel.png" data-desc-position="bottom"><img alt="Échelle de couleurs" src="../../assets/images/cc_color_panel.png"></a></p>
+<h2 id="display-by-type">Afficher par type<a class="headerlink" href="#display-by-type" title="Permanent link">¶</a></h2>
+<p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></strong></p>
+<p>Ouvre une modale qui permet de <strong>n'afficher que certains types de blocs et
+certains volumes</strong>. C'est un filtre d'affichage <strong>non destructif</strong> : il ne
+supprime ni ne modifie aucun bloc, il masque temporairement ceux qui ne
+correspondent pas à la sélection.</p>
+<p>Pratique pour isoler visuellement une catégorie (par exemple un seul type
+de bloc, un seul volume, ou les blocs <code>Missing</code>) dans une structure dense,
+sans toucher à la structure elle-même.</p>
+<h2 id="switch-units">Basculer mètres / pieds<a class="headerlink" href="#switch-units" title="Permanent link">¶</a></h2>
+<p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></strong></p>
+<p>Bascule l'<strong>unité de longueur de travail</strong> entre les <strong>mètres</strong> et les
+<strong>pieds</strong>. Le libellé du bouton reflète l'unité vers laquelle on bascule
+(« Basculer en pieds » quand on est en mètres, et inversement).</p>
+<div class="admonition warning">
+<p class="admonition-title">Relancer la détection après une bascule</p>
+<p>Le changement d'unité ne reconvertit pas automatiquement les tailles de
+blocs déjà détectées. Après avoir basculé, <strong>relancez
+<a href="../input/#find-blocks-in-a-point-cloud"><code>Détecter les blocs dans un nuage</code></a></strong>
+pour que les tailles de blocs soient recalculées dans la nouvelle unité.</p>
+</div>
 <h2 id="settings">Paramètres<a class="headerlink" href="#settings" title="Permanent link">¶</a></h2>
 <p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd></span>,</strong></p>
 <p>Ouvre la modale <strong>Paramètres</strong> qui édite les paramètres internes du
@@ -553,9 +592,9 @@ launcher</strong> : chaque session redémarre en vue normale.</p>
 <p>Ouvre une fenêtre qui liste <strong>tous les raccourcis clavier</strong> disponibles
 dans la session courante, regroupés par origine :</p>
 <ul>
-<li>Les 7 actions du header (Annuler, Rétablir, Rafraîchir la vue, Changer
-  l'échelle de couleurs, Paramètres, Réduire la fenêtre, Affichage des
-  raccourcis).</li>
+<li>Les actions du header (Annuler, Rétablir, Rafraîchir la vue, Changer
+  l'échelle de couleurs, Afficher par type, Basculer mètres / pieds,
+  Paramètres, Réduire la fenêtre, Affichage des raccourcis).</li>
 <li>Les actions des modules ayant un raccourci déclaré (par exemple
   <a href="../edit/#register-selection---adaptive-dist"><code>Recaler la sélection - Distance
   adaptative</code></a> avec
@@ -652,6 +691,12 @@ n'importe quel onglet, même si le focus est sur une modale enfant.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Page d'accueil
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -724,6 +769,12 @@ n'importe quel onglet, même si le focus est sur une modale enfant.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Synchronisation
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -786,6 +837,18 @@ n'importe quel onglet, même si le focus est sur une modale enfant.</p>
         
         <a href="#change-color-scale" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#change-color-scale');">
             Changer l'échelle de couleurs
+        </a>
+        
+
+        
+        <a href="#display-by-type" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#display-by-type');">
+            Afficher par type
+        </a>
+        
+
+        
+        <a href="#switch-units" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#switch-units');">
+            Basculer mètres / pieds
         </a>
         
 

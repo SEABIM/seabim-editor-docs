@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Sync
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-03T12:36:46+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -472,22 +490,75 @@ placement plan.</p>
 once a structure has been loaded (from JSON) or detected automatically
 (via <a href="../input/#find-blocks-in-a-point-cloud"><code>Find blocks in a point
 cloud</code></a>).</p>
-<h2 id="register-selection---adaptive-dist">Register selection - Adaptive dist<a class="headerlink" href="#register-selection---adaptive-dist" title="Permanent link">¶</a></h2>
+<h2 id="register-selection---adaptive-dist">Register selection<a class="headerlink" href="#register-selection---adaptive-dist" title="Permanent link">¶</a></h2>
 <p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span></strong></p>
-<p>Realigns (registration) the selected blocks on the reference point cloud
-using <strong>adaptive distances</strong> defined in the project parameters. Each
-block is adjusted independently to minimise its distance to the cloud.</p>
-<p>To use after automatic detection or after manually moving a block, to
-refine its position.</p>
-<p>The action exposes a <strong><code>Registration report</code> badge</strong> to the right of the
-button:</p>
-<ul>
-<li>Enabled: a report detailing the moves (translations, rotations, scores)
-  opens automatically at the end of each registration.</li>
-<li>Disabled: no pop-up, but clicking the badge re-enables it and shows the
-  last report produced in this session.</li>
-</ul>
+<p>Realigns (registration) the selected blocks on the reference point cloud.
+Each block is adjusted independently to minimise its distance to the cloud.
+Use after automatic detection or after manually moving a block, to refine its
+position.</p>
+<p>Everything goes through <strong>a single button</strong>: by default it registers using
+<strong>adaptive distance</strong>, and its <strong>small sliders icon</strong> gives access to three
+custom modes. A <strong><code>Registration report</code> badge</strong> rounds out the action.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register.png" data-desc-position="bottom"><img alt="Register selection" src="../../../assets/images/cc_edit_register.png"></a></p>
+<h3 id="registration-report-badge">"Registration report" badge<a class="headerlink" href="#registration-report-badge" title="Permanent link">¶</a></h3>
+<p>To the right of the button:</p>
+<ul>
+<li><strong>Enabled</strong>: a report detailing the moves (translations, rotations, scores)
+  opens automatically at the end of each registration.</li>
+<li><strong>Disabled</strong>: no pop-up; clicking the badge re-enables it and shows the last
+  report produced in this session.</li>
+</ul>
+<h3 id="registration-modes">Registration modes<a class="headerlink" href="#registration-modes" title="Permanent link">¶</a></h3>
+<p>The <strong>small sliders icon</strong> next to the button does not register on its own: it
+<strong>configures the mode</strong> that <code>Register selection</code> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span>) will then apply.</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Adaptive distance</strong></td>
+<td>Default mode. <strong>Adaptive</strong> cloud distances, defined in the project parameters.</td>
+</tr>
+<tr>
+<td><strong>Custom distance</strong></td>
+<td>Registers with a <strong>fixed cloud distance</strong> instead of the adaptive distances. <strong>Persistent</strong> override for the session.</td>
+</tr>
+<tr>
+<td><strong>New block volume</strong></td>
+<td><strong>Assigns a new volume</strong> to the selection (a different size than the detected one), then registers. Useful when two neighboring volumes were confused (e.g. 2 m³ vs 3 m³).</td>
+</tr>
+<tr>
+<td><strong>Zone registration</strong></td>
+<td>Registers using only a <strong>small portion of the cloud</strong> delimited by a box (see below).</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the <strong>Custom distance</strong> and <strong>Volume</strong> modes, the entered value is
+remembered for the session: the icon stays <strong>orange</strong> and each <code>Register
+selection</code> reapplies the mode without re-entering it. Selecting "clear" in the
+dialog goes back to the adaptive mode.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register_personal.png" data-desc-position="bottom"><img alt="Custom registration modes" src="../../../assets/images/cc_edit_register_personal.png"></a></p>
+<h3 id="register-selection---zone">Zone registration<a class="headerlink" href="#register-selection---zone" title="Permanent link">¶</a></h3>
+<p><strong>Zone registration</strong> restricts the adjustment to a <strong>portion of the cloud</strong>
+rather than to all the points around the block. This is useful when only part
+of the cloud is reliable (noisy zone, parasitic neighboring blocks, interface
+between two surveys).</p>
+<p>When you pick this mode, a <strong>dedicated panel</strong> opens and spawns a <strong>box</strong> in
+the CloudCompare scene:</p>
+<ol>
+<li>Position and size the box around the portion of cloud to keep (or to
+   exclude).</li>
+<li>Choose to keep the cloud <strong>inside</strong> or <strong>outside</strong> the box.</li>
+<li>Confirm: registration only considers the retained points. The crop
+   distance stays <strong>adaptive</strong>.</li>
+</ol>
+<p>Unlike the Distance / Volume modes, zone registration <strong>is not a persistent
+override</strong>: the box is spatial and placed by hand on each use.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register_zone.png" data-desc-position="bottom"><img alt="Zone registration" src="../../../assets/images/cc_edit_register_zone.png"></a></p>
 <h2 id="help-register">Help register<a class="headerlink" href="#help-register" title="Permanent link">¶</a></h2>
 <p>Opens an interactive panel that lets you <strong>translate or rotate</strong> the
 selected block before running the registration. Useful when a block's
@@ -597,7 +668,7 @@ differential, overlap, density), from registration, and from the
 placement exports: they only record the gap. They are synchronised to the
 cloud viewer through their <code>Missing</code> type, so completeness statistics can
 account for them, and they show up under <strong>Missing</strong> in
-<a href="../filters/"><code>Display by type</code></a>. To remove a misplaced placeholder, use
+<a href="../header/#display-by-type"><code>Display by type</code></a>. To remove a misplaced placeholder, use
 <a href="#safe-delete"><code>Safe delete</code></a>.</p>
 <h2 id="group--ungroup">Group / Ungroup<a class="headerlink" href="#group--ungroup" title="Permanent link">¶</a></h2>
 <p>Reorganises the display of the structure in CloudCompare's tree by
@@ -631,17 +702,6 @@ groups.</p>
 </tbody>
 </table></div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_group_ungroup.png" data-desc-position="bottom"><img alt="Group / Ungroup" src="../../../assets/images/cc_edit_group_ungroup.png"></a></p>
-<h2 id="register-selection---custom">Register selection - Custom<a class="headerlink" href="#register-selection---custom" title="Permanent link">¶</a></h2>
-<p>Variant of the registration that lets you:</p>
-<ul>
-<li>Specify a <strong>custom distance</strong> to the cloud (instead of the default
-  adaptive distances).</li>
-<li>Or <strong>assign a new block volume</strong> to the selection (a different size
-  than the detected one).</li>
-</ul>
-<p>Useful for zones where the automatic detection has confused two
-neighboring block types (for example 2 m³ vs 3 m³).</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register_personal.png" data-desc-position="bottom"><img alt="Register selection - Custom" src="../../../assets/images/cc_edit_register_personal.png"></a></p>
   </div>
   
   <script>
@@ -726,6 +786,12 @@ neighboring block types (for example 2 m³ vs 3 m³).</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -798,6 +864,12 @@ neighboring block types (for example 2 m³ vs 3 m³).</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Sync
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -841,8 +913,22 @@ neighboring block types (for example 2 m³ vs 3 m³).</p>
         
         
         <a href="#register-selection---adaptive-dist" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#register-selection---adaptive-dist');">
-            Register selection - Adaptive dist
+            Register selection
         </a>
+        
+        
+        <a href="#registration-report-badge" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#registration-report-badge');">
+            "Registration report" badge
+        </a>
+        
+        <a href="#registration-modes" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#registration-modes');">
+            Registration modes
+        </a>
+        
+        <a href="#register-selection---zone" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#register-selection---zone');">
+            Zone registration
+        </a>
+        
         
 
         
@@ -878,12 +964,6 @@ neighboring block types (for example 2 m³ vs 3 m³).</p>
         
         <a href="#group--ungroup" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#group--ungroup');">
             Group / Ungroup
-        </a>
-        
-
-        
-        <a href="#register-selection---custom" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#register-selection---custom');">
-            Register selection - Custom
         </a>
         
 

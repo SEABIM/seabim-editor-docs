@@ -13,6 +13,8 @@ launcher.
 | ++ctrl+shift+z++ | [Redo](../modules/header.md#redo) (alias)                                    | Mac / Linux convention for Redo.      |
 | ++ctrl+r++       | [Update view](../modules/header.md#update-view)                              | Refreshes the display of all blocks.  |
 | ++ctrl+l++       | [Change color scale](../modules/header.md#change-color-scale)                | Opens the color picker dialog.        |
+| ++ctrl+d++       | [Display by type](../modules/header.md#display-by-type)                      | Shows/hides blocks by type and volume. |
+| ++ctrl+u++       | [Switch to meters / feet](../modules/header.md#switch-units)                 | Changes the working length unit.      |
 | ++ctrl++,        | [Settings](../modules/header.md#settings)                                    | Opens the preferences dialog.         |
 | ++f1++           | [Shortcuts help](../modules/header.md#affichage-des-raccourcis)              | Opens the window listing all shortcuts. |
 

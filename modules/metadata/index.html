@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Synchronisation
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -507,6 +525,15 @@ numérotation finale est continue et sans trou.</p>
 métadonnée</strong> du bloc sélectionné. Là où <a href="#change-parameter-batch"><code>Changer un paramètre
 (lot)</code></a> cible un champ à la fois sur N blocs,
 cette action cible N champs à la fois sur un seul bloc.</p>
+<p>L'éditeur expose aussi un sélecteur <strong><code>Validation status</code></strong> qui fixe l'état
+de validation du bloc parmi trois valeurs :</p>
+<ul>
+<li><strong>Invalid</strong> (<code>0</code>) — bloc rejeté.</li>
+<li><strong>Pending</strong> (<code>1</code>) — en attente de contrôle.</li>
+<li><strong>Valid</strong> (<code>2</code>) — bloc validé.</li>
+</ul>
+<p>Ce statut est partagé avec le cloud-viewer et exploité pour le suivi de la
+revue qualité.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_meta_edit.png" data-desc-position="bottom"><img alt="Éditeur de métadonnées" src="../../assets/images/cc_meta_edit.png"></a></p>
 <h2 id="show-metadata-block">Afficher les métadonnées (bloc)<a class="headerlink" href="#show-metadata-block" title="Permanent link">¶</a></h2>
 <p><strong>Catégorie : Bloc · Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-m">M</kbd></span></strong></p>
@@ -598,6 +625,12 @@ de consultation rapide sans risque de modification.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Page d'accueil
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -667,6 +700,12 @@ de consultation rapide sans risque de modification.</p>
                         <a class="text-2xl font-medium" href="../output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Synchronisation
                             
                         </a>
                         

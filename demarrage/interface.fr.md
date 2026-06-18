@@ -10,10 +10,10 @@ actions du plugin et est organisé en **onglets** par domaine fonctionnel.
 
 ```text
 ┌────────────────────────────────────────────────────┐
-│  ↶  ↷  ⟳  🎨  ⚙  ▭  ❓   ← Header (7 actions)    │
+│  ↶ ↷ ⟳ 🎨 👁 📏 ⚙ ▭ ❓   ← Header (transversal)  │
 ├────────────────────────────────────────────────────┤
-│ Import | Édition | Contrôle qualité | Filtres |    │
-│ Métadonnées | Export   ← Onglets modules           │
+│ Accueil | Import | Édition | Contrôle qualité |    │
+│ Filtres | Métadonnées | Export   ← Onglets         │
 ├────────────────────────────────────────────────────┤
 │                                                    │
 │   [Bouton action 1]  [Bouton action 2]  …          │
@@ -23,25 +23,31 @@ actions du plugin et est organisé en **onglets** par domaine fonctionnel.
 └────────────────────────────────────────────────────┘
 ```
 
-- Le **header** propose 7 actions transversales accessibles depuis n'importe
+- Le **header** propose des actions transversales accessibles depuis n'importe
   quel onglet (cf. [module Header](../modules/header.md)).
-- Les **onglets** correspondent aux modules métier : `Import`, `Édition`,
-  `Contrôle qualité`, `Filtres`, `Métadonnées`, `Export` (et
-  `Synchronisation` si activé par la licence).
+- Les **onglets** : un onglet `Accueil` (état de la licence), puis les
+  modules métier `Import`, `Édition`, `Contrôle qualité`, `Filtres`,
+  `Métadonnées`, `Export` — et `Synchronisation` à la fin si activé par la
+  licence.
 - La **zone d'actions** affiche les boutons du module actif, soit en liste
   verticale, soit en grille (cas du module [Filtres](../modules/filters.md)
   qui propose 11 actions en grille).
 
 ## Onglets disponibles
 
-| Onglet             | Rôle                     | Détail                                           |
-| ------------------ | ------------------------ | ------------------------------------------------ |
-| `Import`           | Chargement de structures | [Module Import](../modules/input.md)             |
-| `Édition`          | Édition de blocs         | [Module Édition](../modules/edit.md)             |
-| `Contrôle qualité` | Métriques de qualité     | [Module Contrôle qualité](../modules/quality.md) |
-| `Filtres`          | Filtres géométriques     | [Module Filtres](../modules/filters.md)          |
-| `Métadonnées`      | Édition des métadonnées  | [Module Métadonnées](../modules/metadata.md)     |
-| `Export`           | Sauvegarde et export     | [Module Export](../modules/output.md)            |
+| Onglet              | Rôle                       | Détail                                           |
+| ------------------- | -------------------------- | ------------------------------------------------ |
+| `Accueil`           | État de la licence         | Date de début et options activées                |
+| `Import`            | Chargement de structures   | [Module Import](../modules/input.md)             |
+| `Édition`           | Édition de blocs           | [Module Édition](../modules/edit.md)             |
+| `Contrôle qualité`  | Métriques de qualité       | [Module Contrôle qualité](../modules/quality.md) |
+| `Filtres`           | Filtres géométriques       | [Module Filtres](../modules/filters.md)          |
+| `Métadonnées`       | Édition des métadonnées    | [Module Métadonnées](../modules/metadata.md)     |
+| `Export`            | Sauvegarde et export       | [Module Export](../modules/output.md)            |
+| `Synchronisation` ⃰ | Échange avec le cloud SEABIM | [Module Synchronisation](../modules/sync.md)   |
+
+⃰ L'onglet `Synchronisation` n'apparaît que si le bit de licence correspondant
+est actif (cf. [Activation de la licence](activation-licence.md)).
 
 ## Header — actions transversales
 
@@ -53,6 +59,8 @@ Le header est toujours visible :
 | ↷     | [Rétablir](../modules/header.md#redo)                                             | ++ctrl+y++ (alias ++ctrl+shift+z++) |
 | ⟳     | [Rafraîchir la vue](../modules/header.md#update-view)                             | ++ctrl+r++                          |
 | 🎨    | [Changer l'échelle de couleurs](../modules/header.md#change-color-scale)          | ++ctrl+l++                          |
+| 👁    | [Afficher par type](../modules/header.md#display-by-type)                         | ++ctrl+d++                          |
+| 📏    | [Basculer mètres / pieds](../modules/header.md#switch-units)                      | ++ctrl+u++                          |
 | ⚙     | [Paramètres](../modules/header.md#settings)                                       | ++ctrl++,                           |
 | ▭     | [Réduire la taille de fenêtre](../modules/header.md#reduire-la-taille-de-fenetre) | —                                   |
 | ❓    | [Affichage des raccourcis](../modules/header.md#affichage-des-raccourcis)         | ++f1++                              |

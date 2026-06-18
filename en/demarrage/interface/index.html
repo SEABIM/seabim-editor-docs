@@ -333,6 +333,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../accueil/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Home page
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -378,7 +396,7 @@
           </a>
           
           
-          <a data-slot="button" id="next-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../../workflow/procedure-courante/">
+          <a data-slot="button" id="next-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../accueil/">
             <span class="sr-only">Next</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
               <path d="M5 12l14 0"></path>
@@ -401,7 +419,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -416,10 +434,10 @@ plugin and is organised in <strong>tabs</strong> by functional domain.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_seabim_homepage.png" data-desc-position="bottom"><img alt="SEABIM Editor launcher after load (tabs visible)" src="../../../assets/images/cc_seabim_homepage.png"></a></p>
 <h2 id="anatomy-of-the-launcher">Anatomy of the launcher<a class="headerlink" href="#anatomy-of-the-launcher" title="Permanent link">¶</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌────────────────────────────────────────────────────┐
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  ↶  ↷  ⟳  🎨  ⚙  ▭  ❓   ← Header (7 actions)    │
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  ↶ ↷ ⟳ 🎨 👁 📏 ⚙ ▭ ❓   ← Header (cross-cutting) │
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├────────────────────────────────────────────────────┤
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│ Import | Edit | Quality control | Filters |        │
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│ Metadata | Export   ← Module tabs                  │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│ Home | Import | Edit | Quality control |           │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│ Filters | Metadata | Export   ← Tabs               │
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├────────────────────────────────────────────────────┤
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│                                                    │
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   [Action button 1]  [Action button 2]  …          │
@@ -429,11 +447,11 @@ plugin and is organised in <strong>tabs</strong> by functional domain.</p>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>└────────────────────────────────────────────────────┘
 </span></code></pre></div>
 <ul>
-<li>The <strong>header</strong> exposes 7 cross-cutting actions accessible from any tab
+<li>The <strong>header</strong> exposes cross-cutting actions accessible from any tab
   (see <a href="../../modules/header/">Header module</a>).</li>
-<li>The <strong>tabs</strong> correspond to the business modules: <code>Import</code>, <code>Edit</code>,
-  <code>Quality control</code>, <code>Filters</code>, <code>Metadata</code>, <code>Export</code> (and <code>Sync</code> if
-  enabled by license).</li>
+<li>The <strong>tabs</strong>: a <code>Home</code> tab (license status), then the business modules
+  <code>Import</code>, <code>Edit</code>, <code>Quality control</code>, <code>Filters</code>, <code>Metadata</code>, <code>Export</code> —
+  and <code>Sync</code> at the end if enabled by license.</li>
 <li>The <strong>action area</strong> displays the buttons of the active module, either
   as a vertical list or as a grid (the case of the
   <a href="../../modules/filters/">Filters</a> module which exposes 11 actions as a
@@ -449,6 +467,11 @@ plugin and is organised in <strong>tabs</strong> by functional domain.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><code>Home</code></td>
+<td>License status</td>
+<td>Start date and enabled options</td>
+</tr>
 <tr>
 <td><code>Import</code></td>
 <td>Loading structures</td>
@@ -479,8 +502,15 @@ plugin and is organised in <strong>tabs</strong> by functional domain.</p>
 <td>Saving and exporting</td>
 <td><a href="../../modules/output/">Export module</a></td>
 </tr>
+<tr>
+<td><code>Sync</code> ⃰</td>
+<td>Exchange with SEABIM cloud</td>
+<td><a href="../../modules/sync/">Sync module</a></td>
+</tr>
 </tbody>
 </table></div>
+<p>⃰ The <code>Sync</code> tab only appears if the matching license bit is active (see
+<a href="../activation-licence/">License activation</a>).</p>
 <h2 id="header-cross-cutting-actions">Header — cross-cutting actions<a class="headerlink" href="#header-cross-cutting-actions" title="Permanent link">¶</a></h2>
 <p>The header is always visible:</p>
 <div class="table-wrapper"><table>
@@ -511,6 +541,16 @@ plugin and is organised in <strong>tabs</strong> by functional domain.</p>
 <td>🎨</td>
 <td><a href="../../modules/header/#change-color-scale">Change color scale</a></td>
 <td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-l">L</kbd></span></td>
+</tr>
+<tr>
+<td>👁</td>
+<td><a href="../../modules/header/#display-by-type">Display by type</a></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></td>
+</tr>
+<tr>
+<td>📏</td>
+<td><a href="../../modules/header/#switch-units">Switch to meters / feet</a></td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></td>
 </tr>
 <tr>
 <td>⚙</td>
@@ -577,8 +617,8 @@ environment variable <code>SEABIM_LANG=fr|en|ar</code>.</p>
     </a>
     
     
-    <a data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none" href="../../workflow/procedure-courante/">
-        <span class="max-[500px]:hidden">Standard procedure</span>
+    <a data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none" href="../accueil/">
+        <span class="max-[500px]:hidden">Home page</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right ">
             <path d="M5 12l14 0"></path>
             <path d="M13 18l6 -6"></path>
@@ -638,6 +678,12 @@ environment variable <code>SEABIM_LANG=fr|en|ar</code>.</p>
                         <a class="text-2xl font-medium" href="./">
                             
                             Interface
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../accueil/">
+                            
+                            Home page
                             
                         </a>
                         
@@ -710,6 +756,12 @@ environment variable <code>SEABIM_LANG=fr|en|ar</code>.</p>
                         <a class="text-2xl font-medium" href="../../modules/output/">
                             
                             Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/sync/">
+                            
+                            Sync
                             
                         </a>
                         

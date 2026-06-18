@@ -387,6 +387,24 @@
 </li>
             
             
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../sync/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+
+        
+        Synchronisation
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+            
+            
         </ul>
     </div>
 </div>
@@ -432,7 +450,7 @@
           </a>
           
           
-          <a data-slot="button" id="next-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../../reference/raccourcis/">
+          <a data-slot="button" id="next-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../sync/">
             <span class="sr-only">Next</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
               <path d="M5 12l14 0"></path>
@@ -455,7 +473,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-18T13:59:30+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -489,18 +507,62 @@ modale unifiée :</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_csv_1.png" data-desc-position="bottom"><img alt="Exporter un CSV (étape 1)" src="../../assets/images/cc_export_csv_1.png"></a>
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_csv_2.png" data-desc-position="bottom"><img alt="Exporter un CSV (étape 2)" src="../../assets/images/cc_export_csv_2.png"></a></p>
 <h2 id="export-final-render">Exporter le rendu final<a class="headerlink" href="#export-final-render" title="Permanent link">¶</a></h2>
-<p>Génère un <strong>rendu final</strong> sous forme de fichiers BIN CloudCompare prêts
-pour la livraison, en intégrant les filtres de contrôle qualité.</p>
+<p>Génère le <strong>rendu final</strong> de livraison sous forme de fichiers <strong>BIN
+CloudCompare</strong>, découpé en parts. Une modale permet de choisir précisément
+<strong>quels blocs</strong> exporter, <strong>comment</strong> les répartir et <strong>quels champs</strong>
+conserver.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_final.png" data-desc-position="bottom"><img alt="Exporter le rendu final" src="../../assets/images/cc_export_final.png"></a></p>
+<h3 id="options-de-decoupage">Options de découpage<a class="headerlink" href="#options-de-decoupage" title="Permanent link">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Blocs par part</code></td>
+<td>Nombre de blocs par fichier BIN. Pré-rempli depuis les paramètres (<code>n_blocks_final_render</code>), modifiable ici.</td>
+</tr>
+<tr>
+<td><code>Grouper par panneau</code></td>
+<td>Nomme chaque part d'après son <strong>panneau</strong> (ex. <code>M24</code>) au lieu de <code>Part 1</code>, <code>Part 2</code>… Coché par défaut.</td>
+</tr>
+<tr>
+<td><code>Trier les blocs alphabétiquement</code></td>
+<td>Ordonne les blocs dans chaque part. Coché par défaut.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Panneaux trop volumineux</p>
+<p>En mode « Grouper par panneau », si un panneau dépasse la limite de blocs
+par part, une fenêtre propose de le <strong>redécouper</strong> (<code>M24</code>, <code>M24_2</code>…) ou de
+le <strong>garder entier</strong> (un seul part pour ce panneau).</p>
+</div>
+<h3 id="filtres-de-selection">Filtres de sélection<a class="headerlink" href="#filtres-de-selection" title="Permanent link">¶</a></h3>
+<p>Quand la structure contient <strong>plusieurs types</strong> ou <strong>plusieurs volumes</strong> de
+blocs, des sections <strong><code>Types de blocs</code></strong> et <strong><code>Volumes</code></strong> apparaissent : seuls
+les blocs dont le <strong>type ET le volume</strong> sont cochés sont exportés. S'il n'y a
+qu'un seul type (ou volume), la section correspondante est masquée et tous les
+blocs sont retenus de ce côté.</p>
+<h3 id="champs-a-exporter">Champs à exporter<a class="headerlink" href="#champs-a-exporter" title="Permanent link">¶</a></h3>
+<p>Les champs scalaires sont regroupés en sections pliables : <strong>Propriétés
+principales</strong> (<code>panel</code>), <strong>Contrôle qualité</strong>, <strong>Filtres de placement</strong>,
+<strong>Déplacement</strong> et <strong>Autres</strong>. Cochez ceux à conserver dans le rendu livré. Un
+champ <strong>non calculé</strong> sur les blocs apparaît grisé et marqué « (non calculé) » :
+il n'y a rien à exporter pour ce champ.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_final_modal.png" data-desc-position="bottom"><img alt="Modale Rendu final" src="../../assets/images/cc_export_final_modal.png"></a></p>
 <div class="admonition note">
 <p class="admonition-title">Étape finale du workflow</p>
-</div>
 <p>Cette action est l'étape finale décrite dans la <a href="../../workflow/procedure-courante/#final-render">procédure
 courante</a>. Elle est
 précédée d'une <strong>réindexation</strong> (action <a href="../metadata/#rename-blocks-with-prefix-batch"><code>Renommer les blocs avec un
-    préfixe (lot)</code></a> du module
-<a href="../metadata/">Métadonnées</a>) qui assure une numérotation continue avant
-la livraison.</p>
+préfixe (lot)</code></a> du module
+<a href="../metadata/">Métadonnées</a>) qui assure une numérotation continue avant la
+livraison.</p>
+</div>
   </div>
   
   <script>
@@ -521,8 +583,8 @@ la livraison.</p>
     </a>
     
     
-    <a data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none" href="../../reference/raccourcis/">
-        <span class="max-[500px]:hidden">Raccourcis</span>
+    <a data-slot="button" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none" href="../sync/">
+        <span class="max-[500px]:hidden">Synchronisation</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right ">
             <path d="M5 12l14 0"></path>
             <path d="M13 18l6 -6"></path>
@@ -582,6 +644,12 @@ la livraison.</p>
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Page d'accueil
                             
                         </a>
                         
@@ -657,6 +725,12 @@ la livraison.</p>
                             
                         </a>
                         
+                        <a class="text-2xl font-medium" href="../sync/">
+                            
+                            Synchronisation
+                            
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -714,6 +788,20 @@ la livraison.</p>
         <a href="#export-final-render" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#export-final-render');">
             Exporter le rendu final
         </a>
+        
+        
+        <a href="#options-de-decoupage" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#options-de-decoupage');">
+            Options de découpage
+        </a>
+        
+        <a href="#filtres-de-selection" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#filtres-de-selection');">
+            Filtres de sélection
+        </a>
+        
+        <a href="#champs-a-exporter" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#champs-a-exporter');">
+            Champs à exporter
+        </a>
+        
         
 
         

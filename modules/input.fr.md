@@ -81,7 +81,19 @@ un script métier) sans repasser par la détection automatique. Les blocs
 créés sont placés aux positions du CSV ; leur recalage fin sur le nuage
 reste à faire via le module [Édition](edit.md).
 
+La modale d'import facilite la lecture de fichiers hétérogènes :
+
+- **Choix du séparateur** : `Auto` (détection automatique), `,`, `;` ou
+  tabulation. Le mode `Auto` analyse les premières lignes pour deviner le
+  bon séparateur.
+- **Aperçu interprété** : les premières lignes du fichier sont affichées
+  telles qu'elles seront lues, pour vérifier le découpage en colonnes avant
+  de valider.
+- **Offset automatique** : pour de grandes coordonnées (UTM par exemple), un
+  offset est proposé pour ramener les positions dans une plage exploitable.
+
 !!! note "Format du CSV"
-Le CSV attend une colonne par champ métadonnée (typiquement
-position X/Y/Z, type, volume, numéro de plot, …). Le format précis
-est documenté côté [Formats de fichiers § Fichiers CSV](../workflow/formats-fichiers.md#csv-files).
+    Le CSV attend une ligne par bloc et **16 colonnes** dans l'ordre
+    `Id;Plan;Section;BlockNr;Type;Volume;…;BlockR;BlockP;BlockH`. Le format
+    précis est documenté côté [Formats de fichiers § Fichiers
+    CSV](../workflow/formats-fichiers.md#csv-files).

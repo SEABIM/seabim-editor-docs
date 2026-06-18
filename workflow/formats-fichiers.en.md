@@ -8,6 +8,12 @@ right formats is required to ensure the software works correctly.
 Point clouds hold a set of coordinates in space, sometimes with extra
 information: colors, scalar fields or normals.
 
+!!! note "Loading delegated to CloudCompare"
+    The cloud is **loaded by CloudCompare**, which reads many formats (PCD,
+    LAS, BIN, …). SEABIM Editor then works on the cloud already present in
+    the scene. The `.pcd` below is the recommended **naming / delivery**
+    convention, not a technical constraint of the plugin.
+
 ### Recommended naming convention { #pcd-naming }
 
 For point clouds coming from a survey and fed into SEABIM:

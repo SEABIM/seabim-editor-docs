@@ -54,6 +54,16 @@ métadonnée** du bloc sélectionné. Là où [`Changer un paramètre
 (lot)`](#change-parameter-batch) cible un champ à la fois sur N blocs,
 cette action cible N champs à la fois sur un seul bloc.
 
+L'éditeur expose aussi un sélecteur **`Validation status`** qui fixe l'état
+de validation du bloc parmi trois valeurs :
+
+- **Invalid** (`0`) — bloc rejeté.
+- **Pending** (`1`) — en attente de contrôle.
+- **Valid** (`2`) — bloc validé.
+
+Ce statut est partagé avec le cloud-viewer et exploité pour le suivi de la
+revue qualité.
+
 ![Éditeur de métadonnées](../assets/images/cc_meta_edit.png)
 
 ## Afficher les métadonnées (bloc) { #show-metadata-block }

@@ -55,6 +55,16 @@ selected block. Where [`Change parameter
 (Batch)`](#change-parameter-batch) targets one field at a time across N
 blocks, this action targets N fields at a time on a single block.
 
+The editor also exposes a **`Validation status`** selector that sets the
+block's validation state among three values:
+
+- **Invalid** (`0`) — rejected block.
+- **Pending** (`1`) — awaiting review.
+- **Valid** (`2`) — validated block.
+
+This status is shared with the cloud viewer and used to track the quality
+review.
+
 ![Metadata editor](../assets/images/cc_meta_edit.png)
 
 ## Show metadata (Block) { #show-metadata-block }

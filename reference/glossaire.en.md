@@ -119,8 +119,9 @@ Business and technical terms used throughout the SEABIM Editor documentation.
 ## N
 
 **Point cloud (PCD)**
-:   Set of 3D points coming from a survey. Mandatory format for SEABIM
-    Editor: `.pcd`. See [File
+:   Set of 3D points coming from a survey. The cloud is loaded **by
+    CloudCompare** (any format it can read: PCD, LAS, BIN, …); `.pcd` is the
+    **recommended delivery** format, not a plugin constraint. See [File
     formats](../workflow/formats-fichiers.md#point-clouds).
 
 ## O

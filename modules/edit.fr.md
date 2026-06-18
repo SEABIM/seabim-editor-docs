@@ -9,26 +9,72 @@ C'est l'onglet où se passe le travail de **correction et d'affinage** une
 fois qu'une structure a été chargée (depuis JSON) ou détectée
 automatiquement (via [`Détecter les blocs dans un nuage`](input.md#find-blocks-in-a-point-cloud)).
 
-## Recaler la sélection - Distance adaptative { #register-selection---adaptive-dist }
+## Recaler la sélection { #register-selection---adaptive-dist }
 
 **Raccourci : ++ctrl+e++**
 
 Réaligne (registration) les blocs sélectionnés sur le nuage de points de
-référence en utilisant des **distances adaptatives** définies dans les
-paramètres du projet. Chaque bloc est ajusté indépendamment pour minimiser
-sa distance au nuage.
+référence. Chaque bloc est ajusté indépendamment pour minimiser sa distance au
+nuage. À utiliser après détection automatique ou après un déplacement manuel
+d'un bloc, pour affiner sa position.
 
-À utiliser après détection automatique ou après un déplacement manuel d'un
-bloc, pour affiner sa position.
-
-L'action propose une **badge `Rapport de recalage`** à droite du bouton :
-
-- Activée : un rapport détaillant les déplacements (translations, rotations,
-  scores) s'ouvre automatiquement à la fin de chaque recalage.
-- Désactivée : pas de pop-up, mais cliquer la badge la réactive et réaffiche
-  le dernier rapport produit dans la session.
+Tout passe par **un seul bouton** : par défaut il recale en **distance
+adaptative**, et sa **petite icône curseurs** donne accès à trois modes
+personnalisés. Une **badge `Rapport de recalage`** complète l'action.
 
 ![Recaler la sélection](../assets/images/cc_edit_register.png)
+
+### Badge « Rapport de recalage »
+
+À droite du bouton :
+
+- **Activée** : un rapport détaillant les déplacements (translations,
+  rotations, scores) s'ouvre automatiquement à la fin de chaque recalage.
+- **Désactivée** : pas de pop-up ; cliquer la badge la réactive et réaffiche le
+  dernier rapport produit dans la session.
+
+### Modes de recalage
+
+La **petite icône curseurs** accolée au bouton ne recale pas elle-même : elle
+**configure le mode** que `Recaler la sélection` (++ctrl+e++) appliquera
+ensuite.
+
+| Mode                       | Effet                                                                                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Distance adaptative**    | Mode par défaut. Distances au nuage **adaptatives**, définies dans les paramètres du projet.                                                 |
+| **Distance personnalisée** | Recale avec une **distance au nuage fixe** au lieu des distances adaptatives. Override **persistant** pour la session.                       |
+| **Nouveau volume de bloc** | **Assigne un nouveau volume** à la sélection (taille différente de celle détectée) puis recale. Utile quand deux volumes voisins ont été confondus (ex. 2 m³ vs 3 m³). |
+| **Recalage par zone**      | Recale en ne tenant compte que d'un **petit morceau du nuage** délimité par une boîte (voir ci-dessous).                                     |
+
+Pour les modes **Distance personnalisée** et **Volume**, la valeur saisie est
+mémorisée le temps de la session : l'icône reste **orange** et chaque `Recaler
+la sélection` réapplique le mode sans ressaisie. Sélectionner « effacer » dans
+la modale revient au mode adaptatif.
+
+![Modes de recalage personnalisés](../assets/images/cc_edit_register_personal.png)
+
+### Recalage par zone { #register-selection---zone }
+
+Le **recalage par zone** restreint l'ajustement à une **portion du nuage**
+plutôt qu'à l'ensemble des points autour du bloc. C'est utile quand seule une
+partie du nuage est fiable (zone bruitée, blocs voisins parasites, interface
+entre deux levés).
+
+Au choix de ce mode, un **panneau dédié** s'ouvre et fait apparaître une
+**boîte** dans la scène CloudCompare :
+
+1. Positionnez et dimensionnez la boîte autour de la portion de nuage à
+   conserver (ou à exclure).
+2. Choisissez de garder le nuage **à l'intérieur** ou **à l'extérieur** de la
+   boîte.
+3. Validez : le recalage ne tient compte que des points retenus. La distance
+   de crop reste **adaptative**.
+
+Contrairement aux modes Distance / Volume, le recalage par zone **n'est pas un
+override persistant** : la boîte est spatiale et placée à la main à chaque
+usage.
+
+![Recalage par zone](../assets/images/cc_edit_register_zone.png)
 
 ## Aider le recalage { #help-register }
 
@@ -114,7 +160,7 @@ recouvrement, densité), du recalage et des exports de pose : ils ne servent
 qu'à enregistrer le trou. Ils sont synchronisés vers le cloud-viewer via
 leur type `Missing`, afin que les statistiques de complétude puissent en
 tenir compte, et apparaissent sous **Missing** dans
-[`Display by type`](filters.md). Pour retirer un placeholder mal placé,
+[`Afficher par type`](header.md#display-by-type). Pour retirer un placeholder mal placé,
 utilisez la [`Suppression sécurisée`](#safe-delete).
 
 ## Grouper / Dégrouper { #group--ungroup }
@@ -133,17 +179,3 @@ Une modale unique propose les 4 opérations :
 | `Dégrouper tout`         | Dissocie tous les regroupements (panneau + lot).                                     |
 
 ![Grouper / Dégrouper](../assets/images/cc_edit_group_ungroup.png)
-
-## Recaler la sélection - Personnalisé { #register-selection---custom }
-
-Variante du recalage qui permet de :
-
-- Spécifier une **distance personnalisée** au nuage (au lieu des distances
-  adaptatives par défaut).
-- Ou **assigner un nouveau volume de bloc** à la sélection (taille
-  différente de celle détectée).
-
-Utile pour les zones où la détection automatique a confondu deux types de
-blocs voisins (par exemple 2 m³ vs 3 m³).
-
-![Recaler la sélection - Personnalisé](../assets/images/cc_edit_register_personal.png)
