@@ -57,7 +57,10 @@ calculé par [`Contacts (tous les blocs)`](../modules/filters.md#contacts-all-bl
 
 **Déplacement**
 : Mouvement d'un bloc entre deux campagnes successives (deux levés).
-Calculé par [`Déplacement`](../modules/filters.md#displacement).
+Calculé par [`Déplacement`](../modules/filters.md#displacement). Stocké en
+valeur absolue ; consultable et exportable selon trois **échelles de
+référence** : `Absolu`, `H` (rapporté à la taille du bloc) ou `DN`
+(rapporté au diamètre nominal).
 
 **Distance adaptative**
 : Distances seuils variables selon le contexte (type de bloc, voisinage)

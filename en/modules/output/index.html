@@ -483,7 +483,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-06-25T10:34:22+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -515,13 +515,19 @@ unified dialog:</p>
 <li><strong>Custom</strong>: free selection of columns to export based on the metadata
   present in the structure.</li>
 </ul>
+<p>In the custom selection, the <strong>Displacement</strong> section is topped by a
+<strong>Reference scale</strong> row (multi-select: <code>Absolute</code>, <code>H</code>, <code>DN</code> — see
+<a href="../filters/#displacement">Displacement</a>). Each combination of <em>checked field ×
+active scale</em> produces <strong>its own column</strong> (<code>displacement</code>, <code>displacement_dn</code>,
+<code>displacement_h</code>, <code>displacement_downwards_dn</code>…). If no scale is active, the
+displacement fields are greyed out.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_csv_1.png" data-desc-position="bottom"><img alt="Export CSV (step 1)" src="../../../assets/images/cc_export_csv_1.png"></a>
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_csv_2.png" data-desc-position="bottom"><img alt="Export CSV (step 2)" src="../../../assets/images/cc_export_csv_2.png"></a></p>
 <h2 id="export-final-render">Export final render<a class="headerlink" href="#export-final-render" title="Permanent link">¶</a></h2>
 <p>Generates the <strong>final delivery render</strong> as <strong>CloudCompare BIN</strong> files, split
 into parts. A dialog lets you choose precisely <strong>which blocks</strong> to export,
 <strong>how</strong> to split them and <strong>which fields</strong> to keep.</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_final.png" data-desc-position="bottom"><img alt="Export final render" src="../../../assets/images/cc_export_final.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_final_modal.png" data-desc-position="bottom"><img alt="Final render dialog" src="../../../assets/images/cc_export_final_modal.png"></a></p>
 <h3 id="splitting-options">Splitting options<a class="headerlink" href="#splitting-options" title="Permanent link">¶</a></h3>
 <div class="table-wrapper"><table>
 <thead>
@@ -536,20 +542,24 @@ into parts. A dialog lets you choose precisely <strong>which blocks</strong> to 
 <td>Number of blocks per BIN file. Pre-filled from the parameters (<code>n_blocks_final_render</code>), editable here.</td>
 </tr>
 <tr>
-<td><code>Group by panel</code></td>
-<td>Names each part after its <strong>panel</strong> (e.g. <code>M24</code>) instead of <code>Part 1</code>, <code>Part 2</code>… On by default.</td>
+<td><code>Split exported parts by panel</code></td>
+<td>When checked, each part contains <strong>one panel</strong> and is named after it (e.g. <code>M24</code>) instead of <code>Part 1</code>, <code>Part 2</code>… Only affects how the BIN is split and named, not the coloring (which uses the <code>panel</code> field).</td>
 </tr>
 <tr>
 <td><code>Sort blocks alphabetically</code></td>
-<td>Orders the blocks within each part. On by default.</td>
+<td>Orders the blocks within each part.</td>
+</tr>
+<tr>
+<td><code>Keep intermediate raw parts</code></td>
+<td>Keeps the per-part <code>*_raw.bin</code> files written <strong>before the CloudCompare merge</strong> (useful for debugging). When unchecked, they are deleted after the merge.</td>
 </tr>
 </tbody>
 </table></div>
 <div class="admonition note">
 <p class="admonition-title">Oversized panels</p>
-<p>In "Group by panel" mode, if a panel exceeds the blocks-per-part limit, a
-window offers to <strong>split</strong> it (<code>M24</code>, <code>M24_2</code>…) or <strong>keep it whole</strong> (a
-single part for that panel).</p>
+<p>In "Split exported parts by panel" mode, if a panel exceeds the
+blocks-per-part limit, a window offers to <strong>split</strong> it (<code>M24</code>, <code>M24_2</code>…) or
+<strong>keep it whole</strong> (a single part for that panel).</p>
 </div>
 <h3 id="selection-filters">Selection filters<a class="headerlink" href="#selection-filters" title="Permanent link">¶</a></h3>
 <p>When the structure contains <strong>several types</strong> or <strong>several volumes</strong> of blocks,
@@ -562,7 +572,18 @@ the matching section is hidden and all blocks are kept on that side.</p>
 <strong>Other</strong>. Check the ones to keep in the delivered render. A field <strong>not
 computed</strong> on the blocks appears greyed out and marked "(not computed)": there
 is nothing to export for it.</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_final_modal.png" data-desc-position="bottom"><img alt="Final render dialog" src="../../../assets/images/cc_export_final_modal.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Displacement: reference scales and delivered coloring</p>
+<p>As in the CSV export, the <strong>Displacement</strong> section offers a <strong>Reference
+scale</strong> row (multi-select: <code>Absolute</code>, <code>H</code>, <code>DN</code>). Each <em>field × scale</em>
+combination generates <strong>its own scalar field</strong> ("Displacement",
+"Displacement / DN", "Displacement / H"…), <strong>recomputed from the absolute
+value</strong> at export time — without re-running the displacement computation.
+The color scale of displacement fields is moreover <strong>frozen in absolute</strong>,
+so the delivered coloring <strong>stays correct after the BIN is reloaded</strong> by the
+recipient.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_export_disp_refscale.png" data-desc-position="bottom"><img alt="Export Displacement section" src="../../../assets/images/cc_export_disp_refscale.png"></a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Final step of the workflow</p>
 <p>This action is the final step described in the <a href="../../workflow/procedure-courante/#final-render">standard

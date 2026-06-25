@@ -25,6 +25,14 @@ modale unifiée :
 - **Personnalisé** : sélection libre des colonnes à exporter selon les
   métadonnées présentes dans la structure.
 
+Dans la sélection personnalisée, la section **Déplacement** est coiffée d'une
+rangée **Échelle de référence** (multi-sélection : `Absolu`, `H (taille de
+bloc)`, `DN (diamètre nominal)` — cf. [Déplacement](filters.md#displacement)).
+Chaque combinaison *champ coché ×
+référentiel actif* produit **sa propre colonne** (`displacement`,
+`displacement_dn`, `displacement_h`, `displacement_downwards_dn`…). Si aucun
+référentiel n'est actif, les champs de déplacement sont grisés.
+
 ![Exporter un CSV (étape 1)](../assets/images/cc_export_csv_1.png)
 ![Exporter un CSV (étape 2)](../assets/images/cc_export_csv_2.png)
 
@@ -35,20 +43,21 @@ CloudCompare**, découpé en parts. Une modale permet de choisir précisément
 **quels blocs** exporter, **comment** les répartir et **quels champs**
 conserver.
 
-![Exporter le rendu final](../assets/images/cc_export_final.png)
+![Modale Rendu final](../assets/images/cc_export_final_modal.png)
 
 ### Options de découpage
 
-| Option                            | Effet                                                                                                           |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `Blocs par part`                  | Nombre de blocs par fichier BIN. Pré-rempli depuis les paramètres (`n_blocks_final_render`), modifiable ici.   |
-| `Grouper par panneau`             | Nomme chaque part d'après son **panneau** (ex. `M24`) au lieu de `Part 1`, `Part 2`… Coché par défaut.        |
-| `Trier les blocs alphabétiquement`| Ordonne les blocs dans chaque part. Coché par défaut.                                                          |
+| Option                                       | Effet                                                                                                                                                            |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Blocs par partie`                           | Nombre de blocs par fichier BIN. Pré-rempli depuis les paramètres (`n_blocks_final_render`), modifiable ici.                                                    |
+| `Découper les parties exportées par panneau` | Si coché, chaque part contient **un panneau** et porte son nom (ex. `M24`) au lieu de `Part 1`, `Part 2`… N'affecte que le découpage et le nommage du BIN, pas la coloration (qui dépend du champ `panel`). |
+| `Trier les blocs par ordre alphabétique`     | Ordonne les blocs dans chaque part.                                                                                                                             |
+| `Conserver les parties brutes intermédiaires`| Conserve les fichiers `*_raw.bin` produits par part **avant la fusion CloudCompare** (utile au débogage). Si décoché, ils sont supprimés après la fusion.       |
 
 !!! note "Panneaux trop volumineux"
-    En mode « Grouper par panneau », si un panneau dépasse la limite de blocs
-    par part, une fenêtre propose de le **redécouper** (`M24`, `M24_2`…) ou de
-    le **garder entier** (un seul part pour ce panneau).
+    En mode « Découper les parties exportées par panneau », si un panneau dépasse
+    la limite de blocs par part, une fenêtre propose de le **redécouper**
+    (`M24`, `M24_2`…) ou de le **garder entier** (un seul part pour ce panneau).
 
 ### Filtres de sélection
 
@@ -66,7 +75,18 @@ principales** (`panel`), **Contrôle qualité**, **Filtres de placement**,
 champ **non calculé** sur les blocs apparaît grisé et marqué « (non calculé) » :
 il n'y a rien à exporter pour ce champ.
 
-![Modale Rendu final](../assets/images/cc_export_final_modal.png)
+!!! note "Déplacement : échelles de référence et coloration livrée"
+    Comme dans l'export CSV, la section **Déplacement** propose une rangée
+    **Échelle de référence** (multi-sélection : `Absolu`, `H (taille de bloc)`,
+    `DN (diamètre nominal)`). Chaque combinaison *champ × référentiel* génère
+    **son propre champ scalaire** (« Displacement », « Displacement / DN »,
+    « Displacement / H »…), **recalculé depuis la valeur absolue** au moment de
+    l'export — sans relancer le calcul de déplacement. L'échelle de couleurs des
+    champs de déplacement est en outre **figée en absolu**, afin que la
+    coloration livrée **reste correcte après rechargement** du BIN chez le
+    destinataire.
+
+    ![Section Déplacement de l'export](../assets/images/cc_export_disp_refscale.png)
 
 !!! note "Étape finale du workflow"
     Cette action est l'étape finale décrite dans la [procédure

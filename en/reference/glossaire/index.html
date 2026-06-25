@@ -366,7 +366,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-06-25T10:34:22+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -436,7 +436,9 @@ samples of the cloud, each covering about ten blocks.</dd>
 <dl>
 <dt><strong>Displacement</strong></dt>
 <dd>Movement of a block between two consecutive surveys. Computed by
-<a href="../../modules/filters/#displacement"><code>Displacement</code></a>.</dd>
+<a href="../../modules/filters/#displacement"><code>Displacement</code></a>. Stored in absolute
+value; viewable and exportable in three <strong>reference scales</strong>: <code>Absolute</code>,
+<code>H</code> (relative to block size) or <code>DN</code> (relative to nominal diameter).</dd>
 </dl>
 <h2 id="f">F<a class="headerlink" href="#f" title="Permanent link">¶</a></h2>
 <dl>

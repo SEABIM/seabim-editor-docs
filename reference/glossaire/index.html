@@ -366,7 +366,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-06-25T10:34:22+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -424,7 +424,10 @@ calculé par <a href="../../modules/filters/#contacts-all-blocks"><code>Contacts
 <dl>
 <dt><strong>Déplacement</strong></dt>
 <dd>Mouvement d'un bloc entre deux campagnes successives (deux levés).
-Calculé par <a href="../../modules/filters/#displacement"><code>Déplacement</code></a>.</dd>
+Calculé par <a href="../../modules/filters/#displacement"><code>Déplacement</code></a>. Stocké en
+valeur absolue ; consultable et exportable selon trois <strong>échelles de
+référence</strong> : <code>Absolu</code>, <code>H</code> (rapporté à la taille du bloc) ou <code>DN</code>
+(rapporté au diamètre nominal).</dd>
 <dt><strong>Distance adaptative</strong></dt>
 <dd>Distances seuils variables selon le contexte (type de bloc, voisinage)
 utilisées par le recalage automatique <a href="../../modules/edit/#register-selection---adaptive-dist"><code>Recaler la sélection - Distance adaptative</code></a>.

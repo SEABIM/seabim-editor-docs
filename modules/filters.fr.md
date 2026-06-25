@@ -100,6 +100,32 @@ type).
 
 Calcule le **déplacement** des blocs par rapport à une **structure de
 référence** (typiquement le levé précédent), pour repérer les mouvements
-entre deux campagnes.
+entre deux campagnes. La modale **Calculer le déplacement** propose les
+réglages suivants :
+
+- **Taille minimale des flèches** et **Valeur maximale du déplacement**
+  (relatives à la taille des blocs) : pilotent uniquement la **coloration
+  initiale** et la couleur des flèches affichées dans la vue.
+- **Échelle de référence** : choisit l'unité dans laquelle le déplacement
+  est rapporté pour la coloration.
+    - **Absolu** : valeur brute, dans l'unité de travail.
+    - **H (taille de bloc)** : déplacement rapporté à la **hauteur
+      caractéristique** du bloc (ratio sans dimension).
+    - **DN (diamètre nominal)** : déplacement rapporté au **diamètre
+      nominal** du bloc (racine cubique de son volume).
+- **Méthode d'appariement** : comment associer chaque bloc courant à son
+  homologue de la structure de référence.
+    - **distance** : par proximité spatiale.
+    - **section et numéro** : par identité (même section + même numéro de
+      bloc).
+
+!!! note "Le déplacement est stocké en valeur absolue"
+    L'échelle choisie ici ne fixe que la coloration et les flèches
+    initiales. Le déplacement est conservé en **valeur absolue** sur les
+    blocs : **H** et **DN** ne sont que des **vues** recalculées à la
+    volée. On peut donc rebasculer vers n'importe quel champ ou échelle via
+    [`Changer l'échelle de couleurs`](header.md#change-color-scale) — ou
+    [exporter](output.md) dans un autre référentiel — **sans relancer le
+    calcul**.
 
 ![Déplacement](../assets/images/cc_filter_dep.png)

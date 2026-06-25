@@ -483,7 +483,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-25T10:34:22+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -555,7 +555,38 @@ signals a geometric issue (deformed block, wrong type).</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_filter_density.png" data-desc-position="bottom"><img alt="Triangle density" src="../../../assets/images/cc_filter_density.png"></a></p>
 <h2 id="displacement">Displacement<a class="headerlink" href="#displacement" title="Permanent link">¶</a></h2>
 <p>Computes the <strong>displacement</strong> of blocks against a <strong>reference structure</strong>
-(typically the previous survey), to spot movements between two campaigns.</p>
+(typically the previous survey), to spot movements between two campaigns.
+The <strong>Compute displacement</strong> dialog offers the following settings:</p>
+<ul>
+<li><strong>Minimum arrow size</strong> and <strong>Maximum displacement value</strong> (relative to
+  block size): drive only the <strong>initial coloring</strong> and the color of the
+  arrows shown in the view.</li>
+<li><strong>Reference scale</strong>: the unit the displacement is expressed in for
+  coloring.<ul>
+<li><strong>Absolute</strong>: raw value, in the working unit.</li>
+<li><strong>H (block size)</strong>: displacement relative to the block's
+  <strong>characteristic height</strong> (dimensionless ratio).</li>
+<li><strong>DN (nominal diameter)</strong>: displacement relative to the block's
+  <strong>nominal diameter</strong> (cube root of its volume).</li>
+</ul>
+</li>
+<li><strong>Matching method</strong>: how each current block is paired with its
+  counterpart in the reference structure.<ul>
+<li><strong>distance</strong>: by spatial proximity.</li>
+<li><strong>section and number</strong>: by identity (same section + same block
+  number).</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Displacement is stored in absolute value</p>
+<p>The scale picked here only sets the initial coloring and arrows.
+Displacement is kept in <strong>absolute value</strong> on the blocks: <strong>H</strong> and
+<strong>DN</strong> are merely <strong>views</strong> recomputed on the fly. You can therefore
+switch to any field or scale via <a href="../header/#change-color-scale"><code>Change color
+scale</code></a> — or <a href="../output/">export</a> in
+another reference scale — <strong>without recomputing</strong>.</p>
+</div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_filter_dep.png" data-desc-position="bottom"><img alt="Displacement" src="../../../assets/images/cc_filter_dep.png"></a></p>
   </div>
   

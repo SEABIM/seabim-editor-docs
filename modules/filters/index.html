@@ -483,7 +483,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-05-29T08:52:17+04:00');
+        const date = new Date('2026-06-25T10:34:22+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -560,7 +560,39 @@ type).</p>
 <h2 id="displacement">Déplacement<a class="headerlink" href="#displacement" title="Permanent link">¶</a></h2>
 <p>Calcule le <strong>déplacement</strong> des blocs par rapport à une <strong>structure de
 référence</strong> (typiquement le levé précédent), pour repérer les mouvements
-entre deux campagnes.</p>
+entre deux campagnes. La modale <strong>Calculer le déplacement</strong> propose les
+réglages suivants :</p>
+<ul>
+<li><strong>Taille minimale des flèches</strong> et <strong>Valeur maximale du déplacement</strong>
+  (relatives à la taille des blocs) : pilotent uniquement la <strong>coloration
+  initiale</strong> et la couleur des flèches affichées dans la vue.</li>
+<li><strong>Échelle de référence</strong> : choisit l'unité dans laquelle le déplacement
+  est rapporté pour la coloration.<ul>
+<li><strong>Absolu</strong> : valeur brute, dans l'unité de travail.</li>
+<li><strong>H (taille de bloc)</strong> : déplacement rapporté à la <strong>hauteur
+  caractéristique</strong> du bloc (ratio sans dimension).</li>
+<li><strong>DN (diamètre nominal)</strong> : déplacement rapporté au <strong>diamètre
+  nominal</strong> du bloc (racine cubique de son volume).</li>
+</ul>
+</li>
+<li><strong>Méthode d'appariement</strong> : comment associer chaque bloc courant à son
+  homologue de la structure de référence.<ul>
+<li><strong>distance</strong> : par proximité spatiale.</li>
+<li><strong>section et numéro</strong> : par identité (même section + même numéro de
+  bloc).</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Le déplacement est stocké en valeur absolue</p>
+<p>L'échelle choisie ici ne fixe que la coloration et les flèches
+initiales. Le déplacement est conservé en <strong>valeur absolue</strong> sur les
+blocs : <strong>H</strong> et <strong>DN</strong> ne sont que des <strong>vues</strong> recalculées à la
+volée. On peut donc rebasculer vers n'importe quel champ ou échelle via
+<a href="../header/#change-color-scale"><code>Changer l'échelle de couleurs</code></a> — ou
+<a href="../output/">exporter</a> dans un autre référentiel — <strong>sans relancer le
+calcul</strong>.</p>
+</div>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_filter_dep.png" data-desc-position="bottom"><img alt="Déplacement" src="../../assets/images/cc_filter_dep.png"></a></p>
   </div>
   

@@ -96,5 +96,30 @@ signals a geometric issue (deformed block, wrong type).
 
 Computes the **displacement** of blocks against a **reference structure**
 (typically the previous survey), to spot movements between two campaigns.
+The **Compute displacement** dialog offers the following settings:
+
+- **Minimum arrow size** and **Maximum displacement value** (relative to
+  block size): drive only the **initial coloring** and the color of the
+  arrows shown in the view.
+- **Reference scale**: the unit the displacement is expressed in for
+  coloring.
+    - **Absolute**: raw value, in the working unit.
+    - **H (block size)**: displacement relative to the block's
+      **characteristic height** (dimensionless ratio).
+    - **DN (nominal diameter)**: displacement relative to the block's
+      **nominal diameter** (cube root of its volume).
+- **Matching method**: how each current block is paired with its
+  counterpart in the reference structure.
+    - **distance**: by spatial proximity.
+    - **section and number**: by identity (same section + same block
+      number).
+
+!!! note "Displacement is stored in absolute value"
+    The scale picked here only sets the initial coloring and arrows.
+    Displacement is kept in **absolute value** on the blocks: **H** and
+    **DN** are merely **views** recomputed on the fly. You can therefore
+    switch to any field or scale via [`Change color
+    scale`](header.md#change-color-scale) — or [export](output.md) in
+    another reference scale — **without recomputing**.
 
 ![Displacement](../assets/images/cc_filter_dep.png)

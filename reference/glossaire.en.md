@@ -72,7 +72,9 @@ Business and technical terms used throughout the SEABIM Editor documentation.
 
 **Displacement**
 :   Movement of a block between two consecutive surveys. Computed by
-    [`Displacement`](../modules/filters.md#displacement).
+    [`Displacement`](../modules/filters.md#displacement). Stored in absolute
+    value; viewable and exportable in three **reference scales**: `Absolute`,
+    `H` (relative to block size) or `DN` (relative to nominal diameter).
 
 ## F
 

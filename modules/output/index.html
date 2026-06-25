@@ -483,7 +483,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-06-25T10:34:22+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -514,6 +514,13 @@ modale unifiée :</p>
 <li><strong>Personnalisé</strong> : sélection libre des colonnes à exporter selon les
   métadonnées présentes dans la structure.</li>
 </ul>
+<p>Dans la sélection personnalisée, la section <strong>Déplacement</strong> est coiffée d'une
+rangée <strong>Échelle de référence</strong> (multi-sélection : <code>Absolu</code>, <code>H (taille de
+bloc)</code>, <code>DN (diamètre nominal)</code> — cf. <a href="../filters/#displacement">Déplacement</a>).
+Chaque combinaison <em>champ coché ×
+référentiel actif</em> produit <strong>sa propre colonne</strong> (<code>displacement</code>,
+<code>displacement_dn</code>, <code>displacement_h</code>, <code>displacement_downwards_dn</code>…). Si aucun
+référentiel n'est actif, les champs de déplacement sont grisés.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_csv_1.png" data-desc-position="bottom"><img alt="Exporter un CSV (étape 1)" src="../../assets/images/cc_export_csv_1.png"></a>
 <a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_csv_2.png" data-desc-position="bottom"><img alt="Exporter un CSV (étape 2)" src="../../assets/images/cc_export_csv_2.png"></a></p>
 <h2 id="export-final-render">Exporter le rendu final<a class="headerlink" href="#export-final-render" title="Permanent link">¶</a></h2>
@@ -521,7 +528,7 @@ modale unifiée :</p>
 CloudCompare</strong>, découpé en parts. Une modale permet de choisir précisément
 <strong>quels blocs</strong> exporter, <strong>comment</strong> les répartir et <strong>quels champs</strong>
 conserver.</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_final.png" data-desc-position="bottom"><img alt="Exporter le rendu final" src="../../assets/images/cc_export_final.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_final_modal.png" data-desc-position="bottom"><img alt="Modale Rendu final" src="../../assets/images/cc_export_final_modal.png"></a></p>
 <h3 id="options-de-decoupage">Options de découpage<a class="headerlink" href="#options-de-decoupage" title="Permanent link">¶</a></h3>
 <div class="table-wrapper"><table>
 <thead>
@@ -532,24 +539,28 @@ conserver.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>Blocs par part</code></td>
+<td><code>Blocs par partie</code></td>
 <td>Nombre de blocs par fichier BIN. Pré-rempli depuis les paramètres (<code>n_blocks_final_render</code>), modifiable ici.</td>
 </tr>
 <tr>
-<td><code>Grouper par panneau</code></td>
-<td>Nomme chaque part d'après son <strong>panneau</strong> (ex. <code>M24</code>) au lieu de <code>Part 1</code>, <code>Part 2</code>… Coché par défaut.</td>
+<td><code>Découper les parties exportées par panneau</code></td>
+<td>Si coché, chaque part contient <strong>un panneau</strong> et porte son nom (ex. <code>M24</code>) au lieu de <code>Part 1</code>, <code>Part 2</code>… N'affecte que le découpage et le nommage du BIN, pas la coloration (qui dépend du champ <code>panel</code>).</td>
 </tr>
 <tr>
-<td><code>Trier les blocs alphabétiquement</code></td>
-<td>Ordonne les blocs dans chaque part. Coché par défaut.</td>
+<td><code>Trier les blocs par ordre alphabétique</code></td>
+<td>Ordonne les blocs dans chaque part.</td>
+</tr>
+<tr>
+<td><code>Conserver les parties brutes intermédiaires</code></td>
+<td>Conserve les fichiers <code>*_raw.bin</code> produits par part <strong>avant la fusion CloudCompare</strong> (utile au débogage). Si décoché, ils sont supprimés après la fusion.</td>
 </tr>
 </tbody>
 </table></div>
 <div class="admonition note">
 <p class="admonition-title">Panneaux trop volumineux</p>
-<p>En mode « Grouper par panneau », si un panneau dépasse la limite de blocs
-par part, une fenêtre propose de le <strong>redécouper</strong> (<code>M24</code>, <code>M24_2</code>…) ou de
-le <strong>garder entier</strong> (un seul part pour ce panneau).</p>
+<p>En mode « Découper les parties exportées par panneau », si un panneau dépasse
+la limite de blocs par part, une fenêtre propose de le <strong>redécouper</strong>
+(<code>M24</code>, <code>M24_2</code>…) ou de le <strong>garder entier</strong> (un seul part pour ce panneau).</p>
 </div>
 <h3 id="filtres-de-selection">Filtres de sélection<a class="headerlink" href="#filtres-de-selection" title="Permanent link">¶</a></h3>
 <p>Quand la structure contient <strong>plusieurs types</strong> ou <strong>plusieurs volumes</strong> de
@@ -563,7 +574,19 @@ principales</strong> (<code>panel</code>), <strong>Contrôle qualité</strong>, 
 <strong>Déplacement</strong> et <strong>Autres</strong>. Cochez ceux à conserver dans le rendu livré. Un
 champ <strong>non calculé</strong> sur les blocs apparaît grisé et marqué « (non calculé) » :
 il n'y a rien à exporter pour ce champ.</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_final_modal.png" data-desc-position="bottom"><img alt="Modale Rendu final" src="../../assets/images/cc_export_final_modal.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Déplacement : échelles de référence et coloration livrée</p>
+<p>Comme dans l'export CSV, la section <strong>Déplacement</strong> propose une rangée
+<strong>Échelle de référence</strong> (multi-sélection : <code>Absolu</code>, <code>H (taille de bloc)</code>,
+<code>DN (diamètre nominal)</code>). Chaque combinaison <em>champ × référentiel</em> génère
+<strong>son propre champ scalaire</strong> (« Displacement », « Displacement / DN »,
+« Displacement / H »…), <strong>recalculé depuis la valeur absolue</strong> au moment de
+l'export — sans relancer le calcul de déplacement. L'échelle de couleurs des
+champs de déplacement est en outre <strong>figée en absolu</strong>, afin que la
+coloration livrée <strong>reste correcte après rechargement</strong> du BIN chez le
+destinataire.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_export_disp_refscale.png" data-desc-position="bottom"><img alt="Section Déplacement de l'export" src="../../assets/images/cc_export_disp_refscale.png"></a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Étape finale du workflow</p>
 <p>Cette action est l'étape finale décrite dans la <a href="../../workflow/procedure-courante/#final-render">procédure
