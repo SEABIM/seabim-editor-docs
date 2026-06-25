@@ -5,6 +5,20 @@ through a turn-key Windows installer that drops the plugin (DLL + Python
 scripts) in CloudCompare's `plugins/` folder and registers the WIBU
 license.
 
+## Pre-installation { #pre-installation }
+
+!!! warning "Start from a clean install"
+    If **CloudCompare is already installed** on the machine (any version),
+    uninstall it first via **Control Panel → Programs and Features →
+    CloudCompare → Uninstall**.
+
+    After uninstalling, **manually delete the folder**
+    `C:\Program Files\CloudCompare` if it still exists: the uninstaller
+    often leaves residual files behind (old plugin DLLs, Python scripts)
+    that can prevent SEABIM Editor from loading correctly.
+
+    You can then cleanly install CloudCompare 2.13 (step below).
+
 ## Prerequisites { #prerequis }
 
 | Software                    | Version          | Link                                                                       |
@@ -16,6 +30,12 @@ license.
 !!! warning "CloudCompare 2.13 required"
     The plugin is compiled for CloudCompare 2.13. It will not load in
     version 2.12 or earlier, and has not been tested on 2.14+ builds.
+
+!!! note "Check access to the update server"
+    SEABIM Editor needs to reach its update server. From the workstation,
+    open <https://update.seabim-utilities.com/health> in a browser: the page
+    must display **`ok`**. If it does not respond, check the Internet
+    connection, the firewall and the company proxy before continuing.
 
 ## Step by step installation
 
@@ -32,7 +52,29 @@ follow the standard procedure, making sure to enable the Python plugins.
 ### 2. Install CodeMeter Runtime
 
 The WIBU CodeMeter licensing system is required to activate SEABIM Editor.
-Install CodeMeter Runtime.
+Run the **CodeMeter Runtime Kit** installer downloaded from the link in the
+prerequisites and follow the wizard:
+
+1. Welcome screen: click **Next**.
+
+   ![CodeMeter wizard - welcome screen](../assets/images/wibu_install_1.png)
+
+2. Read the license agreement, tick **I accept the terms of this license
+   agreement**, then click **Next**.
+
+   ![CodeMeter wizard - license agreement](../assets/images/wibu_install_2.png)
+
+3. On the **Custom Setup** screen, click the **Network server** feature and
+   select **Will be installed on local hard drive** to enable it (it allows
+   network licenses over port 23350), then click **Next**.
+
+   ![CodeMeter wizard - enable network server](../assets/images/wibu_install_3.png)
+   ![CodeMeter wizard - network server selected](../assets/images/wibu_install_4.png)
+
+4. Click **Install** to start the installation, then **Finish** once it is
+   complete.
+
+   ![CodeMeter wizard - ready to install](../assets/images/wibu_install_5.png)
 
 ### 3. Run the SEABIM Editor installer
 
