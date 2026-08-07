@@ -132,7 +132,9 @@
                 <span class="size-8 flex flex-row justify-center items-center">
                     
 
+
 <img class="size-5" src="../../../assets/images/logo_seabim_small.png" alt="icon">
+
 
 
                 </span>
@@ -387,7 +389,8 @@
         </h1>
 
         <div class="flex items-center gap-2 pt-1.5">
-          <button onclick="fetch(`https://docs.seabim-utilities.com/demarrage/installation.en.md`).then((r) =&gt; r.blob()).then((blob) =&gt; navigator.clipboard.write([new ClipboardItem({ 'text/plain': blob })]))" data-slot="button" class="secondary cursor-pointer">
+          
+          <button onclick="fetch(`../../..`).then((r) =&gt; r.text()).then((text) =&gt; navigator.clipboard.write([new ClipboardItem({ 'text/plain': text })]))" data-slot="button" class="secondary cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-copy ">
         <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
         </path>
@@ -395,6 +398,7 @@
     </svg>
     <span class="max-md:hidden">Copy Page</span>
 </button>
+          
           
           <a data-slot="button" id="previous-button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7" href="../../">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-left">
@@ -429,7 +433,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-25T08:34:01+04:00');
+        const date = new Date('2026-08-06T09:29:36+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -584,10 +588,30 @@ uninstallation.</p>
 <tr>
 <td>Silent crash at launch</td>
 <td>Python error caught</td>
-<td>Check <code>%LOCALAPPDATA%\Seabim\log\crash.log</code>.</td>
+<td>Check <code>%LOCALAPPDATA%\Seabim\log\sessions\</code>.</td>
 </tr>
 </tbody>
 </table></div>
+<h2 id="reporting-a-crash">Reporting a crash<a class="headerlink" href="#reporting-a-crash" title="Permanent link">¶</a></h2>
+<p>If CloudCompare closes abruptly during a SEABIM action, the plugin notices it
+<strong>on the next launch</strong> and offers to send a report to the SEABIM team.</p>
+<ul>
+<li>The <strong>Show details</strong> button displays everything that will be transmitted:
+  session logs, last action started, versions, machine information and license
+  identifier. No point cloud and no block geometry is sent, and file paths are
+  anonymised (<code>C:\Users\you\...</code> becomes <code>%USERPROFILE%\...</code>).</li>
+<li><strong>Nothing leaves your machine without your click</strong> on "Send report". The
+  "What were you doing?" field is optional, but it is often what makes the
+  problem reproducible.</li>
+<li>A copy of the report is kept in <code>%LOCALAPPDATA%\Seabim\reports\</code>. If sending
+  fails (machine offline), that <code>.zip</code> file can be emailed to support. The
+  folder caps itself at the 20 most recent reports and keeps nothing older
+  than 90 days.</li>
+</ul>
+<p>To disable this collection entirely, set the <code>crash_report_enabled</code> parameter
+to <code>0</code> in <strong>Preferences</strong>. The current session journal is then erased on the
+next launch and nothing further is written to disk — not just the sending, the
+collection itself stops.</p>
   </div>
   
   <script>
@@ -847,6 +871,12 @@ uninstallation.</p>
         
         <a href="#troubleshooting-an-installation-issue" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#troubleshooting-an-installation-issue');">
             Troubleshooting an installation issue
+        </a>
+        
+
+        
+        <a href="#reporting-a-crash" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#reporting-a-crash');">
+            Reporting a crash
         </a>
         
 
