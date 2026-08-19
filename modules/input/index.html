@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-08-19T08:51:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -531,8 +531,12 @@ et on continue le travail là où il s'était arrêté.</p>
 </div>
 <p>Si la session précédente s'est mal terminée (crash CloudCompare,
 extinction brutale), le launcher conserve un <code>autosave.json</code> dans le
-dossier de données utilisateur. Charger ce fichier permet de
-récupérer le dernier état avant l'incident.</p>
+dossier de données utilisateur. Le lien <strong>Restaurer la dernière
+sauvegarde automatique</strong>, sur la page d'accueil, le recharge
+directement — inutile d'aller le chercher via <em>Charger un JSON</em>.
+Ce fichier est réécrit au maximum toutes les 100 secondes, et
+uniquement après une modification de la structure : il peut donc être
+légèrement antérieur à l'incident.</p>
 <h2 id="find-blocks-in-a-point-cloud">Détecter les blocs dans un nuage<a class="headerlink" href="#find-blocks-in-a-point-cloud" title="Permanent link">¶</a></h2>
 <p>Détecte automatiquement les blocs d'un <strong>type et d'un volume donnés</strong> dans
 le nuage de points sélectionné. La structure produite peut ensuite être

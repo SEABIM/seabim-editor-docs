@@ -433,7 +433,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-08-19T08:51:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -605,7 +605,10 @@ est actif (cf. <a href="../activation-licence/">Activation de la licence</a>).</
 <li>Les <strong>paramètres internes</strong> (<code>parameters.json</code>) et les <strong>profils
   utilisateur</strong> sont conservés dans <code>%LOCALAPPDATA%\Seabim\</code>.</li>
 <li>Une <strong>sauvegarde automatique</strong> (<code>autosave.json</code>) est maintenue pendant
-  la session.</li>
+  la session : elle est réécrite au maximum toutes les 100 secondes, et
+  uniquement après une modification de la structure. Le lien <strong>Restaurer
+  la dernière sauvegarde automatique</strong>, sur la page d'accueil du launcher,
+  la recharge dans la scène courante.</li>
 </ul>
 <h2 id="multi-langue">Multi-langue<a class="headerlink" href="#multi-langue" title="Permanent link">¶</a></h2>
 <p>Le launcher est traduit en <strong>Français</strong>, <strong>Anglais</strong> et <strong>Arabe</strong>. La

@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-08-19T11:51:32+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -547,6 +547,25 @@ correspondent pas à la sélection.</p>
 <p>Pratique pour isoler visuellement une catégorie (par exemple un seul type
 de bloc, un seul volume, ou les blocs <code>Missing</code>) dans une structure dense,
 sans toucher à la structure elle-même.</p>
+<p>Chaque case affiche le <strong>nombre de blocs</strong> de la catégorie, pour situer son
+poids avant de la décocher. Type et volume étant deux axes indépendants, ce
+sont deux ventilations du même total : additionner un compteur de type et un
+compteur de volume n'aurait pas de sens. Un bloc auquel la valeur manque sur
+un axe — un placeholder <code>Missing</code> n'a pas de volume — n'est compté que sur
+l'autre.</p>
+<h3 id="exporter-la-selection-en-json">Exporter la sélection en JSON<a class="headerlink" href="#exporter-la-selection-en-json" title="Permanent link">¶</a></h3>
+<p>Le petit bouton <strong>JSON</strong>, à gauche de <code>Annuler</code> / <code>Appliquer</code>, écrit dans un
+fichier les seuls blocs correspondant aux cases cochées. Le format est
+exactement celui de <a href="../output/#save-json"><code>Sauvegarder un JSON</code></a> — un fichier
+de structure SEABIM rechargeable — simplement restreint à la sélection.</p>
+<div class="admonition note">
+<p class="admonition-title">Exporter n'est pas filtrer</p>
+<p>Le bouton n'applique <strong>pas</strong> l'isolation et ne ferme <strong>pas</strong> la fenêtre :
+on peut exporter plusieurs sous-ensembles à la suite, puis cliquer
+<code>Appliquer</code> (ou <code>Annuler</code>) pour décider séparément de ce qui reste
+affiché. Si aucun bloc ne correspond aux cases cochées, aucun fichier
+n'est écrit et un message le signale.</p>
+</div>
 <h2 id="switch-units">Basculer mètres / pieds<a class="headerlink" href="#switch-units" title="Permanent link">¶</a></h2>
 <p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></strong></p>
 <p>Bascule l'<strong>unité de longueur de travail</strong> entre les <strong>mètres</strong> et les
@@ -863,6 +882,12 @@ n'importe quel onglet, même si le focus est sur une modale enfant.</p>
         <a href="#display-by-type" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#display-by-type');">
             Afficher par type
         </a>
+        
+        
+        <a href="#exporter-la-selection-en-json" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#exporter-la-selection-en-json');">
+            Exporter la sélection en JSON
+        </a>
+        
         
 
         

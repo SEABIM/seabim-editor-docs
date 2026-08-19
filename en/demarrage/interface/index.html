@@ -433,7 +433,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-08-19T08:51:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -605,7 +605,10 @@ plugin and is organised in <strong>tabs</strong> by functional domain.</p>
 <ul>
 <li>The <strong>internal parameters</strong> (<code>parameters.json</code>) and the <strong>user
   profiles</strong> are kept in <code>%LOCALAPPDATA%\Seabim\</code>.</li>
-<li>An <strong>autosave</strong> (<code>autosave.json</code>) is maintained during the session.</li>
+<li>An <strong>autosave</strong> (<code>autosave.json</code>) is maintained during the session: it is
+  rewritten at most once every 100 seconds, and only after a structure
+  change. The <strong>Restore last autosave</strong> link, on the launcher home page,
+  loads it back into the current scene.</li>
 </ul>
 <h2 id="multi-language">Multi-language<a class="headerlink" href="#multi-language" title="Permanent link">¶</a></h2>
 <p>The launcher is translated into <strong>French</strong>, <strong>English</strong> and <strong>Arabic</strong>.
