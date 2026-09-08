@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-09-07T14:42:07+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -496,7 +496,8 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>The <strong>Edit</strong> module groups the structure editing actions: registration of
+    <h1 id="edit">Edit<a class="headerlink" href="#edit" title="Permanent link">¶</a></h1>
+<p>The <strong>Edit</strong> module groups the structure editing actions: registration of
 blocks on the reference cloud, threshold-based filtering, safe deletion,
 grouping by panel or package, and assignment of plot numbers from a
 placement plan.</p>
@@ -589,6 +590,176 @@ registration to converge.</p>
    automatically.</li>
 </ol>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_help.png" data-desc-position="bottom"><img alt="Help register" src="../../../assets/images/cc_edit_help.png"></a></p>
+<h2 id="fit-position">Fit position<a class="headerlink" href="#fit-position" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-a">A</kbd></span></strong></p>
+<p>Searches for the <strong>best pose and orientation</strong> of the selected blocks
+against the cloud. Where <a href="#register-selection---adaptive-dist"><code>Register
+selection</code></a> starts from the current
+pose and refines it locally (ICP), this action <strong>explores</strong>: it samples
+poses within a search radius around the block and keeps the best one
+according to a criterion that weighs together</p>
+<ul>
+<li>the <strong>distance to the cloud</strong> (median point-to-block distance);</li>
+<li>the <strong>non-overlap with neighbours</strong>: a block cannot sit inside another
+  block's material;</li>
+<li>the <strong>exposed surface with no points</strong>: an upward-facing facet that no
+  neighbour masks must carry points, otherwise the pose exposes material
+  where the survey measured nothing.</li>
+</ul>
+<p>It therefore recovers <strong>orientation errors</strong> that a local registration
+cannot undo, at the cost of about ten seconds per block.</p>
+<p>Blocks are processed one by one, and each one constrains the next. The
+launcher progress bar shows the current block; <code>Cancel</code> stops the series and
+<strong>the blocks already fitted are kept</strong>.</p>
+<h3 id="deep-search-button">"Deep search" button<a class="headerlink" href="#deep-search-button" title="Permanent link">¶</a></h3>
+<p>The <strong>magnifier icon</strong> to the right of the button switches the search budget
+(<code>fit_deep_search</code> parameter):</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Budget</th>
+<th>When to use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grey (default)</td>
+<td>Quick search, about <strong>10 s per block</strong></td>
+<td>Standard case.</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>Deep search, about <strong>80 s per block</strong></td>
+<td>Blocks the quick search fails to place, or a very uncertain starting pose.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The setting is kept across sessions, like the custom registration of <code>Register
+selection</code>. Beyond 20 selected blocks, a confirmation dialog states the cost of
+the operation.</p>
+<h3 id="fit-report">Fit report<a class="headerlink" href="#fit-report" title="Permanent link">¶</a></h3>
+<p>When the computation ends, a dialog gives <strong>one line per block</strong>: applied
+displacement and rotation, resulting median, share of exposed surface without
+points. Blocks above <code>fit_alert_median</code> or <code>fit_alert_visible</code> are marked with
+a ⚠ and listed first. The whole selection is listed: past a dozen blocks the
+list scrolls.</p>
+<p>The <strong>report badge</strong> (the icon to the right of the button) turns the automatic
+display off; turning it back on replays the last report of the session, as for
+<code>Register selection</code>. The per-search detail stays in the console (<code>[FIT]</code>
+lines), for diagnostics.</p>
+<p>Blocks are recolored on <code>median_score</code> when the action completes, and a
+checkpoint lets you undo the whole operation ( <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span> ).</p>
+<h3 id="fit-settings">Settings<a class="headerlink" href="#fit-settings" title="Permanent link">¶</a></h3>
+<p>All of these are editable from the <strong>Preferences</strong> (or directly in
+<code>parameters.json</code>). Two families:</p>
+<ul>
+<li>names ending in <code>_rel</code> are <strong>proportions of the block size</strong>: they follow the
+  entered volume, the working unit (feet) and laboratory mode on their own,
+  with nothing to change;</li>
+<li>the others are absolute lengths in metres, converted to the cloud unit at
+  run time.</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Effect</th>
+<th>When to change it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fit_search_radius_rel</code></td>
+<td>0.25</td>
+<td>Radius of the translation search box, as a proportion of the block size (0.60 m for a 2.4 m block).</td>
+<td>Only when the starting pose is wrong <strong>beyond</strong> that radius, and then together with the deep search. The volume to explore grows as the cube of the radius: at a constant budget, widening it degrades the result (32 blocks out of 36 replaced at 0.25, against 24 out of 36 at 0.40).</td>
+</tr>
+<tr>
+<td><code>fit_max_angle</code></td>
+<td>180</td>
+<td>Half-width of the rotation search, in degrees. 180 sweeps every possible orientation.</td>
+<td>Lower it (30 for instance) to correct the position only, when the current orientation is already trusted.</td>
+</tr>
+<tr>
+<td><code>fit_cloud_dist_rel</code></td>
+<td>0.15</td>
+<td>Distance beyond which a cloud point no longer describes the block. Also sets the scale of the whole criterion.</td>
+<td>Tighten it on a very clean survey, loosen it on a noisy cloud or a poorly separated layer.</td>
+</tr>
+<tr>
+<td><code>fit_visible_weight_rel</code></td>
+<td>0.56</td>
+<td>Weight of the "exposed surface with no points" term, as a proportion of <code>fit_cloud_dist_rel</code>.</td>
+<td><strong>0 disables it</strong>: the criterion is then the cloud distance and the non-overlap alone. This is the first setting to try when blocks that were already well placed flip over. The gain plateaus between 0.56 and 1.1; past that, the term overwhelms the cloud distance.</td>
+</tr>
+<tr>
+<td><code>fit_coverage_min</code></td>
+<td>0.05</td>
+<td>Minimum fraction of the block surface that must carry points. A guard rail against degenerate poses, not a target: a survey seen from above only lights part of a block.</td>
+<td>Rarely. Raise it only if blocks settle into empty space.</td>
+</tr>
+<tr>
+<td><code>fit_n_sample</code></td>
+<td>150</td>
+<td>Number of points sampled on the block surface to measure the overlap with its neighbours.</td>
+<td>Raise it (300) on a heavily interlocked armour layer; the cost is linear.</td>
+</tr>
+<tr>
+<td><code>fit_alert_median</code></td>
+<td>0.10 m</td>
+<td>Median above which the report flags the block with a ⚠.</td>
+<td>Match it to the survey quality. No effect on the computation, only on how the report is sorted.</td>
+</tr>
+<tr>
+<td><code>fit_alert_visible</code></td>
+<td>0.50</td>
+<td>Same role, on the share of exposed surface without points.</td>
+<td>Same.</td>
+</tr>
+<tr>
+<td><code>fit_deep_search</code></td>
+<td>0</td>
+<td>Search budget.</td>
+<td>From the magnifier icon rather than from here.</td>
+</tr>
+<tr>
+<td><code>show_fit_report</code></td>
+<td>1</td>
+<td>Automatic report display.</td>
+<td>From the report badge rather than from here.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>_rel</code> thresholds are measured against the <strong>physical block size</strong>
+(<code>block_size</code>), not against the cube root of its volume: for a 3 m³ Coreloc the
+former is 2.39 m and the latter 1.44 m.</p>
+<h3 id="fit-lab">Laboratory mode<a class="headerlink" href="#fit-lab" title="Permanent link">¶</a></h3>
+<p>The criterion is <strong>homogeneous to a length</strong>: every one of its terms follows
+the cloud scale, so the defaults above hold in metres, in feet and on a scale
+model alike. Two things to keep in mind:</p>
+<ul>
+<li><code>lab_tolerance_factor</code> (2.0 by default) loosens the <strong>measurement</strong>
+  tolerances in laboratory mode, because scanner noise does not shrink with the
+  model. It drives the counting distance and the grid resolution of the exposed
+  surface term. It is the first setting to adjust if the fit feels jumpy on a
+  scale model.</li>
+<li>The report shows <strong>two more decimals</strong> in laboratory mode: at that scale,
+  displacements are counted in tenths of a millimetre.</li>
+</ul>
+<h3 id="fit-diagnostics">Diagnostics<a class="headerlink" href="#fit-diagnostics" title="Permanent link">¶</a></h3>
+<p>The console keeps one <code>[FIT]</code> line per block: median and criterion value before
+and after, number of generations, computation time. Two more indicators are
+written on the block and readable from
+<a href="../metadata/#show-metadata-block"><code>Show metadata</code></a>, under "Other":</p>
+<ul>
+<li><code>visible_uncovered</code>: share of the exposed surface the survey did not
+  instrument, that is the <code>Exposed</code> column of the report;</li>
+<li><code>restart_agreement</code>: share of the independent searches that converged to the
+  pose that was kept. 1.0 means they all agree; a low value flags a result
+  worth replaying, with the deep search if needed.</li>
+</ul>
 <h2 id="filter-blocks">Filter blocks<a class="headerlink" href="#filter-blocks" title="Permanent link">¶</a></h2>
 <p>Removes blocks that do not meet quality thresholds: <strong>median distance</strong>
 to the cloud, <strong>accuracy</strong>, or <strong>point count</strong> of correspondence.</p>
@@ -954,6 +1125,34 @@ groups.</p>
         <a href="#help-register" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#help-register');">
             Help register
         </a>
+        
+
+        
+        <a href="#fit-position" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#fit-position');">
+            Fit position
+        </a>
+        
+        
+        <a href="#deep-search-button" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#deep-search-button');">
+            "Deep search" button
+        </a>
+        
+        <a href="#fit-report" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-report');">
+            Fit report
+        </a>
+        
+        <a href="#fit-settings" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-settings');">
+            Settings
+        </a>
+        
+        <a href="#fit-lab" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-lab');">
+            Laboratory mode
+        </a>
+        
+        <a href="#fit-diagnostics" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-diagnostics');">
+            Diagnostics
+        </a>
+        
         
 
         

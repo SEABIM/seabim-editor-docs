@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-08-14T13:13:01+04:00');
+        const date = new Date('2026-09-01T07:27:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -496,7 +496,8 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>Le module <strong>Filtres</strong> calcule des <strong>filtres géométriques de contrôle de
+    <h1 id="filtres">Filtres<a class="headerlink" href="#filtres" title="Permanent link">¶</a></h1>
+<p>Le module <strong>Filtres</strong> calcule des <strong>filtres géométriques de contrôle de
 pose</strong> sur la structure courante. Chaque action produit un <strong>champ
 scalaire</strong> sur les blocs, qu'on peut visualiser via l'action <a href="../header/#change-color-scale"><code>Changer
 l'échelle de couleurs</code></a> du
@@ -539,6 +540,35 @@ orientés perpendiculairement au talus (orientation théorique optimale).</p>
 <h2 id="perpendicular-anvil">Enclume perpendiculaire<a class="headerlink" href="#perpendicular-anvil" title="Permanent link">¶</a></h2>
 <p>Identique à <a href="#perpendicular-nose"><code>Nez perpendiculaire</code></a> mais sur l'<strong>axe
 « enclume »</strong> du bloc.</p>
+<p>La valeur <strong>0 correspond à une enclume perpendiculaire à la pente</strong>, et
+<strong>sous 30° le bloc devient rouge</strong>. Cette configuration, lorsqu'elle se
+répète, peut entraîner un déséquilibre des autres blocs : au-delà d'un
+certain pourcentage de blocs rouges, la structure est dans une mauvaise
+position pour la suite. C'est donc la <strong>part de blocs rouges</strong> qui compte,
+pas le bloc isolé.</p>
+<p><strong>Réservé à l'Accropode I.</strong> Seul ce type de bloc porte une enclume
+identifiable dans son repère propre : sur un Xbloc ou un Cubipode, le
+même calcul rendrait un angle parfaitement calculable qui ne mesure rien.
+Les blocs d'un autre type sont donc écartés du calcul, et le filtre
+refuse de tourner si la sélection n'en contient aucun. Sur une structure
+mixte, seuls les Accropode I sont mesurés et le rapport indique ce qui a
+été laissé de côté.</p>
+<p>Les pourcentages au-dessus et en dessous de 30° restent lisibles dans la
+console CloudCompare. À la fin du calcul, un <strong>rapport statistique</strong> les
+reprend et les complète : blocs mesurés et blocs écartés, part de blocs
+rouges et part au-dessus de 30°, ventilation de ces blocs rouges aux
+paliers 10°, 15° et 20° (à part égale, des enclumes à 28° et des enclumes
+à 5° ne décrivent pas la même structure), puis moyenne / médiane / 10e
+percentile / minimum de l'angle et répartition par tranches de 5°. Le 10e
+percentile et le minimum plutôt que leurs symétriques : ici c'est la queue
+basse de la distribution qui porte l'information.</p>
+<p>Le rapport reste agrégé ; pour retrouver un bloc en particulier, on passe
+par le champ scalaire <code>perpendicular_anvil</code> ou l'export CSV, qui portent
+le détail bloc par bloc. Le palier mis en avant dans la ventilation est
+réglable dans les Préférences (<code>anvil_angle_threshold</code>, 30° par défaut,
+soit le seuil du rouge) ; le baisser affine la lecture sans déplacer le
+rouge, qui suit l'échelle de couleur. Le rapport peut être coupé ou
+réaffiché via la pastille à droite du bouton (<code>show_anvil_report</code>).</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_filter_enclume.png" data-desc-position="bottom"><img alt="Enclume perpendiculaire" src="../../assets/images/cc_filter_enclume.png"></a></p>
 <h2 id="contacts-all-blocks">Contacts (tous les blocs)<a class="headerlink" href="#contacts-all-blocks" title="Permanent link">¶</a></h2>
 <p>Calcule le <strong>nombre de blocs en contact</strong> avec chaque bloc. Un bloc en

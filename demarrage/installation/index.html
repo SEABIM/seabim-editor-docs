@@ -433,7 +433,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-08-06T09:29:36+04:00');
+        const date = new Date('2026-09-08T09:47:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -442,24 +442,27 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>SEABIM Editor est un <strong>plugin pour CloudCompare 2.13</strong>. Il s'installe via
+    <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h1>
+<p>SEABIM Editor est un <strong>plugin pour CloudCompare 2.13</strong>. Il s'installe via
 un installeur Windows fourni clé en main qui dépose le plugin (DLL + scripts
 Python) dans le dossier <code>plugins/</code> de CloudCompare et inscrit la licence
 WIBU.</p>
 <h2 id="pre-installation">Pré-installation<a class="headerlink" href="#pre-installation" title="Permanent link">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Repartir d'une installation propre</p>
+</div>
 <p>Si <strong>CloudCompare est déjà installé</strong> sur le poste (toute version),
 désinstallez-le d'abord via <strong>Panneau de configuration → Programmes
 et fonctionnalités → CloudCompare → Désinstaller</strong>.</p>
-<p>Après la désinstallation, <strong>supprimez manuellement le dossier</strong>
-<code>C:\Program Files\CloudCompare</code> s'il subsiste : le désinstalleur
+<div class="language-text highlight"><pre><span></span><code>Après la désinstallation, **supprimez manuellement le dossier**
+`C:\Program Files\CloudCompare` s'il subsiste : le désinstalleur
 laisse souvent des fichiers résiduels (anciennes DLL de plugin,
 scripts Python) qui peuvent empêcher SEABIM Editor de se charger
-correctement.</p>
-<p>Vous pourrez ensuite installer proprement CloudCompare 2.13
-(étape ci-dessous).</p>
-</div>
+correctement.
+
+Vous pourrez ensuite installer proprement CloudCompare 2.13
+(étape ci-dessous).
+</code></pre></div>
 <h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">¶</a></h2>
 <div class="table-wrapper"><table>
 <thead>
@@ -483,7 +486,7 @@ correctement.</p>
 <tr>
 <td>CodeMeter Runtime (licence)</td>
 <td>dernière version</td>
-<td><a href="https://www.wibu.com/support/user/user-software/file/download/17494.html">https://www.wibu.com/support/user/user-software/file/download/17494.html</a></td>
+<td><a href="https://www.wibu.com/support/user/user-software/file/download/17996.html">https://www.wibu.com/support/user/user-software/file/download/17996.html</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -495,12 +498,12 @@ chargera pas dans une version 2.12 ou antérieure, et n'a pas été testé
 sur les builds 2.14+.</p>
 <div class="admonition note">
 <p class="admonition-title">Vérifier l'accès au serveur de mise à jour</p>
+</div>
 <p>SEABIM Editor a besoin de joindre son serveur de mise à jour. Depuis le
 poste, ouvrez <a href="https://update.seabim-utilities.com/health">https://update.seabim-utilities.com/health</a> dans un
 navigateur : la page doit afficher <strong><code>ok</code></strong>. Si elle ne répond pas,
 vérifiez la connexion Internet, le pare-feu et le proxy de l'entreprise
 avant de poursuivre.</p>
-</div>
 <h2 id="installation-pas-a-pas">Installation pas à pas<a class="headerlink" href="#installation-pas-a-pas" title="Permanent link">¶</a></h2>
 <h3 id="1-installer-cloudcompare-213">1. Installer CloudCompare 2.13<a class="headerlink" href="#1-installer-cloudcompare-213" title="Permanent link">¶</a></h3>
 <p>Téléchargez l'installeur Windows depuis le site officiel CloudCompare et
@@ -553,7 +556,7 @@ référent SEABIM) et suivre l'assistant.</p>
 <li>Cliquer sur l'icône → la <strong>vérification de licence</strong> s'exécute.</li>
 <li>En cas de succès, le <strong>launcher SEABIM Editor</strong> s'ouvre avec les
    onglets disponibles selon votre Feature Map (par exemple <code>Détecter les
-   blocs dans un nuage</code> n'apparaît que si le bit BlockFinder est actif
+blocs dans un nuage</code> n'apparaît que si le bit BlockFinder est actif
    sur votre licence).</li>
 </ol>
 <p>Si aucune licence n'est encore active sur le poste, suivre la procédure

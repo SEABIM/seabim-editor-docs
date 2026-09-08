@@ -433,7 +433,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-15T09:54:18+04:00');
+        const date = new Date('2026-09-08T09:47:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -442,16 +442,26 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>Cette page décrit la procédure d'activation d'une licence SEABIM Editor à
+    <h1 id="activation-de-la-licence">Activation de la licence<a class="headerlink" href="#activation-de-la-licence" title="Permanent link">¶</a></h1>
+<p>Cette page décrit la procédure d'activation d'une licence SEABIM Editor à
 l'aide de <strong>CodeMeter Runtime</strong> de WIBU-SYSTEMS. Elle s'effectue <strong>une
-seule fois par poste</strong>, après l'<a href="../installation/">installation du plugin</a>
-et avant de pouvoir créer un <a href="../premier-projet/">premier projet</a>.</p>
+seule fois</strong>, après l'<a href="../installation/">installation du plugin</a> et avant
+de pouvoir créer un <a href="../premier-projet/">premier projet</a>.</p>
+<p>Deux formes de licence coexistent :</p>
+<ul>
+<li>la <strong>licence logicielle</strong>, liée au poste sur lequel elle est activée
+  (sections 1 à 5 ci-dessous) ;</li>
+<li>la <strong>licence sur clé USB CmStick</strong>, portée par le dongle et donc
+  transférable d'une machine à l'autre (voir
+  <a href="#variante-activation-sur-cle-cmstick">Variante : activation sur clé CmStick</a>).</li>
+</ul>
 <h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../installation/">SEABIM Editor installé</a> et fonctionnel dans CloudCompare.</li>
 <li>CodeMeter Runtime installé sur le poste (voir le tableau Prérequis de la
   page <a href="../installation/#prerequis">Installation</a>).</li>
-<li>Un fichier de licence initial <strong><code>.lif</code></strong> transmis par l'équipe SEABIM.</li>
+<li>Selon le type de licence : un fichier de licence initial <strong><code>.lif</code></strong>
+  transmis par l'équipe SEABIM, ou la <strong>clé CmStick</strong> fournie par SEABIM.</li>
 </ul>
 <h2 id="1-verifier-labsence-de-licence-active">1. Vérifier l'absence de licence active<a class="headerlink" href="#1-verifier-labsence-de-licence-active" title="Permanent link">¶</a></h2>
 <p>Une fois SEABIM Editor correctement installé, une icône dédiée apparaît
@@ -501,12 +511,95 @@ informations de votre licence : l'activation est réussie.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/licence_12.png" data-desc-position="bottom"><img alt="Licence active dans SEABIM Editor" src="../../assets/images/licence_12.png"></a></p>
 <p>À ce stade, vous pouvez enchaîner sur la création de votre <a href="../premier-projet/">premier
 projet</a>.</p>
+<h2 id="variante-activation-sur-cle-cmstick">Variante : activation sur clé CmStick<a class="headerlink" href="#variante-activation-sur-cle-cmstick" title="Permanent link">¶</a></h2>
+<p>La licence peut aussi être portée par une <strong>clé USB CmStick</strong> fournie par
+SEABIM, au lieu d'être rattachée au poste. La licence suit alors la clé :
+il suffit de brancher le dongle sur une autre machine, CloudCompare et
+SEABIM Editor y étant installés, pour y travailler sans nouvelle
+activation.</p>
+<p>Le principe reste le même (demande <code>.RaC</code>, puis mise à jour <code>.RaU</code>), avec
+deux différences :</p>
+<ul>
+<li>il n'y a <strong>pas de fichier <code>.lif</code> à importer</strong> : la clé contient déjà un
+  CmContainer vierge ;</li>
+<li>le <strong>Firm Code SEABIM</strong> (<code>6002880</code>) doit être saisi manuellement dans
+  l'assistant.</li>
+</ul>
+<h3 id="1-brancher-la-cle-et-ouvrir-codemeter">1. Brancher la clé et ouvrir CodeMeter<a class="headerlink" href="#1-brancher-la-cle-et-ouvrir-codemeter" title="Permanent link">¶</a></h3>
+<p>Branchez le CmStick sur un port USB, puis ouvrez <strong>CodeMeter Control
+Center</strong>. La clé apparaît dans la colonne de gauche sous le nom
+<strong>CmStick/B</strong>, suivie de son numéro de série (ici <code>3-8269754</code>). Vérifiez
+que le statut est bien <strong>Activé</strong>, puis cliquez sur <strong>« Mise à jour de la
+licence »</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_01.png" data-desc-position="bottom"><img alt="Le CmStick détecté par CodeMeter Control Center" src="../../assets/images/wibu_stick_01.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Numéro de série</p>
+<p>Ce numéro identifie votre clé : on le retrouve dans le nom des
+fichiers <code>.WibuCmRaC</code> et <code>.WibuCmRaU</code> échangés avec l'équipe SEABIM.
+Pensez à le mentionner dans vos échanges avec le support.</p>
+</div>
+<h3 id="2-generer-la-demande-de-licence">2. Générer la demande de licence<a class="headerlink" href="#2-generer-la-demande-de-licence" title="Permanent link">¶</a></h3>
+<p>L'assistant <strong>CmFAS</strong> s'ouvre. Déroulez-le écran par écran :</p>
+<ol>
+<li>
+<p>Écran d'accueil de l'assistant : cliquez sur <strong>Suivant</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_02.png" data-desc-position="bottom"><img alt="Assistant CmFAS, écran d'accueil" src="../../assets/images/wibu_stick_02.png"></a></p>
+</li>
+<li>
+<p>Action désirée : sélectionnez <strong>Créer une demande de licence</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_03.png" data-desc-position="bottom"><img alt="Choix de l'action à réaliser" src="../../assets/images/wibu_stick_03.png"></a></p>
+</li>
+<li>
+<p>Option pour la demande : sélectionnez <strong>Ajouter la licence d'un nouvel
+   éditeur</strong>, la clé ne contenant encore aucune licence SEABIM. L'option
+   <strong>Étendre la licence courante</strong> ne sert qu'au renouvellement d'une
+   licence SEABIM déjà présente sur la clé.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_04.png" data-desc-position="bottom"><img alt="Option pour la demande de licence" src="../../assets/images/wibu_stick_04.png"></a></p>
+</li>
+<li>
+<p>Firm Code : saisissez <strong><code>6002880</code></strong>, le code éditeur de SEABIM.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_05.png" data-desc-position="bottom"><img alt="Saisie du Firm Code SEABIM" src="../../assets/images/wibu_stick_05.png"></a></p>
+</li>
+<li>
+<p>Nom du fichier : choisissez le dossier de destination, puis cliquez sur
+   <strong>Soumettre</strong>. Le fichier <code>&lt;n° de série&gt;.WibuCmRaC</code> y est créé.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_06.png" data-desc-position="bottom"><img alt="Sélection du fichier de sortie" src="../../assets/images/wibu_stick_06.png"></a></p>
+</li>
+</ol>
+<h3 id="3-transmettre-le-fichier-wibucmrac">3. Transmettre le fichier <code>.WibuCmRaC</code><a class="headerlink" href="#3-transmettre-le-fichier-wibucmrac" title="Permanent link">¶</a></h3>
+<p>Ouvrez le dossier choisi à l'étape précédente et transmettez le fichier
+<code>.WibuCmRaC</code> à l'équipe SEABIM.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_07.png" data-desc-position="bottom"><img alt="Le fichier .WibuCmRaC généré" src="../../assets/images/wibu_stick_07.png"></a></p>
+<h3 id="4-importer-le-fichier-wibucmrau">4. Importer le fichier <code>.WibuCmRaU</code><a class="headerlink" href="#4-importer-le-fichier-wibucmrau" title="Permanent link">¶</a></h3>
+<p>En retour, l'équipe SEABIM vous envoie un fichier <strong><code>.WibuCmRaU</code></strong>.
+Enregistrez-le sur le poste, la clé toujours branchée.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_08.png" data-desc-position="bottom"><img alt="Le fichier .WibuCmRaU reçu en retour" src="../../assets/images/wibu_stick_08.png"></a></p>
+<p>Glissez-le ensuite dans la fenêtre de CodeMeter Control Center, ou
+double-cliquez dessus : l'import démarre.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_09.png" data-desc-position="bottom"><img alt="Import de la mise à jour en cours" src="../../assets/images/wibu_stick_09.png"></a></p>
+<p>Un message confirme la mise à jour du CmContainer.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_10.png" data-desc-position="bottom"><img alt="Confirmation de la mise à jour" src="../../assets/images/wibu_stick_10.png"></a></p>
+<h3 id="5-verifier-la-licence-dans-codemeter-webadmin">5. Vérifier la licence dans CodeMeter WebAdmin<a class="headerlink" href="#5-verifier-la-licence-dans-codemeter-webadmin" title="Permanent link">¶</a></h3>
+<p>Cliquez sur <strong>Administration Web</strong> en bas à droite de CodeMeter Control
+Center, puis ouvrez l'onglet <strong>CmContainer</strong> et sélectionnez votre
+CmStick. La licence <strong>SEABIM Editor</strong> doit y figurer, avec son Firm Code
+<code>6002880</code>, son Product Code <code>1000</code> et sa date de validité.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/wibu_stick_11.png" data-desc-position="bottom"><img alt="La licence SEABIM Editor portée par le CmStick" src="../../assets/images/wibu_stick_11.png"></a></p>
+<p>Il ne reste plus qu'à valider l'activation dans CloudCompare, comme à la
+<a href="#5-valider-lactivation-dans-cloudcompare">section 5</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">La clé doit rester branchée</p>
+<p>La licence étant portée par le CmStick, celui-ci doit rester connecté
+au poste pendant toute l'utilisation de SEABIM Editor. Retirez-le via
+le bouton <strong>Retirer le CmStick</strong> de CodeMeter Control Center plutôt
+qu'à chaud.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">En cas de difficulté</p>
-<p>Conservez précieusement les fichiers <code>.lif</code>, <code>.RaC</code> et <code>.RaU</code>, et
-contactez le support SEABIM en joignant une capture du message
-d'erreur affiché par CodeMeter Control Center ou par le launcher
-SEABIM Editor.</p>
+<p>Conservez précieusement les fichiers <code>.lif</code>, <code>.RaC</code> et <code>.RaU</code> (ou
+<code>.WibuCmRaC</code> et <code>.WibuCmRaU</code>), et contactez le support SEABIM en
+joignant une capture du message d'erreur affiché par CodeMeter Control
+Center ou par le launcher SEABIM Editor.</p>
 </div>
   </div>
   
@@ -756,6 +849,34 @@ SEABIM Editor.</p>
         <a href="#5-valider-lactivation-dans-cloudcompare" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#5-valider-lactivation-dans-cloudcompare');">
             5. Valider l'activation dans CloudCompare
         </a>
+        
+
+        
+        <a href="#variante-activation-sur-cle-cmstick" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#variante-activation-sur-cle-cmstick');">
+            Variante : activation sur clé CmStick
+        </a>
+        
+        
+        <a href="#1-brancher-la-cle-et-ouvrir-codemeter" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#1-brancher-la-cle-et-ouvrir-codemeter');">
+            1. Brancher la clé et ouvrir CodeMeter
+        </a>
+        
+        <a href="#2-generer-la-demande-de-licence" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#2-generer-la-demande-de-licence');">
+            2. Générer la demande de licence
+        </a>
+        
+        <a href="#3-transmettre-le-fichier-wibucmrac" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#3-transmettre-le-fichier-wibucmrac');">
+            3. Transmettre le fichier .WibuCmRaC
+        </a>
+        
+        <a href="#4-importer-le-fichier-wibucmrau" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#4-importer-le-fichier-wibucmrau');">
+            4. Importer le fichier .WibuCmRaU
+        </a>
+        
+        <a href="#5-verifier-la-licence-dans-codemeter-webadmin" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#5-verifier-la-licence-dans-codemeter-webadmin');">
+            5. Vérifier la licence dans CodeMeter WebAdmin
+        </a>
+        
         
 
         

@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-08-14T13:13:01+04:00');
+        const date = new Date('2026-09-01T07:27:43+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -496,7 +496,8 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>The <strong>Filters</strong> module computes <strong>geometric placement quality filters</strong>
+    <h1 id="filters">Filters<a class="headerlink" href="#filters" title="Permanent link">¶</a></h1>
+<p>The <strong>Filters</strong> module computes <strong>geometric placement quality filters</strong>
 on the current structure. Each action produces a <strong>scalar field</strong> on the
 blocks, which can be visualized through the <a href="../header/#change-color-scale"><code>Change color
 scale</code></a> action of the <a href="../header/">Header</a>.</p>
@@ -537,6 +538,33 @@ perpendicular to the slope (optimal theoretical orientation).</p>
 <h2 id="perpendicular-anvil">Perpendicular anvil<a class="headerlink" href="#perpendicular-anvil" title="Permanent link">¶</a></h2>
 <p>Same as <a href="#perpendicular-nose"><code>Perpendicular nose</code></a> but on the <strong>"anvil"
 axis</strong> of the block.</p>
+<p>A value of <strong>0 means the anvil is perpendicular to the slope</strong>, and <strong>under
+30° the block is drawn red</strong>. Repeated, this configuration can throw the
+surrounding blocks off balance: past a certain share of red blocks, the
+structure is in a poor position for what follows. What matters is therefore
+the <strong>share of red blocks</strong>, not the isolated one.</p>
+<p><strong>Accropode I only.</strong> It is the only block type whose own frame carries an
+identifiable anvil: on an Xbloc or a Cubipode the same computation would
+return a perfectly computable angle that measures nothing. Blocks of any
+other type are therefore left out, and the filter declines to run when the
+selection holds none. On a mixed structure, only the Accropode I blocks are
+measured and the report states what was set aside.</p>
+<p>The shares above and below 30° remain readable in the CloudCompare console.
+Once the computation ends, a <strong>statistics report</strong> picks them up and adds to
+them: measured and excluded blocks, red share and share above 30°, breakdown
+of those red blocks at the 10°, 15° and 20° steps (at an equal share, anvils
+sitting at 28° and anvils sitting at 5° do not describe the same structure),
+then mean / median / 10th percentile / minimum angle and the distribution in
+5° buckets. The 10th percentile and the minimum rather than their
+counterparts: here the low tail of the distribution is what carries the
+information.</p>
+<p>The report stays aggregate; to track down one specific block, use the
+<code>perpendicular_anvil</code> scalar field or the CSV export, which carry the
+per-block detail. The step highlighted in the breakdown is adjustable in
+Preferences (<code>anvil_angle_threshold</code>, 30° by default, the red threshold);
+lowering it sharpens the reading without moving red, which follows the color
+ramp. The report can be turned off or shown again from the badge next to the
+button (<code>show_anvil_report</code>).</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_filter_enclume.png" data-desc-position="bottom"><img alt="Perpendicular anvil" src="../../../assets/images/cc_filter_enclume.png"></a></p>
 <h2 id="contacts-all-blocks">Contacts (All blocks)<a class="headerlink" href="#contacts-all-blocks" title="Permanent link">¶</a></h2>
 <p>Computes the <strong>number of blocks in contact</strong> with each block. A block

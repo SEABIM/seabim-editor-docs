@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-25T10:34:22+04:00');
+        const date = new Date('2026-09-01T08:20:28+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -496,7 +496,8 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>Le module <strong>Export</strong> regroupe les actions de <strong>sortie</strong> : sauvegarde de la
+    <h1 id="export">Export<a class="headerlink" href="#export" title="Permanent link">¶</a></h1>
+<p>Le module <strong>Export</strong> regroupe les actions de <strong>sortie</strong> : sauvegarde de la
 structure courante en JSON, export CSV (standard ou colonnes
 personnalisées), et génération du rendu final prêt pour livraison.</p>
 <h2 id="save-json">Sauvegarder un JSON<a class="headerlink" href="#save-json" title="Permanent link">¶</a></h2>
@@ -578,6 +579,16 @@ principales</strong> (<code>panel</code>), <strong>Contrôle qualité</strong>, 
 <strong>Déplacement</strong> et <strong>Autres</strong>. Cochez ceux à conserver dans le rendu livré. Un
 champ <strong>non calculé</strong> sur les blocs apparaît grisé et marqué « (non calculé) » :
 il n'y a rien à exporter pour ce champ.</p>
+<div class="admonition note">
+<p class="admonition-title">Champ affiché à l'ouverture du fichier livré</p>
+<p>Le BIN livré s'ouvre sur <strong>le champ que vous aviez à l'écran</strong> au moment de
+l'export (y compris l'affichage par <code>panel</code>), à condition qu'il fasse partie
+des champs cochés. Pour un champ de déplacement, c'est le <strong>référentiel
+actif</strong> qui est retenu (<code>Absolu</code>, <code>H</code> ou <code>DN</code>). Si le champ affiché n'est pas
+exporté, ou si aucun champ n'est affiché (blocs en couleurs RGB), le fichier
+s'ouvre sur le <strong>premier champ exporté</strong>, en pratique <code>panel</code>. Le champ
+retenu est écrit dans la console : <code>Final Render : displayed field = ...</code>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Déplacement : échelles de référence et coloration livrée</p>
 <p>Comme dans l'export CSV, la section <strong>Déplacement</strong> propose une rangée

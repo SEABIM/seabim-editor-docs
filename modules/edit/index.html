@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-09-07T14:42:07+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -496,7 +496,8 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>Le module <strong>Édition</strong> regroupe les actions d'édition de la structure :
+    <h1 id="edition">Édition<a class="headerlink" href="#edition" title="Permanent link">¶</a></h1>
+<p>Le module <strong>Édition</strong> regroupe les actions d'édition de la structure :
 recalage des blocs sur le nuage de référence, filtrage par seuils,
 suppression sécurisée, regroupement par panneau ou lot, et assignation de
 numéros de plot via un plan de pose.</p>
@@ -591,6 +592,176 @@ automatique converge.</p>
    automatiquement.</li>
 </ol>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_edit_help.png" data-desc-position="bottom"><img alt="Aider le recalage" src="../../assets/images/cc_edit_help.png"></a></p>
+<h2 id="fit-position">Ajuster la position<a class="headerlink" href="#fit-position" title="Permanent link">¶</a></h2>
+<p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-a">A</kbd></span></strong></p>
+<p>Cherche la <strong>meilleure pose et orientation</strong> des blocs sélectionnés sur le
+nuage. Là où <a href="#register-selection---adaptive-dist"><code>Recaler la sélection</code></a>
+part de la pose courante et l'affine localement (ICP), cette action
+<strong>explore</strong> : elle tire des poses dans un rayon de recherche autour du bloc
+et retient la meilleure au sens d'un critère qui pèse ensemble</p>
+<ul>
+<li>la <strong>distance au nuage</strong> (médiane des distances points/bloc) ;</li>
+<li>le <strong>non-recouvrement des voisins</strong> : un bloc ne peut pas se poser dans la
+  matière d'un autre ;</li>
+<li>la <strong>surface exposée sans points</strong> : une face tournée vers le haut et non
+  masquée par un voisin doit porter des points, sinon la pose expose de la
+  matière là où le levé n'a rien mesuré.</li>
+</ul>
+<p>Elle rattrape donc des <strong>erreurs d'orientation</strong> qu'un recalage local ne
+défait pas, au prix d'une dizaine de secondes par bloc.</p>
+<p>Les blocs sont traités un par un, et chacun contraint les suivants. La barre
+de progression du launcher indique le bloc en cours ; <code>Annuler</code> interrompt
+la série, et <strong>les blocs déjà ajustés sont conservés</strong>.</p>
+<h3 id="bouton-recherche-approfondie">Bouton « Recherche approfondie »<a class="headerlink" href="#bouton-recherche-approfondie" title="Permanent link">¶</a></h3>
+<p>L'<strong>icône loupe</strong> à droite du bouton commute le budget de recherche
+(paramètre <code>fit_deep_search</code>) :</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>État</th>
+<th>Budget</th>
+<th>Quand l'utiliser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gris (par défaut)</td>
+<td>Recherche rapide, environ <strong>10 s par bloc</strong></td>
+<td>Cas courant.</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>Recherche approfondie, environ <strong>80 s par bloc</strong></td>
+<td>Blocs que la recherche rapide ne parvient pas à placer, pose de départ très incertaine.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Le réglage est conservé d'une session à l'autre, comme le recalage
+personnalisé de <code>Recaler la sélection</code>. Au-delà de 20 blocs sélectionnés, une
+confirmation rappelle le coût de l'opération.</p>
+<h3 id="rapport-dajustement">Rapport d'ajustement<a class="headerlink" href="#rapport-dajustement" title="Permanent link">¶</a></h3>
+<p>À la fin du calcul, une modale donne <strong>une ligne par bloc</strong> : déplacement et
+rotation appliqués, médiane obtenue, part de surface exposée sans points. Les
+blocs qui dépassent <code>fit_alert_median</code> ou <code>fit_alert_visible</code> sont marqués
+d'un ⚠ et remontés en tête de liste. Toute la sélection est listée : au-delà
+d'une douzaine de blocs, la liste défile.</p>
+<p>La <strong>badge rapport</strong> (icône à droite du bouton) coupe l'affichage
+automatique ; la rallumer réaffiche le dernier rapport de la session, comme
+pour <code>Recaler la sélection</code>. Le détail descente par descente reste en console
+(lignes <code>[FIT]</code>), pour le diagnostic.</p>
+<p>Les blocs sont recolorés sur <code>median_score</code> à l'issue de l'action, et un
+point de restauration permet d'annuler l'ensemble ( <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span> ).</p>
+<h3 id="fit-settings">Réglages<a class="headerlink" href="#fit-settings" title="Permanent link">¶</a></h3>
+<p>Tous ces paramètres sont modifiables dans les <strong>Préférences</strong> (ou directement
+dans <code>parameters.json</code>). Deux familles :</p>
+<ul>
+<li>ceux dont le nom finit par <code>_rel</code> sont des <strong>proportions de la taille du
+  bloc</strong> : ils suivent donc automatiquement le volume saisi, l'unité de travail
+  (feet) et le mode laboratoire, sans rien avoir à changer ;</li>
+<li>les autres sont des longueurs absolues en mètres, converties dans l'unité du
+  nuage à l'exécution.</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Défaut</th>
+<th>Effet</th>
+<th>Quand y toucher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fit_search_radius_rel</code></td>
+<td>0,25</td>
+<td>Rayon de la boîte de recherche en translation, en proportion de la taille du bloc (0,60 m pour un bloc de 2,4 m).</td>
+<td>Seulement si la pose de départ est fausse <strong>au-delà</strong> de ce rayon, et alors en recherche approfondie. Le volume à explorer croît comme le cube du rayon : à budget constant, l'élargir dégrade le résultat (32 blocs replacés sur 36 à 0,25 contre 24 sur 36 à 0,40).</td>
+</tr>
+<tr>
+<td><code>fit_max_angle</code></td>
+<td>180</td>
+<td>Demi-amplitude de la recherche en rotation, en degrés. 180 balaye toutes les orientations possibles.</td>
+<td>L'abaisser (30 par exemple) pour ne corriger que la position quand l'orientation courante est déjà jugée bonne.</td>
+</tr>
+<tr>
+<td><code>fit_cloud_dist_rel</code></td>
+<td>0,15</td>
+<td>Distance au-delà de laquelle un point du nuage ne décrit plus le bloc. Fixe aussi l'échelle du critère.</td>
+<td>La resserrer sur un levé très propre, la desserrer sur un nuage bruité ou une couche mal séparée.</td>
+</tr>
+<tr>
+<td><code>fit_visible_weight_rel</code></td>
+<td>0,56</td>
+<td>Poids du terme « surface exposée sans points », en proportion de <code>fit_cloud_dist_rel</code>.</td>
+<td><strong>0 le désactive</strong> : le critère se réduit alors à la distance au nuage et au non-recouvrement. C'est le premier réglage à essayer si des blocs déjà bien posés se retournent. Le gain plafonne entre 0,56 et 1,1 ; au-delà, ce terme écrase la distance au nuage.</td>
+</tr>
+<tr>
+<td><code>fit_coverage_min</code></td>
+<td>0,05</td>
+<td>Fraction minimale de la surface du bloc devant porter des points. Garde-fou contre les poses dégénérées, pas une cible : un levé vu du dessus n'éclaire qu'une partie d'un bloc.</td>
+<td>Rarement. Ne le monter que si des blocs se posent dans le vide.</td>
+</tr>
+<tr>
+<td><code>fit_n_sample</code></td>
+<td>150</td>
+<td>Nombre de points tirés sur la surface du bloc pour mesurer le recouvrement avec les voisins.</td>
+<td>Le monter (300) sur une carapace très enchevêtrée ; le coût est linéaire.</td>
+</tr>
+<tr>
+<td><code>fit_alert_median</code></td>
+<td>0,10 m</td>
+<td>Médiane au-delà de laquelle le rapport marque le bloc d'un ⚠.</td>
+<td>À ajuster à la qualité du levé. Sans effet sur le calcul : cela ne change que le tri du rapport.</td>
+</tr>
+<tr>
+<td><code>fit_alert_visible</code></td>
+<td>0,50</td>
+<td>Même rôle, sur la part de surface exposée sans points.</td>
+<td>Idem.</td>
+</tr>
+<tr>
+<td><code>fit_deep_search</code></td>
+<td>0</td>
+<td>Budget de recherche.</td>
+<td>Depuis l'icône loupe plutôt que d'ici.</td>
+</tr>
+<tr>
+<td><code>show_fit_report</code></td>
+<td>1</td>
+<td>Ouverture automatique du rapport.</td>
+<td>Depuis la badge rapport plutôt que d'ici.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les seuils en <code>_rel</code> sont mesurés sur la <strong>taille physique du bloc</strong>
+(<code>block_size</code>), pas sur la racine cubique de son volume : pour un Coreloc de
+3 m³, la première vaut 2,39 m et la seconde 1,44 m.</p>
+<h3 id="fit-lab">Mode laboratoire<a class="headerlink" href="#fit-lab" title="Permanent link">¶</a></h3>
+<p>Le critère est <strong>homogène à une longueur</strong> : chacun de ses termes suit
+l'échelle du nuage, si bien que les valeurs par défaut ci-dessus conviennent
+en mètres, en feet comme sur maquette. Deux points d'attention :</p>
+<ul>
+<li><code>lab_tolerance_factor</code> (2,0 par défaut) desserre les tolérances de <strong>mesure</strong>
+  en mode laboratoire, parce que le bruit d'un scanner ne rétrécit pas avec la
+  maquette. Il agit sur la distance de comptage et sur la finesse de la grille
+  du terme de surface exposée. C'est le premier réglage à ajuster si
+  l'ajustement paraît nerveux en labo.</li>
+<li>Le rapport affiche <strong>deux décimales de plus</strong> en mode laboratoire : à cette
+  échelle, les déplacements se comptent en dixièmes de millimètre.</li>
+</ul>
+<h3 id="fit-diagnostics">Diagnostic<a class="headerlink" href="#fit-diagnostics" title="Permanent link">¶</a></h3>
+<p>La console garde une ligne <code>[FIT]</code> par bloc : médiane et valeur du critère
+avant puis après, nombre de générations et temps de calcul. Deux indicateurs
+sont en plus écrits sur le bloc, lisibles dans
+<a href="../metadata/#show-metadata-block"><code>Afficher les métadonnées</code></a>, section
+« Autre » :</p>
+<ul>
+<li><code>visible_uncovered</code> : part de la surface exposée que le levé n'a pas
+  instrumentée, c'est la colonne <code>Exposé</code> du rapport ;</li>
+<li><code>restart_agreement</code> : part des recherches indépendantes ayant convergé vers
+  la pose retenue. 1,0 signifie qu'elles sont toutes d'accord ; une valeur
+  basse signale un résultat à rejouer, au besoin en recherche approfondie.</li>
+</ul>
 <h2 id="filter-blocks">Filtrer les blocs<a class="headerlink" href="#filter-blocks" title="Permanent link">¶</a></h2>
 <p>Supprime les blocs ne respectant pas certains seuils de qualité :
 <strong>distance médiane</strong> au nuage, <strong>accuracy</strong>, ou <strong>nombre de points</strong> de
@@ -959,6 +1130,34 @@ groupements existants.</p>
         <a href="#help-register" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#help-register');">
             Aider le recalage
         </a>
+        
+
+        
+        <a href="#fit-position" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#fit-position');">
+            Ajuster la position
+        </a>
+        
+        
+        <a href="#bouton-recherche-approfondie" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#bouton-recherche-approfondie');">
+            Bouton « Recherche approfondie »
+        </a>
+        
+        <a href="#rapport-dajustement" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#rapport-dajustement');">
+            Rapport d'ajustement
+        </a>
+        
+        <a href="#fit-settings" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-settings');">
+            Réglages
+        </a>
+        
+        <a href="#fit-lab" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-lab');">
+            Mode laboratoire
+        </a>
+        
+        <a href="#fit-diagnostics" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#fit-diagnostics');">
+            Diagnostic
+        </a>
+        
         
 
         
