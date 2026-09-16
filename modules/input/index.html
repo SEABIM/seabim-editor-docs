@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-08-19T08:51:43+04:00');
+        const date = new Date('2026-09-16T09:01:03+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -567,20 +567,29 @@ créés sont placés aux positions du CSV ; leur recalage fin sur le nuage
 reste à faire via le module <a href="../edit/">Édition</a>.</p>
 <p>La modale d'import facilite la lecture de fichiers hétérogènes :</p>
 <ul>
-<li><strong>Choix du séparateur</strong> : <code>Auto</code> (détection automatique), <code>,</code>, <code>;</code> ou
-  tabulation. Le mode <code>Auto</code> analyse les premières lignes pour deviner le
-  bon séparateur.</li>
+<li><strong>Choix du séparateur</strong> : <code>Auto</code> (détection automatique), <code>,</code>, <code>;</code>,
+  tabulation ou barre verticale. Le mode <code>Auto</code> analyse les premières lignes
+  pour deviner le bon séparateur.</li>
+<li><strong>Affectation des colonnes</strong> : chaque champ attendu par l'éditeur reçoit une
+  colonne du fichier. L'affectation est devinée à partir des en-têtes, quel que
+  soit leur ordre, et reste modifiable à la main pour un fichier dont les
+  colonnes portent d'autres noms.</li>
 <li><strong>Aperçu interprété</strong> : les premières lignes du fichier sont affichées
-  telles qu'elles seront lues, pour vérifier le découpage en colonnes avant
-  de valider.</li>
+  telles qu'elles seront lues, pour vérifier l'affectation avant de valider.</li>
 <li><strong>Offset automatique</strong> : pour de grandes coordonnées (UTM par exemple), un
   offset est proposé pour ramener les positions dans une plage exploitable.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Format du CSV</p>
-<p>Le CSV attend une ligne par bloc et <strong>16 colonnes</strong> dans l'ordre
-<code>Id;Plan;Section;BlockNr;Type;Volume;…;BlockR;BlockP;BlockH</code>. Le format
-précis est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Formats de fichiers § Fichiers
+<p>Le CSV attend une ligne par bloc et une ligne d'en-tête. Seuls <code>BlockX</code>,
+<code>BlockY</code>, <code>BlockZ</code> et <code>Volume</code> sont obligatoires ; <code>Section</code>, <code>BlockNr</code> et
+<code>BlockR</code>/<code>BlockP</code>/<code>BlockH</code> prennent une valeur par défaut s'ils sont
+absents. L'ordre des colonnes est libre et les colonnes surnuméraires sont
+ignorées : un export POSIBLOC, VOSS ou personnalisé de l'éditeur se
+réimporte tel quel.</p>
+<p>Les nombres sont acceptés au format français comme anglais (<code>12,4</code> ou
+<code>12.4</code>), et un fichier enregistré par Excel en ANSI est lu correctement.
+Le format des exports est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Formats de fichiers § Fichiers
 CSV</a>.</p>
 </div>
   </div>

@@ -379,7 +379,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-09-16T09:01:03+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -604,6 +604,10 @@ sont également stockées dans le fichier de structure.</p>
 (actions <a href="../../modules/input/#import-csv"><code>Importer un CSV</code></a> et <a href="../../modules/output/#export-csv"><code>Exporter un CSV</code></a>). Ils contiennent typiquement une
 ligne par bloc avec, en colonnes, les métadonnées à transférer
 (coordonnées, numéro de plot, type, etc.).</p>
+<p>À l'import, les colonnes sont reconnues par leur en-tête et non par leur
+position : les trois formats d'export de l'éditeur (POSIBLOC, VOSS et
+personnalisé) se réimportent tels quels, tout comme un fichier tiers dont les
+colonnes sont dans un autre ordre.</p>
 <p>Le module <a href="../../modules/edit/">Édition</a> utilise également des CSV de plan
 (action <a href="../../modules/edit/#find-names"><code>Trouver les noms</code></a>) pour assigner des
 numéros de panneau / bloc à partir d'un plan de pose.</p>
