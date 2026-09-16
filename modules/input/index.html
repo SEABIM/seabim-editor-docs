@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-16T09:01:03+04:00');
+        const date = new Date('2026-09-16T14:42:07+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -574,6 +574,9 @@ reste à faire via le module <a href="../edit/">Édition</a>.</p>
   colonne du fichier. L'affectation est devinée à partir des en-têtes, quel que
   soit leur ordre, et reste modifiable à la main pour un fichier dont les
   colonnes portent d'autres noms.</li>
+<li><strong>Volume</strong> : quand le fichier ne porte aucune colonne de volume, la valeur
+  saisie ici s'applique à tous les blocs, au même titre que le type de bloc.
+  C'est le cas d'un export VOSS.</li>
 <li><strong>Aperçu interprété</strong> : les premières lignes du fichier sont affichées
   telles qu'elles seront lues, pour vérifier l'affectation avant de valider.</li>
 <li><strong>Offset automatique</strong> : pour de grandes coordonnées (UTM par exemple), un
@@ -585,8 +588,11 @@ reste à faire via le module <a href="../edit/">Édition</a>.</p>
 <code>BlockY</code>, <code>BlockZ</code> et <code>Volume</code> sont obligatoires ; <code>Section</code>, <code>BlockNr</code> et
 <code>BlockR</code>/<code>BlockP</code>/<code>BlockH</code> prennent une valeur par défaut s'ils sont
 absents. L'ordre des colonnes est libre et les colonnes surnuméraires sont
-ignorées : un export POSIBLOC, VOSS ou personnalisé de l'éditeur se
-réimporte tel quel.</p>
+ignorées : un export POSIBLOC ou personnalisé de l'éditeur se réimporte
+tel quel. Un export VOSS ne portant pas de colonne de volume, celui-ci se
+saisit dans la modale ; ce format écrivant par ailleurs les angles sous
+forme normalisée, les orientations réimportées ne sont pas identiques à
+celles d'origine.</p>
 <p>Les nombres sont acceptés au format français comme anglais (<code>12,4</code> ou
 <code>12.4</code>), et un fichier enregistré par Excel en ANSI est lu correctement.
 Le format des exports est documenté côté <a href="../../workflow/formats-fichiers/#csv-files">Formats de fichiers § Fichiers

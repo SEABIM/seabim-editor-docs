@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-16T09:01:03+04:00');
+        const date = new Date('2026-09-16T14:42:07+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -579,6 +579,9 @@ cloud still needs to be done via the <a href="../edit/">Edit</a> module.</p>
 <li><strong>Column mapping</strong>: each field expected by the editor is fed by one column
   of the file. The mapping is guessed from the headers, whatever their order,
   and stays editable by hand for a file whose columns carry other names.</li>
+<li><strong>Volume</strong>: when the file carries no volume column, the value entered here
+  applies to every block, just like the block type. This is the case for a VOSS
+  export.</li>
 <li><strong>Interpreted preview</strong>: the first lines of the file are shown as they
   will be read, to check the mapping before confirming.</li>
 <li><strong>Automatic offset</strong>: for large coordinates (UTM for example), an offset
@@ -589,8 +592,11 @@ cloud still needs to be done via the <a href="../edit/">Edit</a> module.</p>
 <p>The CSV expects one row per block plus a header row. Only <code>BlockX</code>,
 <code>BlockY</code>, <code>BlockZ</code> and <code>Volume</code> are required; <code>Section</code>, <code>BlockNr</code> and
 <code>BlockR</code>/<code>BlockP</code>/<code>BlockH</code> fall back to a default value when absent.
-Column order is free and extra columns are ignored: a POSIBLOC, VOSS or
-custom export of the editor can be re-imported as is.</p>
+Column order is free and extra columns are ignored: a POSIBLOC or custom
+export of the editor can be re-imported as is. A VOSS export carries no
+volume column, so the volume is entered in the dialog; that format also
+writes normalised angles, so re-imported orientations are not identical to
+the original ones.</p>
 <p>Numbers are accepted in French as well as English notation (<code>12,4</code> or
 <code>12.4</code>), and a file saved by Excel in ANSI is read correctly. The export
 formats are documented in <a href="../../workflow/formats-fichiers/#csv-files">File formats § CSV

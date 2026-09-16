@@ -379,7 +379,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-16T09:01:03+04:00');
+        const date = new Date('2026-09-16T14:42:07+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -603,9 +603,11 @@ CSV</code></a>). They typically hold one row per
 block with, in columns, the metadata to transfer (coordinates, plot
 number, type, etc.).</p>
 <p>On import, columns are recognised by their header rather than by their
-position: the editor's three export formats (POSIBLOC, VOSS and custom) can
-all be re-imported as is, as can a third-party file whose columns come in a
-different order.</p>
+position: the editor's export formats can be re-imported, as can a third-party
+file whose columns come in a different order. A POSIBLOC or custom export comes
+back identical; a VOSS export carries no volume column (it is then entered in
+the import dialog) and writes normalised angles, so re-imported orientations
+differ from the original ones.</p>
 <p>The <a href="../../modules/edit/">Edit</a> module also uses placement plan CSVs
 (action <a href="../../modules/edit/#find-names"><code>Find names</code></a>) to assign panel /
 block numbers from a placement plan.</p>
