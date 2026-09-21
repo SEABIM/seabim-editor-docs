@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-16T14:42:07+04:00');
+        const date = new Date('2026-09-17T14:09:08+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -574,6 +574,12 @@ reste à faire via le module <a href="../edit/">Édition</a>.</p>
   colonne du fichier. L'affectation est devinée à partir des en-têtes, quel que
   soit leur ordre, et reste modifiable à la main pour un fichier dont les
   colonnes portent d'autres noms.</li>
+<li><strong>Première ligne</strong> : la case <code>First row is a header</code> est cochée ou non selon ce
+  que contient le fichier. Décochée, la première ligne est lue comme une donnée et
+  les colonnes sont nommées <code>a1</code>, <code>a2</code>, …</li>
+<li><strong>Découpage d'une colonne</strong> : une colonne qui concatène deux champs se coupe sur
+  un séparateur (<code>-</code> par défaut), au dernier ou au premier. Les deux morceaux
+  s'ajoutent à la liste des colonnes affectables.</li>
 <li><strong>Volume</strong> : quand le fichier ne porte aucune colonne de volume, la valeur
   saisie ici s'applique à tous les blocs, au même titre que le type de bloc.
   C'est le cas d'un export VOSS.</li>

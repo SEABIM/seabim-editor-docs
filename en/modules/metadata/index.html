@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-09-21T17:17:34+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -551,6 +551,28 @@ block's validation state among three values:</p>
 <p>This status is shared with the cloud viewer and used to track the quality
 review.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_meta_edit.png" data-desc-position="bottom"><img alt="Metadata editor" src="../../../assets/images/cc_meta_edit.png"></a></p>
+<h3 id="comments-log">Comments log<a class="headerlink" href="#comments-log" title="Permanent link">¶</a></h3>
+<p>The <strong><code>Comments</code></strong> field keeps a timestamped log per block. Each entry
+carries its date, its author and its type: either a free comment, or an audit
+event written automatically on every <code>Validation status</code> change.</p>
+<ul>
+<li><strong>Post</strong>: type the text, then click <strong><code>Send</code></strong> or press <span class="keys"><kbd class="key-enter">Enter</kbd></span>. The
+  comment is written immediately, without going through <code>Save values</code>. Text
+  left in the field is not a comment: it is discarded when you change block,
+  with a warning.</li>
+<li><strong>Edit</strong>: the ✎ icon of an entry reopens its text. The original date and
+  author are kept.</li>
+<li><strong>Delete</strong>: the × icon removes the entry, after confirmation.</li>
+</ul>
+<p>Validation audit events carry neither ✎ nor ×: they record the status history
+and cannot be altered.</p>
+<h3 id="comment-author">Comment author<a class="headerlink" href="#comment-author" title="Permanent link">¶</a></h3>
+<p>On your first post, a dialog asks for the <strong>display name</strong> to use as the
+author. It is stored in the preferences (<code>comment_author</code> parameter, editable
+at any time with <span class="keys"><kbd class="key-control">Ctrl</kbd></span>,) and is also used for validation audit events.
+Declining to give a name cancels the post.</p>
+<p>This name is declarative: it identifies the operator, it does not
+authenticate them. Anyone can edit or delete anyone's comments.</p>
 <h2 id="show-metadata-block">Show metadata (Block)<a class="headerlink" href="#show-metadata-block" title="Permanent link">¶</a></h2>
 <p><strong>Category: Block · Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-m">M</kbd></span></strong></p>
 <p>Displays in read-only mode the metadata of the selected block, <strong>grouped
@@ -787,6 +809,16 @@ with no risk of modification.</p>
         <a href="#metadata-editor-block" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#metadata-editor-block');">
             Metadata editor (Block)
         </a>
+        
+        
+        <a href="#comments-log" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#comments-log');">
+            Comments log
+        </a>
+        
+        <a href="#comment-author" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#comment-author');">
+            Comment author
+        </a>
+        
         
 
         

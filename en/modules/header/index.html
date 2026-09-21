@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-08-19T11:51:32+04:00');
+        const date = new Date('2026-09-21T17:17:34+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -538,6 +538,32 @@ didn't propagate).</p>
 control</a> modules: computing a filter produces a scalar field,
 <code>Change color scale</code> lets you visualize it.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_color_panel.png" data-desc-position="bottom"><img alt="Color scale" src="../../../assets/images/cc_color_panel.png"></a></p>
+<h2 id="toggle-color-scale">Toggle color scale<a class="headerlink" href="#toggle-color-scale" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-l">L</kbd></span></strong></p>
+<p>The counterpart of <a href="#change-color-scale"><code>Change color scale</code></a>: that one
+picks the field and the palette, this one <strong>shows or hides the graduated
+bar</strong> in the 3D view. The bar is titled with the name of the displayed
+field and its unit.</p>
+<p>The choice is <strong>persisted</strong> to <code>parameters.json</code> (<code>show_color_scale</code>
+parameter, on by default): it survives a CloudCompare restart and decides
+whether the bar appears automatically on every new coloring.</p>
+<p>Turning the bar back on <strong>does not recolor the scene</strong>: SEABIM Editor
+replays the last legend known in the session.</p>
+<div class="admonition note">
+<p class="admonition-title">Nothing to show before the first coloring</p>
+<p>If no coloring has happened yet since CloudCompare was opened, turning
+the bar back on displays nothing and a message says so: it will appear
+on the next coloring.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">The <code>SEABIM color scale</code> entity in the tree</p>
+<p>CloudCompare cannot draw a graduated bar at the window level: it is
+necessarily carried by an entity. SEABIM Editor therefore maintains one,
+named <code>SEABIM color scale</code>, visible in the object tree. It is excluded
+from every computation (registration, accuracy, distances to the cloud)
+and recreates itself on each coloring: no need to delete it, and better
+not to rename it.</p>
+</div>
 <h2 id="display-by-type">Display by type<a class="headerlink" href="#display-by-type" title="Permanent link">¶</a></h2>
 <p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></strong></p>
 <p>Opens a dialog that lets you <strong>show only certain block types and certain
@@ -563,6 +589,21 @@ simply restricted to the selection.</p>
 window: you can export several subsets in a row, then click <code>Apply</code> (or
 <code>Cancel</code>) to decide separately what stays visible. If no block matches
 the ticked boxes, no file is written and a message says so.</p>
+</div>
+<h2 id="toggle-transparency">Toggle transparency<a class="headerlink" href="#toggle-transparency" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span></strong></p>
+<p>Makes the <strong>selected blocks translucent</strong>, so the point cloud shows through
+them. This is the most direct way to judge a registration or a doubtful
+position without hiding or moving anything.</p>
+<p>The button is a toggle: pressing it again restores opacity on <strong>the whole
+scene</strong>, even if the selection changed in between. A block made translucent
+then deselected therefore always stays recoverable.</p>
+<div class="admonition note">
+<p class="admonition-title">Coloring comes back when you switch off</p>
+<p>A translucent block is drawn in a neutral gray: CloudCompare's Python
+API cannot apply transparency while keeping the color of a scalar
+field. The scalar field itself is never modified, and the original
+coloring is restored as soon as the block goes back to opaque.</p>
 </div>
 <h2 id="switch-units">Switch to meters / feet<a class="headerlink" href="#switch-units" title="Permanent link">¶</a></h2>
 <p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></strong></p>
@@ -622,7 +663,8 @@ session starts in normal view.</p>
 current session, grouped by origin:</p>
 <ul>
 <li>The header actions (Undo, Redo, Update view, Change color scale,
-  Display by type, Switch to meters / feet, Settings, Reduce window,
+  Toggle color scale, Display by type, Toggle transparency,
+  Switch to meters / feet, Settings, Reduce window,
   Shortcuts help).</li>
 <li>The actions of the modules that declare a shortcut (for example
   <a href="../edit/#register-selection---adaptive-dist"><code>Register selection - Adaptive
@@ -875,6 +917,12 @@ when the focus is on a child dialog.</p>
         
 
         
+        <a href="#toggle-color-scale" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#toggle-color-scale');">
+            Toggle color scale
+        </a>
+        
+
+        
         <a href="#display-by-type" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#display-by-type');">
             Display by type
         </a>
@@ -884,6 +932,12 @@ when the focus is on a child dialog.</p>
             Export the selection to JSON
         </a>
         
+        
+
+        
+        <a href="#toggle-transparency" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#toggle-transparency');">
+            Toggle transparency
+        </a>
         
 
         

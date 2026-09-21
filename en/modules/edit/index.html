@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-08T10:35:31+04:00');
+        const date = new Date('2026-09-17T14:09:08+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -806,31 +806,42 @@ block's 3D position to a <strong>placement plan</strong> in CSV format.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>Reference plan</code></td>
-<td>Path of the placement plan CSV used to name the blocks.</td>
+<td><code>Browse…</code></td>
+<td>The placement plan CSV used to name the blocks.</td>
 </tr>
 <tr>
-<td><code>Plan format</code></td>
-<td>Format of the plan (expected columns).</td>
+<td><code>Separator</code></td>
+<td><code>Auto</code> (auto-detection), <code>,</code>, <code>;</code>, tab or pipe.</td>
 </tr>
 <tr>
-<td><code>Max distance</code></td>
-<td>Maximum distance, in meters, between a block's center and the matching point on the plan. Past that, the block is "off plan".</td>
+<td><code>First row is a header</code></td>
+<td>Guessed when the file is opened. Unchecked, the first row is read as data and the columns are named <code>a1</code>, <code>a2</code>, …</td>
 </tr>
 <tr>
-<td><code>Change only blocks without name</code></td>
-<td>Only update plot/block numbers for blocks that are <strong>not yet numbered</strong>.</td>
+<td><code>Split a column</code></td>
+<td>Splits a column on a separator (<code>-</code> by default), at the last or the first one. Both parts become columns you can assign.</td>
 </tr>
 <tr>
-<td><code>Offset for renamed block number</code></td>
-<td>If set, the assigned block numbers form a sequence starting at this value.</td>
+<td><code>Column mapping</code></td>
+<td>Each expected field gets a column of the plan. <code>NumSection</code>, <code>NumBlock</code>, <code>X</code> and <code>Y</code> are required; <code>Z</code> enables 3D matching and <code>NumPrefa</code> fills the prefab number.</td>
 </tr>
 <tr>
-<td><code>Plot name for blocks outside the plan</code></td>
-<td>Plot name given to blocks whose distance to the plan is greater than <code>Max distance</code>.</td>
+<td><code>Match tolerance (× block size)</code></td>
+<td>A plan point matches a block if their distance is less than this factor times the block size. The value is saved as the new default.</td>
 </tr>
 </tbody>
 </table></div>
+<p>The mapping is guessed from the headers whatever their order and stays editable by
+hand. The preview shows the values as they will be read, and <code>Run</code> stays disabled
+until every required field has a column. Blocks that no plan point reaches within
+the tolerance are named <code>Unknown_xx</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Plan without a header, or concatenated block name</p>
+<p>A plan whose first row is already data, or whose single column carries both the
+section and the block number (<code>P12-A-01</code>), is read without prior editing: uncheck
+<code>First row is a header</code>, split the column on <code>-</code> at the last separator, then
+assign <code>P12-A</code> to <code>NumSection</code> and <code>01</code> to <code>NumBlock</code>.</p>
+</div>
 <h2 id="safe-delete">Safe delete<a class="headerlink" href="#safe-delete" title="Permanent link">¶</a></h2>
 <p>Removes the selected blocks while keeping an <strong>undo checkpoint</strong>. Unlike
 direct deletion via CloudCompare, this action lets you roll back via the

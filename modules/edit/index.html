@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-08T10:35:31+04:00');
+        const date = new Date('2026-09-17T14:09:08+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -810,31 +810,43 @@ correspondre leur position 3D à un <strong>plan de pose</strong> au format CSV.
 </thead>
 <tbody>
 <tr>
-<td><code>Reference plan</code></td>
-<td>Chemin du plan de pose CSV utilisé pour nommer les blocs.</td>
+<td><code>Browse…</code></td>
+<td>Le plan de pose CSV utilisé pour nommer les blocs.</td>
 </tr>
 <tr>
-<td><code>Plan format</code></td>
-<td>Format du plan (colonnes attendues).</td>
+<td><code>Separator</code></td>
+<td><code>Auto</code> (détection automatique), <code>,</code>, <code>;</code>, tabulation ou barre verticale.</td>
 </tr>
 <tr>
-<td><code>Max distance</code></td>
-<td>Distance maximale, en mètres, entre le centre d'un bloc et le point correspondant sur le plan. Au-delà, le bloc est considéré « hors plan ».</td>
+<td><code>First row is a header</code></td>
+<td>Devinée à l'ouverture du fichier. Décochée, la première ligne est lue comme une donnée et les colonnes sont nommées <code>a1</code>, <code>a2</code>, …</td>
 </tr>
 <tr>
-<td><code>Change only blocks without name</code></td>
-<td>Ne met à jour que les numéros de plot/cible des blocs <strong>non encore numérotés</strong>.</td>
+<td><code>Split a column</code></td>
+<td>Découpe une colonne sur un séparateur (<code>-</code> par défaut), au dernier ou au premier. Les deux morceaux deviennent des colonnes affectables.</td>
 </tr>
 <tr>
-<td><code>Offset for renamed block number</code></td>
-<td>Si renseigné, les numéros de cible attribués sont une suite d'entiers commençant à partir de cette valeur.</td>
+<td><code>Column mapping</code></td>
+<td>Chaque champ attendu reçoit une colonne du plan. <code>NumSection</code>, <code>NumBlock</code>, <code>X</code> et <code>Y</code> sont obligatoires ; <code>Z</code> active l'appariement 3D et <code>NumPrefa</code> renseigne le numéro de préfabrication.</td>
 </tr>
 <tr>
-<td><code>Plot name for blocks outside the plan</code></td>
-<td>Nom de plot donné aux blocs dont la distance au plan est supérieure à <code>Max distance</code>.</td>
+<td><code>Match tolerance (× block size)</code></td>
+<td>Un point du plan correspond à un bloc si leur distance est inférieure à ce facteur multiplié par la taille du bloc. La valeur est enregistrée comme nouveau défaut.</td>
 </tr>
 </tbody>
 </table></div>
+<p>L'affectation est devinée à partir des en-têtes quel que soit leur ordre et reste
+modifiable à la main. L'aperçu montre les valeurs telles qu'elles seront lues, et
+<code>Run</code> reste inactif tant qu'un champ obligatoire n'a pas de colonne. Les blocs
+qu'aucun point du plan n'atteint dans la tolérance sont nommés <code>Unknown_xx</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Plan sans en-tête, ou nom de bloc concaténé</p>
+<p>Un plan dont la première ligne est déjà une donnée, ou dont une colonne unique
+porte à la fois la section et le numéro de bloc (<code>P12-A-01</code>), se lit sans
+retouche préalable : décochez <code>First row is a header</code>, découpez la colonne sur
+<code>-</code> au dernier séparateur, puis affectez <code>P12-A</code> à <code>NumSection</code> et <code>01</code> à
+<code>NumBlock</code>.</p>
+</div>
 <h2 id="safe-delete">Suppression sécurisée<a class="headerlink" href="#safe-delete" title="Permanent link">¶</a></h2>
 <p>Supprime les blocs sélectionnés en gardant un <strong>checkpoint d'annulation</strong>.
 Contrairement à une suppression directe via CloudCompare, cette action

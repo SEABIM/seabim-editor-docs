@@ -379,7 +379,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-08T10:35:31+04:00');
+        const date = new Date('2026-09-21T17:17:34+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -428,9 +428,19 @@ launcher.</p>
 <td>Opens the color picker dialog.</td>
 </tr>
 <tr>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-l">L</kbd></span></td>
+<td><a href="../../modules/header/#toggle-color-scale">Toggle color scale</a></td>
+<td>Shows/hides the graduated bar in the view.</td>
+</tr>
+<tr>
 <td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></td>
 <td><a href="../../modules/header/#display-by-type">Display by type</a></td>
 <td>Shows/hides blocks by type and volume.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span></td>
+<td><a href="../../modules/header/#toggle-transparency">Toggle transparency</a></td>
+<td>Makes the selected blocks translucent.</td>
 </tr>
 <tr>
 <td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></td>
@@ -449,6 +459,15 @@ launcher.</p>
 </tr>
 </tbody>
 </table></div>
+<div class="admonition note">
+<p class="admonition-title">SEABIM shortcuts take precedence over CloudCompare's</p>
+<p>CloudCompare assigns <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span> to <code>Apply transformation</code> and <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span>
+to <code>Enable visual debug traces</code>. Two identical shortcuts active at the
+same time trigger neither: when the launcher opens, SEABIM Editor
+therefore removes those shortcuts from the CloudCompare actions, which
+stay reachable from their menus. They return to CloudCompare when the
+application restarts.</p>
+</div>
 <h2 id="edit-module">Edit module<a class="headerlink" href="#edit-module" title="Permanent link">¶</a></h2>
 <div class="table-wrapper"><table>
 <thead>

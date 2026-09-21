@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-06-18T13:59:30+04:00');
+        const date = new Date('2026-09-21T17:17:34+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -550,6 +550,28 @@ de validation du bloc parmi trois valeurs :</p>
 <p>Ce statut est partagé avec le cloud-viewer et exploité pour le suivi de la
 revue qualité.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_meta_edit.png" data-desc-position="bottom"><img alt="Éditeur de métadonnées" src="../../assets/images/cc_meta_edit.png"></a></p>
+<h3 id="comments-log">Journal de commentaires<a class="headerlink" href="#comments-log" title="Permanent link">¶</a></h3>
+<p>Le champ <strong><code>Comments</code></strong> tient un journal horodaté par bloc. Chaque entrée
+porte sa date, son auteur et son type : un commentaire libre, ou un événement
+d'audit écrit automatiquement à chaque changement de <code>Validation status</code>.</p>
+<ul>
+<li><strong>Publier</strong> : saisir le texte, puis cliquer sur <strong><code>Send</code></strong> ou appuyer sur
+  <span class="keys"><kbd class="key-enter">Enter</kbd></span>. Le commentaire est écrit aussitôt, sans passer par
+  <code>Save values</code>. Un texte laissé dans le champ n'est pas un commentaire : il
+  est abandonné au changement de bloc, avec un avertissement.</li>
+<li><strong>Modifier</strong> : l'icône ✎ d'une entrée rouvre son texte. La date et l'auteur
+  d'origine sont conservés.</li>
+<li><strong>Supprimer</strong> : l'icône × retire l'entrée, après confirmation.</li>
+</ul>
+<p>Les événements d'audit de validation ne portent ni ✎ ni × : ils tracent
+l'historique des statuts et ne sont pas retouchables.</p>
+<h3 id="comment-author">Auteur des commentaires<a class="headerlink" href="#comment-author" title="Permanent link">¶</a></h3>
+<p>Au premier envoi, une fenêtre demande le <strong>nom à afficher</strong> comme auteur. Il
+est mémorisé dans les préférences (paramètre <code>comment_author</code>, modifiable à
+tout moment par <span class="keys"><kbd class="key-control">Ctrl</kbd></span>,) et sert aussi aux événements d'audit de
+validation. Renoncer à se nommer annule l'envoi.</p>
+<p>Ce nom est déclaratif : il identifie l'opérateur, il ne l'authentifie pas.
+Chacun peut modifier ou supprimer les commentaires de tous.</p>
 <h2 id="show-metadata-block">Afficher les métadonnées (bloc)<a class="headerlink" href="#show-metadata-block" title="Permanent link">¶</a></h2>
 <p><strong>Catégorie : Bloc · Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-m">M</kbd></span></strong></p>
 <p>Affiche en lecture seule les métadonnées du bloc sélectionné, <strong>regroupées
@@ -786,6 +808,16 @@ de consultation rapide sans risque de modification.</p>
         <a href="#metadata-editor-block" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#metadata-editor-block');">
             Éditeur de métadonnées (bloc)
         </a>
+        
+        
+        <a href="#comments-log" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#comments-log');">
+            Journal de commentaires
+        </a>
+        
+        <a href="#comment-author" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="3" onclick="deferSetActiveTocLink('#comment-author');">
+            Auteur des commentaires
+        </a>
+        
         
 
         

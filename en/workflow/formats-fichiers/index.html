@@ -379,7 +379,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-16T14:42:07+04:00');
+        const date = new Date('2026-09-17T14:09:08+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -608,9 +608,14 @@ file whose columns come in a different order. A POSIBLOC or custom export comes
 back identical; a VOSS export carries no volume column (it is then entered in
 the import dialog) and writes normalised angles, so re-imported orientations
 differ from the original ones.</p>
+<p>A file without a header row is accepted: its columns are then named <code>a1</code>, <code>a2</code>,
+… and assigned by hand. A column concatenating two fields (<code>P12-A-01</code>) can be
+split on a separator, and both parts are assigned like ordinary columns.</p>
 <p>The <a href="../../modules/edit/">Edit</a> module also uses placement plan CSVs
 (action <a href="../../modules/edit/#find-names"><code>Find names</code></a>) to assign panel /
-block numbers from a placement plan.</p>
+block numbers from a placement plan. Such a plan is read with the same column
+mapping as the import: <code>NumSection</code>, <code>NumBlock</code>, <code>X</code> and <code>Y</code> are needed, <code>Z</code> and
+<code>NumPrefa</code> are optional, and their names as well as their order are free.</p>
 <h2 id="cloudcompare-bin-files">CloudCompare BIN files<a class="headerlink" href="#cloudcompare-bin-files" title="Permanent link">¶</a></h2>
 <p>CloudCompare BIN files are CloudCompare's native save files. They serve
 to save a CloudCompare scene, possibly holding one or several point

@@ -379,7 +379,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-08T10:35:31+04:00');
+        const date = new Date('2026-09-21T17:17:34+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -428,9 +428,19 @@ bouton correspondant dans le launcher.</p>
 <td>Ouvre la modale de coloration.</td>
 </tr>
 <tr>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-l">L</kbd></span></td>
+<td><a href="../../modules/header/#toggle-color-scale">Afficher/masquer l'échelle</a></td>
+<td>Montre/masque la barre graduée dans la vue.</td>
+</tr>
+<tr>
 <td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></td>
 <td><a href="../../modules/header/#display-by-type">Afficher par type</a></td>
 <td>Masque/affiche les blocs par type et volume.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span></td>
+<td><a href="../../modules/header/#toggle-transparency">Transparence de la sélection</a></td>
+<td>Rend les blocs sélectionnés translucides.</td>
 </tr>
 <tr>
 <td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span></td>
@@ -449,6 +459,15 @@ bouton correspondant dans le launcher.</p>
 </tr>
 </tbody>
 </table></div>
+<div class="admonition note">
+<p class="admonition-title">Les raccourcis SEABIM priment sur ceux de CloudCompare</p>
+<p>CloudCompare attribue de son côté <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-t">T</kbd></span> à <code>Apply transformation</code> et
+<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span> à <code>Enable visual debug traces</code>. Deux raccourcis identiques
+actifs en même temps n'en déclenchent aucun des deux : à l'ouverture du
+launcher, SEABIM Editor retire donc ces raccourcis aux actions de
+CloudCompare, qui restent accessibles par leurs menus. Ils reviennent à
+CloudCompare au redémarrage de l'application.</p>
+</div>
 <h2 id="module-edition">Module Édition<a class="headerlink" href="#module-edition" title="Permanent link">¶</a></h2>
 <div class="table-wrapper"><table>
 <thead>
