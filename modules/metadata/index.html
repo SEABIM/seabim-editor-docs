@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-21T17:17:34+04:00');
+        const date = new Date('2026-09-29T15:13:17+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -500,11 +500,12 @@
 <p>Le module <strong>Métadonnées</strong> regroupe les outils d'<strong>édition des métadonnées
 des blocs</strong> : changement de valeur d'un paramètre, renumérotation, et
 consultation / édition fine d'un bloc unitaire.</p>
-<p>Les 4 actions sont réparties en deux catégories :</p>
+<p>Les 5 actions sont réparties en trois catégories :</p>
 <ul>
 <li><strong>Lot</strong> : agit sur tous les blocs actuellement sélectionnés dans la
   scène CloudCompare.</li>
 <li><strong>Bloc</strong> : agit sur le bloc unique sélectionné.</li>
+<li><strong>Statistiques</strong> : décompte en lecture seule, sur la sélection ou toute la scène.</li>
 </ul>
 <h2 id="change-parameter-batch">Changer un paramètre (lot)<a class="headerlink" href="#change-parameter-batch" title="Permanent link">¶</a></h2>
 <p><strong>Catégorie : Lot</strong></p>
@@ -578,6 +579,19 @@ Chacun peut modifier ou supprimer les commentaires de tous.</p>
 par catégorie</strong> (<code>Base</code>, <code>Filtre</code>, <code>Autre</code>). Action
 de consultation rapide sans risque de modification.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_meta_view.png" data-desc-position="bottom"><img alt="Afficher les métadonnées" src="../../assets/images/cc_meta_view.png"></a></p>
+<h2 id="block-counts">Comptage des blocs<a class="headerlink" href="#block-counts" title="Permanent link">¶</a></h2>
+<p><strong>Catégorie : Statistiques</strong></p>
+<p>Compte les blocs <strong>par type</strong>, <strong>par package</strong> et <strong>par plot</strong>, plus un onglet
+<strong>par JSON</strong> (dossier de premier niveau du DB tree créé par
+<a href="../input/#load-json"><code>Charger un JSON</code></a>).</p>
+<ul>
+<li><strong>Rien de sélectionné</strong> : tous les JSON de la scène.</li>
+<li><strong>Un ou plusieurs dossiers JSON sélectionnés</strong> : uniquement leurs blocs. On
+  peut aussi sélectionner un groupe de panneau ou quelques blocs.</li>
+</ul>
+<p>Chaque tableau somme au total affiché en tête : les blocs sans valeur sont
+comptés sur la ligne <code>(non renseigné)</code>. Un clic sur l'en-tête d'une colonne
+trie par valeur ou par effectif. L'action ne modifie rien.</p>
   </div>
   
   <script>
@@ -823,6 +837,12 @@ de consultation rapide sans risque de modification.</p>
         
         <a href="#show-metadata-block" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#show-metadata-block');">
             Afficher les métadonnées (bloc)
+        </a>
+        
+
+        
+        <a href="#block-counts" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#block-counts');">
+            Comptage des blocs
         </a>
         
 

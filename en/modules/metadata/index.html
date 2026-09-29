@@ -487,7 +487,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-21T17:17:34+04:00');
+        const date = new Date('2026-09-29T15:13:17+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -500,11 +500,12 @@
 <p>The <strong>Metadata</strong> module groups the tools for <strong>editing block metadata</strong>:
 changing a parameter value, renumbering, and consulting / fine-editing
 a single block.</p>
-<p>The 4 actions are split into two categories:</p>
+<p>The 5 actions are split into three categories:</p>
 <ul>
 <li><strong>Batch</strong>: acts on every block currently selected in the CloudCompare
   scene.</li>
 <li><strong>Block</strong>: acts on the single selected block.</li>
+<li><strong>Statistics</strong>: read-only count, over the selection or the whole scene.</li>
 </ul>
 <h2 id="change-parameter-batch">Change parameter (Batch)<a class="headerlink" href="#change-parameter-batch" title="Permanent link">¶</a></h2>
 <p><strong>Category: Batch</strong></p>
@@ -579,6 +580,18 @@ authenticate them. Anyone can edit or delete anyone's comments.</p>
 by category</strong> (<code>Base</code>, <code>Filter</code>, <code>Other</code>). Quick consultation action
 with no risk of modification.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_meta_view.png" data-desc-position="bottom"><img alt="Show metadata" src="../../../assets/images/cc_meta_view.png"></a></p>
+<h2 id="block-counts">Block counts<a class="headerlink" href="#block-counts" title="Permanent link">¶</a></h2>
+<p><strong>Category: Statistics</strong></p>
+<p>Counts blocks <strong>by type</strong>, <strong>by package</strong> and <strong>by plot</strong>, plus a <strong>by JSON</strong>
+tab (top-level DB tree folder created by <a href="../input/#load-json"><code>Load JSON</code></a>).</p>
+<ul>
+<li><strong>Nothing selected</strong>: every JSON in the scene.</li>
+<li><strong>One or more JSON folders selected</strong>: only their blocks. A panel group or a
+  few blocks can be selected too.</li>
+</ul>
+<p>Each table adds up to the total shown at the top: blocks without a value are
+counted on the <code>(not set)</code> row. Clicking a column header sorts by value or by
+count. The action changes nothing.</p>
   </div>
   
   <script>
@@ -824,6 +837,12 @@ with no risk of modification.</p>
         
         <a href="#show-metadata-block" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#show-metadata-block');">
             Show metadata (Block)
+        </a>
+        
+
+        
+        <a href="#block-counts" class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6" data-active="false" data-depth="2" onclick="deferSetActiveTocLink('#block-counts');">
+            Block counts
         </a>
         
 
