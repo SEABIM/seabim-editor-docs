@@ -2,7 +2,7 @@
 
 The **header** is the row of icons at the top of the SEABIM Editor
 launcher. Its actions are **cross-cutting**: they are accessible from
-any tab and each one comes with a keyboard shortcut.
+any tab and most of them come with a keyboard shortcut.
 
 ![Header](../assets/images/cc_header.png)
 
@@ -86,8 +86,6 @@ replays the last legend known in the session.
     not to rename it.
 
 ## Display by type { #display-by-type }
-
-**Shortcut: ++ctrl+d++**
 
 Opens a dialog that lets you **show only certain block types and certain
 volumes**. This is a **non-destructive** display filter: it neither deletes

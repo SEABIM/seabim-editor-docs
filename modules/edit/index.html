@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-28T18:18:06+01:00');
+        const date = new Date('2026-10-29T10:26:14+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -484,7 +484,7 @@ référence. Chaque bloc est ajusté indépendamment pour minimiser sa distance 
 nuage. À utiliser après détection automatique ou après un déplacement manuel
 d'un bloc, pour affiner sa position.</p>
 <p>Tout passe par <strong>un seul bouton</strong> : par défaut il recale en <strong>distance
-adaptative</strong>, et sa <strong>petite icône curseurs</strong> donne accès à trois modes
+adaptative</strong>, et sa <strong>petite icône curseurs</strong> donne accès à deux modes
 personnalisés. Une <strong>badge <code>Rapport de recalage</code></strong> complète l'action.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_edit_register.png" data-desc-position="bottom"><img alt="Recaler la sélection" src="../../assets/images/cc_edit_register.png"></a></p>
 <h3 id="badge-rapport-de-recalage">Badge « Rapport de recalage »<a class="headerlink" href="#badge-rapport-de-recalage" title="Permanent link">¶</a></h3>
@@ -516,19 +516,15 @@ ensuite.</p>
 <td>Recale avec une <strong>distance au nuage fixe</strong> au lieu des distances adaptatives. Override <strong>persistant</strong> pour la session.</td>
 </tr>
 <tr>
-<td><strong>Nouveau volume de bloc</strong></td>
-<td><strong>Assigne un nouveau volume</strong> à la sélection (taille différente de celle détectée) puis recale. Utile quand deux volumes voisins ont été confondus (ex. 2 m³ vs 3 m³).</td>
-</tr>
-<tr>
 <td><strong>Recalage par zone</strong></td>
 <td>Recale en ne tenant compte que d'un <strong>petit morceau du nuage</strong> délimité par une boîte (voir ci-dessous).</td>
 </tr>
 </tbody>
 </table></div>
-<p>Pour les modes <strong>Distance personnalisée</strong> et <strong>Volume</strong>, la valeur saisie est
-mémorisée le temps de la session : l'icône reste <strong>orange</strong> et chaque <code>Recaler
-la sélection</code> réapplique le mode sans ressaisie. Sélectionner « effacer » dans
-la modale revient au mode adaptatif.</p>
+<p>En mode <strong>Distance personnalisée</strong>, la valeur saisie est mémorisée le temps de
+la session : l'icône reste <strong>orange</strong> et chaque <code>Recaler la sélection</code>
+réapplique le mode sans ressaisie. Sélectionner « effacer » dans la modale
+revient au mode adaptatif.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_edit_register_personal.png" data-desc-position="bottom"><img alt="Modes de recalage personnalisés" src="../../assets/images/cc_edit_register_personal.png"></a></p>
 <h3 id="register-selection---zone">Recalage par zone<a class="headerlink" href="#register-selection---zone" title="Permanent link">¶</a></h3>
 <p>Le <strong>recalage par zone</strong> restreint l'ajustement à une <strong>portion du nuage</strong>
@@ -545,10 +541,18 @@ entre deux levés).</p>
 <li>Validez : le recalage ne tient compte que des points retenus. La distance
    de crop reste <strong>adaptative</strong>.</li>
 </ol>
-<p>Contrairement aux modes Distance / Volume, le recalage par zone <strong>n'est pas un
+<p>Contrairement à la distance personnalisée, le recalage par zone <strong>n'est pas un
 override persistant</strong> : la boîte est spatiale et placée à la main à chaque
 usage.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_edit_register_zone.png" data-desc-position="bottom"><img alt="Recalage par zone" src="../../assets/images/cc_edit_register_zone.png"></a></p>
+<h2 id="change-volume">Changer le volume<a class="headerlink" href="#change-volume" title="Permanent link">¶</a></h2>
+<p><strong>Assigne un nouveau volume</strong> aux blocs sélectionnés, avec la taille qui lui
+correspond, puis les recale. Utile quand deux volumes voisins ont été confondus
+à la détection (ex. 2 m³ vs 3 m³).</p>
+<p>La modale demande le nouveau volume, en m³ (en cm³ pour une licence LAB). Le
+changement ne s'applique qu'à la sélection et une seule fois : les recalages
+suivants gardent le volume de chaque bloc. Un checkpoint est posé avant
+l'opération, qui s'annule donc comme les autres.</p>
 <h2 id="help-register">Aider le recalage<a class="headerlink" href="#help-register" title="Permanent link">¶</a></h2>
 <p>Ouvre un panneau interactif permettant de <strong>translater ou tourner</strong> le bloc
 sélectionné avant de lancer le recalage. Utile lorsque la position de
@@ -821,8 +825,9 @@ retouche préalable : décochez <code>First row is a header</code>, découpez la
 <code>NumBlock</code>.</p>
 </div>
 <h2 id="safe-delete">Suppression sécurisée<a class="headerlink" href="#safe-delete" title="Permanent link">¶</a></h2>
+<p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></strong></p>
 <p>Supprime les blocs sélectionnés en gardant un <strong>checkpoint d'annulation</strong>.
-Contrairement à une suppression directe via CloudCompare, cette action
+Contrairement à une suppression directe via CloudCompare (<span class="keys"><kbd class="key-delete">Del</kbd></span>), cette action
 permet de revenir en arrière via le bouton <a href="../header/#undo"><code>Annuler la dernière
 action</code></a> du <a href="../header/">Header</a>.</p>
 <h2 id="mark-missing-block">Marquer un bloc manquant<a class="headerlink" href="#mark-missing-block" title="Permanent link">¶</a></h2>
@@ -1103,6 +1108,12 @@ groupements existants.</p>
             Recalage par zone
         </a>
         
+        
+
+        
+        <a href="#change-volume" data-active="false" data-depth="2">
+            Changer le volume
+        </a>
         
 
         

@@ -59,7 +59,7 @@ Le header est toujours visible :
 | ↷     | [Rétablir](../modules/header.md#redo)                                             | ++ctrl+y++ (alias ++ctrl+shift+z++) |
 | ⟳     | [Rafraîchir la vue](../modules/header.md#update-view)                             | ++ctrl+r++                          |
 | 🎨    | [Changer l'échelle de couleurs](../modules/header.md#change-color-scale)          | ++ctrl+l++                          |
-| 👁    | [Afficher par type](../modules/header.md#display-by-type)                         | ++ctrl+d++                          |
+| 👁    | [Afficher par type](../modules/header.md#display-by-type)                         | —                                   |
 | 📏    | [Basculer mètres / pieds](../modules/header.md#switch-units)                      | ++ctrl+u++                          |
 | ⚙     | [Paramètres](../modules/header.md#settings)                                       | ++ctrl++,                           |
 | ▭     | [Réduire la taille de fenêtre](../modules/header.md#reduire-la-taille-de-fenetre) | —                                   |

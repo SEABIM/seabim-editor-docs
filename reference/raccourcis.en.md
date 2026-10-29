@@ -14,7 +14,6 @@ launcher.
 | ++ctrl+r++       | [Update view](../modules/header.md#update-view)                              | Refreshes the display of all blocks.  |
 | ++ctrl+l++       | [Change color scale](../modules/header.md#change-color-scale)                | Opens the color picker dialog.        |
 | ++ctrl+shift+l++ | [Toggle color scale](../modules/header.md#toggle-color-scale)                | Shows/hides the graduated bar in the view. |
-| ++ctrl+d++       | [Display by type](../modules/header.md#display-by-type)                      | Shows/hides blocks by type and volume. |
 | ++ctrl+t++       | [Toggle transparency](../modules/header.md#toggle-transparency)              | Makes the selected blocks translucent. |
 | ++ctrl+u++       | [Switch to meters / feet](../modules/header.md#switch-units)                 | Changes the working length unit.      |
 | ++ctrl++,        | [Settings](../modules/header.md#settings)                                    | Opens the preferences dialog.         |
@@ -34,6 +33,7 @@ launcher.
 | ---------- | ------------------------------------------------------------------------------------------------- |
 | ++ctrl+e++ | [Register selection - Adaptive dist](../modules/edit.md#register-selection---adaptive-dist)       |
 | ++ctrl+f++ | [Fit position](../modules/edit.md#fit-position)                                                   |
+| ++ctrl+d++ | [Safe delete](../modules/edit.md#safe-delete)                                                     |
 
 ## Metadata module
 

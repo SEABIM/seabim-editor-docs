@@ -14,7 +14,6 @@ bouton correspondant dans le launcher.
 | ++ctrl+r++       | [Rafraîchir la vue](../modules/header.md#update-view)                     | Rafraîchit l'affichage de tous les blocs.     |
 | ++ctrl+l++       | [Changer l'échelle de couleurs](../modules/header.md#change-color-scale)  | Ouvre la modale de coloration.                |
 | ++ctrl+shift+l++ | [Afficher/masquer l'échelle](../modules/header.md#toggle-color-scale)     | Montre/masque la barre graduée dans la vue.   |
-| ++ctrl+d++       | [Afficher par type](../modules/header.md#display-by-type)                 | Masque/affiche les blocs par type et volume.  |
 | ++ctrl+t++       | [Transparence de la sélection](../modules/header.md#toggle-transparency)  | Rend les blocs sélectionnés translucides.     |
 | ++ctrl+u++       | [Basculer mètres / pieds](../modules/header.md#switch-units)              | Change l'unité de longueur de travail.        |
 | ++ctrl++,        | [Paramètres](../modules/header.md#settings)                               | Ouvre les préférences.                        |
@@ -34,6 +33,7 @@ bouton correspondant dans le launcher.
 | ---------- | --------------------------------------------------------------------------------------------------- |
 | ++ctrl+e++ | [Recaler la sélection - Distance adaptative](../modules/edit.md#register-selection---adaptive-dist) |
 | ++ctrl+f++ | [Ajuster la position](../modules/edit.md#fit-position)                                               |
+| ++ctrl+d++ | [Suppression sécurisée](../modules/edit.md#safe-delete)                                             |
 
 ## Module Métadonnées
 

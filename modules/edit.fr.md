@@ -19,7 +19,7 @@ nuage. À utiliser après détection automatique ou après un déplacement manue
 d'un bloc, pour affiner sa position.
 
 Tout passe par **un seul bouton** : par défaut il recale en **distance
-adaptative**, et sa **petite icône curseurs** donne accès à trois modes
+adaptative**, et sa **petite icône curseurs** donne accès à deux modes
 personnalisés. Une **badge `Rapport de recalage`** complète l'action.
 
 ![Recaler la sélection](../assets/images/cc_edit_register.png)
@@ -43,13 +43,12 @@ ensuite.
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Distance adaptative**    | Mode par défaut. Distances au nuage **adaptatives**, définies dans les paramètres du projet.                                                 |
 | **Distance personnalisée** | Recale avec une **distance au nuage fixe** au lieu des distances adaptatives. Override **persistant** pour la session.                       |
-| **Nouveau volume de bloc** | **Assigne un nouveau volume** à la sélection (taille différente de celle détectée) puis recale. Utile quand deux volumes voisins ont été confondus (ex. 2 m³ vs 3 m³). |
 | **Recalage par zone**      | Recale en ne tenant compte que d'un **petit morceau du nuage** délimité par une boîte (voir ci-dessous).                                     |
 
-Pour les modes **Distance personnalisée** et **Volume**, la valeur saisie est
-mémorisée le temps de la session : l'icône reste **orange** et chaque `Recaler
-la sélection` réapplique le mode sans ressaisie. Sélectionner « effacer » dans
-la modale revient au mode adaptatif.
+En mode **Distance personnalisée**, la valeur saisie est mémorisée le temps de
+la session : l'icône reste **orange** et chaque `Recaler la sélection`
+réapplique le mode sans ressaisie. Sélectionner « effacer » dans la modale
+revient au mode adaptatif.
 
 ![Modes de recalage personnalisés](../assets/images/cc_edit_register_personal.png)
 
@@ -70,11 +69,22 @@ Au choix de ce mode, un **panneau dédié** s'ouvre et fait apparaître une
 3. Validez : le recalage ne tient compte que des points retenus. La distance
    de crop reste **adaptative**.
 
-Contrairement aux modes Distance / Volume, le recalage par zone **n'est pas un
+Contrairement à la distance personnalisée, le recalage par zone **n'est pas un
 override persistant** : la boîte est spatiale et placée à la main à chaque
 usage.
 
 ![Recalage par zone](../assets/images/cc_edit_register_zone.png)
+
+## Changer le volume { #change-volume }
+
+**Assigne un nouveau volume** aux blocs sélectionnés, avec la taille qui lui
+correspond, puis les recale. Utile quand deux volumes voisins ont été confondus
+à la détection (ex. 2 m³ vs 3 m³).
+
+La modale demande le nouveau volume, en m³ (en cm³ pour une licence LAB). Le
+changement ne s'applique qu'à la sélection et une seule fois : les recalages
+suivants gardent le volume de chaque bloc. Un checkpoint est posé avant
+l'opération, qui s'annule donc comme les autres.
 
 ## Aider le recalage { #help-register }
 
@@ -258,8 +268,10 @@ qu'aucun point du plan n'atteint dans la tolérance sont nommés `Unknown_xx`.
 
 ## Suppression sécurisée { #safe-delete }
 
+**Raccourci : ++ctrl+d++**
+
 Supprime les blocs sélectionnés en gardant un **checkpoint d'annulation**.
-Contrairement à une suppression directe via CloudCompare, cette action
+Contrairement à une suppression directe via CloudCompare (++del++), cette action
 permet de revenir en arrière via le bouton [`Annuler la dernière
 action`](header.md#undo) du [Header](header.md).
 

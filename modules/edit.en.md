@@ -20,7 +20,7 @@ Use after automatic detection or after manually moving a block, to refine its
 position.
 
 Everything goes through **a single button**: by default it registers using
-**adaptive distance**, and its **small sliders icon** gives access to three
+**adaptive distance**, and its **small sliders icon** gives access to two
 custom modes. A **`Registration report` badge** rounds out the action.
 
 ![Register selection](../assets/images/cc_edit_register.png)
@@ -43,13 +43,12 @@ The **small sliders icon** next to the button does not register on its own: it
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Adaptive distance** | Default mode. **Adaptive** cloud distances, defined in the project parameters.                                                              |
 | **Custom distance**   | Registers with a **fixed cloud distance** instead of the adaptive distances. **Persistent** override for the session.                       |
-| **New block volume**  | **Assigns a new volume** to the selection (a different size than the detected one), then registers. Useful when two neighboring volumes were confused (e.g. 2 m³ vs 3 m³). |
 | **Zone registration** | Registers using only a **small portion of the cloud** delimited by a box (see below).                                                       |
 
-For the **Custom distance** and **Volume** modes, the entered value is
-remembered for the session: the icon stays **orange** and each `Register
-selection` reapplies the mode without re-entering it. Selecting "clear" in the
-dialog goes back to the adaptive mode.
+In **Custom distance** mode, the entered value is remembered for the session:
+the icon stays **orange** and each `Register selection` reapplies the mode
+without re-entering it. Selecting "clear" in the dialog goes back to the
+adaptive mode.
 
 ![Custom registration modes](../assets/images/cc_edit_register_personal.png)
 
@@ -69,10 +68,21 @@ the CloudCompare scene:
 3. Confirm: registration only considers the retained points. The crop
    distance stays **adaptive**.
 
-Unlike the Distance / Volume modes, zone registration **is not a persistent
+Unlike the custom distance, zone registration **is not a persistent
 override**: the box is spatial and placed by hand on each use.
 
 ![Zone registration](../assets/images/cc_edit_register_zone.png)
+
+## Change volume { #change-volume }
+
+**Assigns a new volume** to the selected blocks, along with the matching size,
+then registers them. Useful when two neighboring volumes were confused during
+detection (e.g. 2 m³ vs 3 m³).
+
+The dialog asks for the new volume, in m³ (in cm³ with a LAB licence). The
+change only applies to the selection, and only once: later registrations keep
+each block's volume. A checkpoint is taken before the operation, so it can be
+undone like the others.
 
 ## Help register { #help-register }
 
@@ -253,8 +263,10 @@ the tolerance are named `Unknown_xx`.
 
 ## Safe delete { #safe-delete }
 
+**Shortcut: ++ctrl+d++**
+
 Removes the selected blocks while keeping an **undo checkpoint**. Unlike
-direct deletion via CloudCompare, this action lets you roll back via the
+direct deletion via CloudCompare (++del++), this action lets you roll back via the
 [`Undo`](header.md#undo) button of the [Header](header.md).
 
 ## Mark missing block { #mark-missing-block }

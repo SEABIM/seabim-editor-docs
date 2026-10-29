@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-28T18:18:06+01:00');
+        const date = new Date('2026-10-29T10:26:14+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -485,7 +485,7 @@ Each block is adjusted independently to minimise its distance to the cloud.
 Use after automatic detection or after manually moving a block, to refine its
 position.</p>
 <p>Everything goes through <strong>a single button</strong>: by default it registers using
-<strong>adaptive distance</strong>, and its <strong>small sliders icon</strong> gives access to three
+<strong>adaptive distance</strong>, and its <strong>small sliders icon</strong> gives access to two
 custom modes. A <strong><code>Registration report</code> badge</strong> rounds out the action.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register.png" data-desc-position="bottom"><img alt="Register selection" src="../../../assets/images/cc_edit_register.png"></a></p>
 <h3 id="registration-report-badge">"Registration report" badge<a class="headerlink" href="#registration-report-badge" title="Permanent link">¶</a></h3>
@@ -516,19 +516,15 @@ custom modes. A <strong><code>Registration report</code> badge</strong> rounds o
 <td>Registers with a <strong>fixed cloud distance</strong> instead of the adaptive distances. <strong>Persistent</strong> override for the session.</td>
 </tr>
 <tr>
-<td><strong>New block volume</strong></td>
-<td><strong>Assigns a new volume</strong> to the selection (a different size than the detected one), then registers. Useful when two neighboring volumes were confused (e.g. 2 m³ vs 3 m³).</td>
-</tr>
-<tr>
 <td><strong>Zone registration</strong></td>
 <td>Registers using only a <strong>small portion of the cloud</strong> delimited by a box (see below).</td>
 </tr>
 </tbody>
 </table></div>
-<p>For the <strong>Custom distance</strong> and <strong>Volume</strong> modes, the entered value is
-remembered for the session: the icon stays <strong>orange</strong> and each <code>Register
-selection</code> reapplies the mode without re-entering it. Selecting "clear" in the
-dialog goes back to the adaptive mode.</p>
+<p>In <strong>Custom distance</strong> mode, the entered value is remembered for the session:
+the icon stays <strong>orange</strong> and each <code>Register selection</code> reapplies the mode
+without re-entering it. Selecting "clear" in the dialog goes back to the
+adaptive mode.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register_personal.png" data-desc-position="bottom"><img alt="Custom registration modes" src="../../../assets/images/cc_edit_register_personal.png"></a></p>
 <h3 id="register-selection---zone">Zone registration<a class="headerlink" href="#register-selection---zone" title="Permanent link">¶</a></h3>
 <p><strong>Zone registration</strong> restricts the adjustment to a <strong>portion of the cloud</strong>
@@ -544,9 +540,17 @@ the CloudCompare scene:</p>
 <li>Confirm: registration only considers the retained points. The crop
    distance stays <strong>adaptive</strong>.</li>
 </ol>
-<p>Unlike the Distance / Volume modes, zone registration <strong>is not a persistent
+<p>Unlike the custom distance, zone registration <strong>is not a persistent
 override</strong>: the box is spatial and placed by hand on each use.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_register_zone.png" data-desc-position="bottom"><img alt="Zone registration" src="../../../assets/images/cc_edit_register_zone.png"></a></p>
+<h2 id="change-volume">Change volume<a class="headerlink" href="#change-volume" title="Permanent link">¶</a></h2>
+<p><strong>Assigns a new volume</strong> to the selected blocks, along with the matching size,
+then registers them. Useful when two neighboring volumes were confused during
+detection (e.g. 2 m³ vs 3 m³).</p>
+<p>The dialog asks for the new volume, in m³ (in cm³ with a LAB licence). The
+change only applies to the selection, and only once: later registrations keep
+each block's volume. A checkpoint is taken before the operation, so it can be
+undone like the others.</p>
 <h2 id="help-register">Help register<a class="headerlink" href="#help-register" title="Permanent link">¶</a></h2>
 <p>Opens an interactive panel that lets you <strong>translate or rotate</strong> the
 selected block before running the registration. Useful when a block's
@@ -816,8 +820,9 @@ section and the block number (<code>P12-A-01</code>), is read without prior edit
 assign <code>P12-A</code> to <code>NumSection</code> and <code>01</code> to <code>NumBlock</code>.</p>
 </div>
 <h2 id="safe-delete">Safe delete<a class="headerlink" href="#safe-delete" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span></strong></p>
 <p>Removes the selected blocks while keeping an <strong>undo checkpoint</strong>. Unlike
-direct deletion via CloudCompare, this action lets you roll back via the
+direct deletion via CloudCompare (<span class="keys"><kbd class="key-delete">Del</kbd></span>), this action lets you roll back via the
 <a href="../header/#undo"><code>Undo</code></a> button of the <a href="../header/">Header</a>.</p>
 <h2 id="mark-missing-block">Mark missing block<a class="headerlink" href="#mark-missing-block" title="Permanent link">¶</a></h2>
 <p>Flags a block that <strong>exists physically on the structure but cannot be
@@ -1097,6 +1102,12 @@ groups.</p>
             Zone registration
         </a>
         
+        
+
+        
+        <a href="#change-volume" data-active="false" data-depth="2">
+            Change volume
+        </a>
         
 
         

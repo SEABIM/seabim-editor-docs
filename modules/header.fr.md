@@ -2,7 +2,7 @@
 
 Le **header** est la barre d'icônes en haut du launcher SEABIM Editor.
 Ses actions sont **transversales** : elles sont accessibles depuis
-n'importe quel onglet et chacune dispose d'un raccourci clavier.
+n'importe quel onglet et la plupart disposent d'un raccourci clavier.
 
 ![Header](../assets/images/cc_header.png)
 
@@ -88,8 +88,6 @@ dernière légende connue de la session.
     de la supprimer, et mieux vaut ne pas la renommer.
 
 ## Afficher par type { #display-by-type }
-
-**Raccourci : ++ctrl+d++**
 
 Ouvre une modale qui permet de **n'afficher que certains types de blocs et
 certains volumes**. C'est un filtre d'affichage **non destructif** : il ne
