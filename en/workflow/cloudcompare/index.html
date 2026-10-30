@@ -1,0 +1,950 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script>
+        const base_url = (new URL("../../..", window.location)).href.replace(/\/+$/, ""); /* for search plugin notably */
+    </script>
+    <script integrity="sha384-m6cZ+Whl1ci89lidlu8DH4C+sZLNOYBvImtjUIhUK+iaNffXhqtbYgBVuuPfRsa0" src="../../../js/dark.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    
+    
+
+
+
+<title>CloudCompare basics — SEABIM Editor</title>
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.seabim-utilities.com/en/workflow/cloudcompare/">
+
+
+<!-- Open Graph (Facebook, LinkedIn) -->
+
+<meta property="og:title" content="CloudCompare basics">
+
+
+
+
+
+<meta property="og:url" content="https://docs.seabim-utilities.com/en/workflow/cloudcompare/">
+
+
+
+
+
+
+<!-- Twitter Card -->
+
+<meta name="twitter:title" content="CloudCompare basics">
+
+
+
+
+
+
+<!-- JSON-LD Structured Data -->
+
+
+
+    
+    <link href="../../../assets/favicon.ico" rel="icon">
+
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link href="../../../css/geist.css" rel="stylesheet">
+
+    
+
+    <style>
+        :root {
+            --theme-accent: oklch(78.1% 0.161 62.3);
+        }
+    </style>
+    <link href="../../../assets/css/seabim-shadcn.css" rel="stylesheet">
+
+    
+
+    <script integrity="sha384-2hn3q9jeDV70Gb3DuyWPKgeRxkowIjEpcHeOXSvWCEq2uHJHvXiVer7rbM8HYzYz" src="../../../js/callbacks.js"></script>
+    <script defer="" integrity="sha384-ljmRPFWw/c4kKFaKY5DIe8bgppHI9VBBrg7WZa8UPd23U9dEFesxZ1Ng8Hzjq2WB" src="../../../js/toc.js"></script>
+
+    
+
+    
+
+    
+
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("a.headerlink").forEach(function (link) {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                // Build the full URL with the anchor fragment
+                const url = window.location.origin + window.location.pathname + this.getAttribute("href");
+
+                navigator.clipboard.writeText(url).then(function () {
+                    // Optional: brief visual feedback
+                });
+            });
+        });
+    });
+</script>
+    
+
+    
+    
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)] xl:[--footer-height:calc(var(--spacing)*24)] theme-default">
+    <div class="bg-background relative z-10 flex min-h-svh flex-col" id="inner-body">
+        <header class="bg-background sticky top-0 z-50 w-full" view-transition-name="header">
+    <div class="container-wrapper 3xl:fixed:px-0 px-6">
+        <div class="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
+            <button id="burger-button" data-slot="popover-trigger" onclick="onMobileMenuButtonClick(event)" class="group" type="button" aria-haspopup="dialog" data-state="closed">
+    <div class="relative flex h-8 w-4 items-center justify-center">
+        <div class="relative size-4">
+            <!-- 16px x 16px -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="0" x2="16" y1="5" y2="5" class="group-data-[state=open]:translate-y-[2.25px] group-data-[state=open]:-translate-x-[2.25px] group-data-[state=open]:rotate-45 transition-all duration-300 origin-center"></line>
+                <line x1="0" x2="16" y1="11" y2="11" class="group-data-[state=open]:-translate-y-[2.25px] group-data-[state=open]:-translate-x-[2.25px] group-data-[state=open]:-rotate-45 transition-all duration-300 origin-center"></line>
+            </svg>
+        </div>
+
+        <span class="sr-only">Toggle Menu</span>
+    </div>
+    <span class="flex h-8 items-center text-lg leading-none font-medium">Menu</span>
+</button>
+            <a data-slot="button" class="button ghost gap-2 hidden lg:flex" href="https://docs.seabim-utilities.com/">
+    <span class="flex flex-row justify-center items-center">
+        
+
+
+<img class="size-5" src="../../../assets/images/logo_seabim_small.png" alt="icon">
+
+
+
+    </span>
+
+    
+    <h1>SEABIM Editor</h1>
+    
+</a>
+            
+            <nav class="items-center gap-0.5 hidden lg:flex">
+    
+    
+    
+    
+    <a class="ghost button" href="../../demarrage/installation/">
+        Getting started
+    </a>
+    
+    
+    
+    
+    
+    <a class="ghost button" href="./">
+        Workflow
+    </a>
+    
+    
+    
+    
+    
+    <a class="ghost button" href="../../modules/header/">
+        Modules
+    </a>
+    
+    
+    
+    
+    
+    <a class="ghost button" href="../../reference/raccourcis/">
+        Reference
+    </a>
+    
+    
+</nav>
+            
+            <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+                <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+                    <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+    <button onclick="onSearchBarClick(event)" data-slot="dialog-trigger" data-variant="outline" data-size="default" class="search secondary" type="button" aria-haspopup="dialog" aria-controls="search-dialog" data-state="closed">
+    <span class="hidden lg:inline-flex">Search documentation...</span>
+    <span class="inline-flex lg:hidden">Search...</span>
+</button>
+</div>
+<dialog id="search-dialog" onclick="onSearchDialogClick(event)" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background rounded-lg shadow-lg border overflow-hidden p-0">
+    <div class="w-lg gap-4">
+        <div class="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
+            <div data-slot="command-input-wrapper" class="flex h-9 items-center gap-2 border-b px-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search size-4 shrink-0 opacity-50">
+    <circle cx="11" cy="11" r="8"></circle>
+    <path d="m21 21-4.3-4.3"></path>
+</svg>
+                <input data-slot="command-input" class="placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50" placeholder="Search documentation..." cmdk-input="" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search documentation" type="search" value="" oninput="onInputHandler(event)">
+            </div>
+        </div>
+        <div id="mkdocs-search-results">
+            <!-- search results go there -->
+        </div>
+    </div>
+</dialog>
+<script>
+    document.removeEventListener("keydown", searchShortcutHandler);
+    document.addEventListener("keydown", searchShortcutHandler);
+</script>
+                </div>
+                
+                
+                <div data-orientation="vertical" role="none" data-slot="separator" class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px">
+</div>
+                <a href="https://github.com/SEABIM/seabim-editor-docs" class="button ghost">
+    <svg viewBox="0 0 438.549 438.549" class="h-4.5">
+    <path fill="currentColor" d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z">
+    </path>
+</svg>
+    
+</a>
+                
+
+
+                
+
+                <div data-orientation="vertical" role="none" data-slot="separator" class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px">
+</div>
+                <button class="ghost icon" title="Toggle layout" onclick="toggleLayout(event)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gallery-horizontal">
+    <path d="M2 3v18"></path>
+    <rect width="12" height="18" x="6" y="3" rx="2"></rect>
+    <path d="M22 3v18"></path>
+</svg>
+</button>
+                <div data-orientation="vertical" role="none" data-slot="separator" class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px">
+</div>
+                <button class="ghost icon" onclick="onThemeSwitch(event)" title="Toggle theme">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4.5">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+    <path d="M12 3l0 18"></path>
+    <path d="M12 9l4.65 -4.65"></path>
+    <path d="M12 14.3l7.37 -7.37"></path>
+    <path d="M12 19.6l8.85 -8.85"></path>
+</svg>
+</button>
+            </div>
+        </div>
+    </div>
+</header>
+        <main class="flex flex-1 flex-col">
+            <div class="container-wrapper flex flex-1 flex-col px-2">
+                <div class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex w-full 3xl:fixed:container 3xl:fixed:px-3 min-h-min flex-1 items-start px-0 [--sidebar-width:220px] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--sidebar-width:240px] lg:[--top-spacing:calc(var(--spacing)*4)]" data-slot="sidebar-wrapper" style="--sidebar-width:calc(var(--spacing) * 72);--sidebar-width-icon:3rem;">
+                    <div class="w-(--sidebar-width) flex-col text-sidebar-foreground sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden max-h-[calc(100svh-10rem)] overscroll-none bg-transparent [--sidebar-menu-width:--spacing(56)] lg:flex" data-slot="sidebar">
+                        <div class="h-9"></div>
+                        <div class="absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b from-background via-background/80 to-background/50 blur-xs">
+                        </div>
+                        <div class="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border to-transparent lg:flex">
+                        </div>
+                        <div class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2" data-sidebar="content" data-slot="sidebar-content" view-transition-name="sidebar">
+                            
+
+
+
+
+
+
+
+
+
+
+
+<div data-slot="sidebar-group" data-sidebar="group" class="relative flex w-full min-w-0 flex-col p-2 pt-6">
+    <div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm">
+        <ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-0.5">
+            
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="true" data-sidebar="menu-button" data-size="default" href="./" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+        
+        CloudCompare basics
+        
+        
+        
+        
+    </a>
+</li>
+            
+            
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../projet-type/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+        
+        Project walkthrough
+        
+        
+        
+        
+    </a>
+</li>
+            
+            
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../formats-fichiers/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+        
+        File formats
+        
+        
+        
+        
+    </a>
+</li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t from-background via-background/80 to-background/50 blur-xs">
+</div>
+
+                        </div>
+                    </div>
+                    <div class="h-full w-full">
+                        <div class="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full" data-slot="docs">
+                            <div class="flex min-w-0 flex-1 flex-col">
+                                <div class="h-(--top-spacing) shrink-0"></div>
+                                
+                                
+                                <article class="w-full" view-transition-name="page">
+  <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2">
+      <div id="page-header" class="flex items-start justify-between">
+        <h1 class="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
+          CloudCompare basics
+        </h1>
+        <div class="flex items-start gap-2">
+          
+          <button id="copy-page" onclick="fetch(`https://docs.seabim-utilities.com/workflow/cloudcompare.en.md`).then((r) =&gt; r.text()).then((text) =&gt; navigator.clipboard.write([new ClipboardItem({ 'text/plain': text })]))" data-slot="button" class="secondary cursor-pointer sm">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-copy ">
+        <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
+        </path>
+        <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"></path>
+    </svg>
+    <span class="max-md:hidden">Copy Page</span>
+</button>
+          
+          
+          <a id="previous-button" class="button secondary icon sm" href="../../demarrage/accueil/">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-left">
+    <path d="M5 12l14 0"></path>
+    <path d="M5 12l6 6"></path>
+    <path d="M5 12l6 -6"></path>
+</svg>
+    <span class="sr-only">Previous</span>
+</a>
+          
+          
+          <a id="next-button" class="button secondary icon sm" href="../projet-type/">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
+    <path d="M5 12l14 0"></path>
+    <path d="M13 18l6 -6"></path>
+    <path d="M13 6l6 6"></path>
+</svg>
+    <span class="sr-only">Next</span>
+</a>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div class="flex justify-end items-center">
+      
+
+      
+      <div class="grow text-muted-foreground pt-4 flex flex-row justify-end items-center">
+    <span id="updated_at" class="text-sm opacity-50 hover:opacity-100 transition-opacity duration-200" title="last update (local time)"></span>
+</div>
+
+<script>
+    const updatedAt = document.getElementById("updated_at");
+    if (updatedAt) {
+        const date = new Date('2026-10-30T10:42:33+04:00');
+        updatedAt.textContent = date.toLocaleDateString();
+    }
+</script>
+
+      
+    </div>
+  </div>
+  <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
+    <h1 id="cloudcompare-basics">CloudCompare basics<a class="headerlink" href="#cloudcompare-basics" title="Permanent link">¶</a></h1>
+<p>CloudCompare is a free 3D visualization software. SEABIM Editor is a Python
+plugin used from within the CloudCompare interface.</p>
+<p>CloudCompare download: <a href="https://www.danielgm.net/cc/release/">https://www.danielgm.net/cc/release/</a> (see also the
+<a href="../../demarrage/installation/">Installation</a> page).</p>
+<h2 id="interface">General interface<a class="headerlink" href="#interface" title="Permanent link">¶</a></h2>
+<p>The CloudCompare interface is split into several windows:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/prise-en-main/interface_CC.png" data-desc-position="bottom"><img alt="CloudCompare interface" src="../../../assets/images/prise-en-main/interface_CC.png"></a></p>
+<ol>
+<li><strong>DB Tree</strong>: all the data loaded in the <code>.bin</code> working session, organized
+   in folders and layers. <strong>Every checked layer is shown in the 3D view.</strong> The
+   arrow left of a name expands the folder or layer to show its content.</li>
+<li><strong>Properties</strong> of the selected layer: this is where you change the scalar
+   field displayed on a 3D model, switch a point cloud from <strong>RGB</strong> display to
+   <strong>scalar field</strong> display, and show or edit the color scale.</li>
+<li><strong>Console</strong> of running and past actions. It lets you follow the steps of a
+   function: every function must end with <code>Process finished</code>. If an error
+   occurs, it is reported here.</li>
+<li><strong>SEABIM Editor launcher</strong>, which gives access to the plugin functions (see
+   <a href="../../demarrage/interface/">Interface</a>). It opens with the
+   <img alt="SEABIM Editor icon" class="off-glb" src="../../../assets/images/prise-en-main/lancement_seabim.png">
+   icon of the plugins toolbar, on the right.</li>
+<li>Main <strong>3D view</strong>, where you move around and zoom.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Display smoothness</p>
+<p>The more data a project holds, the heavier it gets and the less smooth
+the navigation. The 3D view may lag when too many layers are checked:
+<strong>uncheck</strong> those not needed for the analysis or outside the study area.</p>
+</div>
+<h2 id="import">Importing a point cloud<a class="headerlink" href="#import" title="Permanent link">¶</a></h2>
+<p>To import a point cloud, drag and drop the file onto the CloudCompare main
+window.</p>
+<h3 id="offset">Coordinate system and offset<a class="headerlink" href="#offset" title="Permanent link">¶</a></h3>
+<p>CloudCompare <strong>does not handle</strong> coordinate systems or reprojection. The XY
+coordinates of the cloud must therefore be projected in a planimetric
+reference frame specific to the project and expressed in meters (or in cm or
+mm for a physical model in a laboratory). Latitude and longitude coordinates
+in degrees are not interpreted.</p>
+<p>To handle fewer significant digits, CloudCompare offers an <strong>offset</strong>
+(<code>Global shift</code>) at import, which brings the cloud closer to the origin of the
+reference frame. Without an offset, or with an offset that does not reduce the
+number of significant digits enough, the cloud may look distorted.</p>
+<ul>
+<li>The suggested offset <strong>can be adjusted</strong> by the operator.</li>
+<li>It is set when importing the first cloud and <strong>must be applied identically</strong>
+  when importing every new cloud: with a different offset, the second cloud is
+  shifted relative to the first one.</li>
+<li>Applying an offset in <strong>XY</strong> only, not in Z, is recommended to avoid any
+  confusion.</li>
+</ul>
+<p><strong>There is therefore one offset per project.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Offset and export</p>
+<p>CloudCompare thus creates a local frame close to the origin. The offset
+is stored for every layer of the project and applied back automatically
+on export. Naming layers in detail tells you which coordinate system and
+which vertical reference each one is expressed in.</p>
+</div>
+<h3 id="navigation">Moving around in the 3D view<a class="headerlink" href="#navigation" title="Permanent link">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Right click held</td>
+<td>Pan in the screen plane (up, down, left, right).</td>
+</tr>
+<tr>
+<td>Left click held</td>
+<td>Rotate around the pivot point.</td>
+</tr>
+<tr>
+<td>Double click on an element</td>
+<td>Sets the rotation pivot point.</td>
+</tr>
+<tr>
+<td>Mouse wheel</td>
+<td>Zoom in and out.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="sampling">Subsampling<a class="headerlink" href="#sampling" title="Permanent link">¶</a></h3>
+<p>For smoother work, subsampling very dense photogrammetric clouds to
+<strong>0.02 m</strong> is recommended. The sampling tool is available once the cloud is
+selected:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/prise-en-main/sampling.png" data-desc-position="bottom"><img alt="CloudCompare sampling tool" src="../../../assets/images/prise-en-main/sampling.png"></a></p>
+<h2 id="common-functions">Common functions<a class="headerlink" href="#common-functions" title="Permanent link">¶</a></h2>
+<p>Main CloudCompare functions used on a SEABIM project:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/prise-en-main/CC.png" data-desc-position="bottom"><img alt="Common CloudCompare functions" src="../../../assets/images/prise-en-main/CC.png"></a></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Icon</th>
+<th>Function</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><img alt="Clone" class="off-glb" src="../../../assets/images/prise-en-main/fonctiob_clone.png"></td>
+<td>Clone</td>
+<td>Duplicates the selection.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><img alt="Scissors" class="off-glb" src="../../../assets/images/prise-en-main/ciseau.png"></td>
+<td>Scissors (<code>Segment</code>)</td>
+<td>Cuts areas out of the point cloud, to process areas differently or lighten the project by removing data outside the working area.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><img alt="Auto-pick rotation center" class="off-glb" src="../../../assets/images/prise-en-main/auto_pick_rotation.png"></td>
+<td><code>Auto-pick rotation center</code></td>
+<td>Puts the rotation center at the center of the view.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><img alt="SEABIM Editor" class="off-glb" src="../../../assets/images/prise-en-main/python.png"></td>
+<td>SEABIM Editor</td>
+<td>Opens the SEABIM Editor launcher.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><img alt="Save" class="off-glb" src="../../../assets/images/prise-en-main/save.png"></td>
+<td>Save</td>
+<td>Saves the selection: select the root folder to save the whole working session (see <a href="../formats-fichiers/#cloudcompare-bin-files">CloudCompare BIN files</a>).</td>
+</tr>
+<tr>
+<td>6</td>
+<td><img alt="Zoom" class="off-glb" src="../../../assets/images/prise-en-main/zoom.png"></td>
+<td>Zoom</td>
+<td>Zooms on the selection.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><img alt="Delete" class="off-glb" src="../../../assets/images/prise-en-main/delete.png"></td>
+<td>Delete</td>
+<td><strong>Permanently</strong> deletes the selection. For blocks, prefer <a href="../../modules/edit/#safe-delete"><code>Safe delete</code></a>, which can be undone.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><img alt="PCV" class="off-glb" src="../../../assets/images/prise-en-main/PCV.png"></td>
+<td>PCV</td>
+<td>Computes the PCV shading of the selected point cloud.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><img alt="Move" class="off-glb" src="../../../assets/images/prise-en-main/deplacement_.png"></td>
+<td>Move (<code>Translate/Rotate</code>)</td>
+<td>Moves the selection in X, Y and Z (see <a href="#translate">below</a>).</td>
+</tr>
+<tr>
+<td>10</td>
+<td><img alt="Point picking" class="off-glb" src="../../../assets/images/prise-en-main/point_picking.png"></td>
+<td><code>Point picking</code></td>
+<td>Reads the information of the picked point: coordinates, value of the active scalar field (for instance the result of a SEABIM filter).</td>
+</tr>
+<tr>
+<td>11</td>
+<td><img alt="Merge" class="off-glb" src="../../../assets/images/prise-en-main/merge.png"></td>
+<td><code>Merge</code></td>
+<td>Combines several data sets, for instance to reassemble clouds cut by area before a final render.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="translate">Moving the selection<a class="headerlink" href="#translate" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/prise-en-main/details_deplacement.png" data-desc-position="bottom"><img alt="Translate window" src="../../../assets/images/prise-en-main/details_deplacement.png"></a></p>
+<ul>
+<li>The <span class="keys"><kbd class="key-space">Space</kbd></span> bar pauses the move, so you can change the point of view and
+  adjust the position.</li>
+<li>For more precision, an axis can be locked (<strong>1</strong>).</li>
+<li>The move only applies once confirmed with the green check mark of the
+  window (<strong>2</strong>).</li>
+</ul>
+<h2 id="shortcuts">Useful shortcuts<a class="headerlink" href="#shortcuts" title="Permanent link">¶</a></h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="keys"><kbd class="key-a">A</kbd></span></td>
+<td>Toggles the activation of the selection in the DB Tree.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-v">V</kbd></span></td>
+<td>Shows or hides the selection.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-d">D</kbd></span></td>
+<td>Shows or hides entity names in the 3D view.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-z">Z</kbd></span></td>
+<td>Zooms and centers the view on the selection (a block for instance).</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-e">E</kbd></span></td>
+<td>Exports the selection information to CSV.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-s">S</kbd></span></td>
+<td>Toggles the scalar field display.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-t">T</kbd></span></td>
+<td>Scissors (segment).</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-delete">Del</kbd></span></td>
+<td>Deletes the selected layer.</td>
+</tr>
+<tr>
+<td><span class="keys"><kbd class="key-alt">Alt</kbd></span> + left click held</td>
+<td>Draws a rectangle for multiple selection.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A block selected in the 3D view is automatically selected in the DB Tree.</p>
+<p>SEABIM Editor's own shortcuts are listed on the
+<a href="../../reference/raccourcis/">Keyboard shortcuts</a> page.</p>
+<div class="admonition note">
+<p class="admonition-title">Going further</p>
+<p>CloudCompare website: <a href="https://www.danielgm.net/cc/">https://www.danielgm.net/cc/</a></p>
+</div>
+  </div>
+</article>
+                                <div id="bottom-navigation" class="mx-auto flex h-16 w-full max-w-2xl items-center justify-between gap-2 px-4 md:px-0">
+    
+    <a class="button secondary" href="../../demarrage/accueil/">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-left">
+    <path d="M5 12l14 0"></path>
+    <path d="M5 12l6 6"></path>
+    <path d="M5 12l6 -6"></path>
+</svg>
+    <span class="max-[500px]:hidden truncate">Home page</span>
+</a>
+    
+    
+    <a class="button secondary" href="../projet-type/">
+    <span class="max-[500px]:hidden truncate">Project walkthrough</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
+    <path d="M5 12l14 0"></path>
+    <path d="M13 18l6 -6"></path>
+    <path d="M13 6l6 6"></path>
+</svg>
+</a>
+    
+</div>
+                                
+                                
+                            </div>
+                            
+                            <dialog id="bottom-sidebar" onclick="onBottomSidebarDialogClick(event)" class="bg-transparent" style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 58px); min-width: max-content; --radix-popper-transform-origin: 0% 0px; will-change: transform; z-index: 50; --radix-popper-available-width: 504px; --radix-popper-available-height: 857px; --radix-popper-anchor-width: 72.94999694824219px; --radix-popper-anchor-height: 32px;">
+    <div data-side="bottom" data-align="start" data-state="open" role="dialog" data-slot="popover-content" class="text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 origin-(--radix-popover-content-transform-origin) border outline-hidden bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100" style="--radix-popover-content-transform-origin: var(--radix-popper-transform-origin); --radix-popover-content-available-width: var(--radix-popper-available-width); --radix-popover-content-available-height: var(--radix-popper-available-height); --radix-popover-trigger-width: var(--radix-popper-anchor-width); --radix-popover-trigger-height: var(--radix-popper-anchor-height);" tabindex="-1">
+        <div class="flex flex-col gap-12 overflow-auto px-6 py-6">
+            
+            
+            
+
+            
+            <div class="flex flex-col gap-4">
+                <div class="text-muted-foreground text-sm font-medium">Menu</div>
+                <div class="flex flex-col gap-3">
+                    
+                    <a class="text-2xl font-medium" href="../../">
+                        
+                        Home
+                        
+                    </a>
+                    
+                </div>
+            </div>
+            
+
+            
+            <div class="flex flex-col gap-8">
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Getting started</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/installation/">
+                            
+                            Installation
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/activation-licence/">
+                            
+                            License activation
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/interface/">
+                            
+                            Interface
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Home page
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Workflow</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="./">
+                            
+                            CloudCompare basics
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../projet-type/">
+                            
+                            Project walkthrough
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../formats-fichiers/">
+                            
+                            File formats
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Modules</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../../modules/header/">
+                            
+                            Header (top bar)
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/input/">
+                            
+                            Import
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/edit/">
+                            
+                            Edit
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/quality/">
+                            
+                            Quality control
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/filters/">
+                            
+                            Filters
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/metadata/">
+                            
+                            Metadata
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/output/">
+                            
+                            Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/sync/">
+                            
+                            Sync
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Reference</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../../reference/raccourcis/">
+                            
+                            Shortcuts
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../reference/glossaire/">
+                            
+                            Glossary
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            
+
+        </div>
+    </div>
+</dialog>
+                            <div class="sticky top-[calc(var(--header-height)+1px)] ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+                                <div class="h-(--top-spacing) shrink-0"></div>
+                                
+                                
+                                <div id="toc" view-transition-name="toc" class="no-scrollbar overflow-y-auto px-8">
+    <div class="flex flex-col gap-2 p-4 pt-0 text-sm">
+        <p class="text-muted-foreground bg-background sticky top-0 h-6 text-xs">On This Page</p>
+        
+        
+        
+        
+        <a href="#interface" data-active="false" data-depth="2">
+            General interface
+        </a>
+        
+
+        
+        <a href="#import" data-active="false" data-depth="2">
+            Importing a point cloud
+        </a>
+        
+        
+        <a href="#offset" data-active="false" data-depth="3">
+            Coordinate system and offset
+        </a>
+        
+        <a href="#navigation" data-active="false" data-depth="3">
+            Moving around in the 3D view
+        </a>
+        
+        <a href="#sampling" data-active="false" data-depth="3">
+            Subsampling
+        </a>
+        
+        
+
+        
+        <a href="#common-functions" data-active="false" data-depth="2">
+            Common functions
+        </a>
+        
+        
+        <a href="#translate" data-active="false" data-depth="3">
+            Moving the selection
+        </a>
+        
+        
+
+        
+        <a href="#shortcuts" data-active="false" data-depth="2">
+            Useful shortcuts
+        </a>
+        
+
+        
+        
+        
+        
+
+    </div>
+    <div class="h-12"></div>
+
+</div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer view-transition-name="footer" class="group-has-[.section-soft]/body:bg-surface/40 3xl:fixed:bg-transparent dark:bg-transparent">
+    <div class="container-wrapper px-4 xl:px-6">
+        <div class="flex h-(--footer-height) items-center justify-between">
+            <div class="text-muted-foreground w-full text-center text-xs leading-loose sm:text-sm">
+                
+                <a href="https://github.com/asiffer/mkdocs-shadcn">shadcn theme</a> provided by
+                <a href="https://github.com/asiffer">@asiffer</a>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+     
+
+<script src="../../../assets/js/lang-switch.js"></script>
+
+     
+
+<script src="../../../search/main.js"></script>
+
+
+    
+
+    <script integrity="sha384-JLNLRFGzvOp0up707XKgSnAjjt1w5BF/+lbeLQvlf6mNwf0m89IXFdpNAk4t6Hcs" src="../../../js/copy-button.js"></script>
+    <script integrity="sha384-JBx6cBEiyhK1KPwZgBHiI6GDaAmvlOxMQFyWAZTEpW5Ifo5XQ2LBcJ61GVOumwF1" src="../../../js/sidebar.js"></script>
+    <script integrity="sha384-fNURFMRt0p/HqXnQnV4+CT9dX1GiU5F0fC3pFbg7gfoANytoUMErSW7suWSBkSuF" src="../../../js/slider.js"></script>
+    <script>updatePygmentsStylesheet();</script>
+    
+    
+    
+    <script type="speculationrules">
+{
+  "prerender": [
+    {
+      "where": {
+          "selector_matches": ["#next-button", "#previous-button"]
+      }
+    }
+  ]
+}
+</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

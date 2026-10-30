@@ -217,24 +217,38 @@ sont en plus écrits sur le bloc, lisibles dans
 
 ## Filtrer les blocs { #filter-blocks }
 
-Supprime les blocs ne respectant pas certains seuils de qualité :
-**distance médiane** au nuage, **accuracy**, ou **nombre de points** de
-correspondance.
+Supprime, parmi les **blocs sélectionnés**, ceux qui ne respectent pas
+certains seuils de qualité : **distance** entre blocs, **précision** et
+**nombre de points**.
 
 ![Filtrer les blocs](../assets/images/cc_edit_filter.png)
 
-Paramètres de la modale :
+Critères de la modale :
 
-| Paramètre            | Description                                                                                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Score threshold`    | Seuil supérieur sur la médiane des distances des points au voisinage du bloc, en mètres. Les blocs dont le score dépasse ce seuil sont supprimés.                     |
-| `Distance threshold` | Seuil sur la distance entre centres de blocs, en mètres. Si deux blocs sont plus proches que ce seuil, celui qui a la plus faible médiane des distances est conservé. |
-| `Accuracy threshold` | Seuil sur l'accuracy (champ scalaire de qualité). Les blocs en dessous sont supprimés.                                                                                |
+| Critère            | Effet                                                                                                                                         |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Distance`         | Si les centres de deux blocs sont plus proches que ce seuil, seul celui qui a le plus faible score médian est conservé.                       |
+| `Précision`        | Supprime les blocs dont le score médian (distance médiane des points du nuage au bloc) **dépasse** ce seuil. Les blocs sans score sont gardés. |
+| `Nombre de points` | Supprime les blocs dont le nombre de points du nuage au voisinage (`count_score`) est inférieur à ce seuil.                                  |
+
+Chaque critère se règle au curseur ou par saisie, et s'active ou se désactive
+avec son bouton `ON` / `OFF` ; vider la valeur puis appuyer sur Entrée le
+désactive aussi. L'aperçu se met à jour au relâchement du curseur en colorant
+les blocs qui seraient supprimés : rien n'est supprimé avant `Appliquer`.
+`Réinitialiser` rétablit les valeurs par défaut.
+
+`Appliquer` pose un point d'annulation : [`Annuler la dernière
+action`](header.md#undo) (++ctrl+z++) restaure les blocs supprimés.
+
+!!! note "Calculer la précision d'abord"
+    Le critère `Précision` s'appuie sur le score médian de chaque bloc :
+    lancer [`Calculer la précision`](quality.md#compute-accuracy) au
+    préalable.
 
 !!! tip "Premier filtrage après détection"
-Cette action est typiquement utilisée juste après une détection
-automatique pour éliminer les faux positifs avant d'attaquer le
-recalage manuel.
+    Cette action est typiquement utilisée juste après une détection
+    automatique pour éliminer les faux positifs avant d'attaquer le
+    recalage manuel.
 
 ## Trouver les noms { #find-names }
 

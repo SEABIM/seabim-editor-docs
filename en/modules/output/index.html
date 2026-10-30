@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-01T08:20:28+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -546,7 +546,7 @@ AND volume</strong> are checked are exported. If there is only one type (or volu
 the matching section is hidden and all blocks are kept on that side.</p>
 <h3 id="fields-to-export">Fields to export<a class="headerlink" href="#fields-to-export" title="Permanent link">¶</a></h3>
 <p>Scalar fields are grouped into collapsible sections: <strong>Block main properties</strong>
-(<code>panel</code>), <strong>Quality control</strong>, <strong>Placement filters</strong>, <strong>Displacement</strong> and
+(<code>panel</code>, <code>package_nr</code>), <strong>Quality control</strong>, <strong>Placement filters</strong>, <strong>Displacement</strong> and
 <strong>Other</strong>. Check the ones to keep in the delivered render. A field <strong>not
 computed</strong> on the blocks appears greyed out and marked "(not computed)": there
 is nothing to export for it.</p>
@@ -574,9 +574,9 @@ recipient.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Final step of the workflow</p>
-<p>This action is the final step described in the <a href="../../workflow/procedure-courante/#final-render">standard
-procedure</a>. It is
-preceded by a <strong>reindexing</strong> (action <a href="../metadata/#rename-blocks-with-prefix-batch"><code>Rename blocks with prefix
+<p>This action is the final step described in the <a href="../../workflow/projet-type/#exports">typical project
+walkthrough</a>. Without a placement
+plan, it is preceded by a <strong>reindexing</strong> (action <a href="../metadata/#rename-blocks-with-prefix-batch"><code>Rename blocks with prefix
 (Batch)</code></a> of the
 <a href="../metadata/">Metadata</a> module) which ensures continuous numbering
 without gaps before delivery.</p>
@@ -651,12 +651,6 @@ without gaps before delivery.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../../demarrage/premier-projet/">
-                            
-                            First project
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
@@ -678,9 +672,15 @@ without gaps before delivery.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Standard procedure
+                            CloudCompare basics
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Project walkthrough
                             
                         </a>
                         

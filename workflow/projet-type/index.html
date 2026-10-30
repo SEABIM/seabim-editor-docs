@@ -1,0 +1,1306 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script>
+        const base_url = (new URL("../..", window.location)).href.replace(/\/+$/, ""); /* for search plugin notably */
+    </script>
+    <script integrity="sha384-m6cZ+Whl1ci89lidlu8DH4C+sZLNOYBvImtjUIhUK+iaNffXhqtbYgBVuuPfRsa0" src="../../js/dark.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    
+    
+
+
+
+<title>Projet-type pas à pas — SEABIM Editor</title>
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.seabim-utilities.com/workflow/projet-type/">
+
+
+<!-- Open Graph (Facebook, LinkedIn) -->
+
+<meta property="og:title" content="Projet-type pas à pas">
+
+
+
+
+
+<meta property="og:url" content="https://docs.seabim-utilities.com/workflow/projet-type/">
+
+
+
+
+
+
+<!-- Twitter Card -->
+
+<meta name="twitter:title" content="Projet-type pas à pas">
+
+
+
+
+
+
+<!-- JSON-LD Structured Data -->
+
+
+
+    
+    <link href="../../assets/favicon.ico" rel="icon">
+
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/geist.css" rel="stylesheet">
+
+    
+
+    <style>
+        :root {
+            --theme-accent: oklch(78.1% 0.161 62.3);
+        }
+    </style>
+    <link href="../../assets/css/seabim-shadcn.css" rel="stylesheet">
+
+    
+
+    <script integrity="sha384-2hn3q9jeDV70Gb3DuyWPKgeRxkowIjEpcHeOXSvWCEq2uHJHvXiVer7rbM8HYzYz" src="../../js/callbacks.js"></script>
+    <script defer="" integrity="sha384-ljmRPFWw/c4kKFaKY5DIe8bgppHI9VBBrg7WZa8UPd23U9dEFesxZ1Ng8Hzjq2WB" src="../../js/toc.js"></script>
+
+    
+
+    
+
+    
+
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("a.headerlink").forEach(function (link) {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                // Build the full URL with the anchor fragment
+                const url = window.location.origin + window.location.pathname + this.getAttribute("href");
+
+                navigator.clipboard.writeText(url).then(function () {
+                    // Optional: brief visual feedback
+                });
+            });
+        });
+    });
+</script>
+    
+
+    
+    
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] lg:[--header-height:calc(var(--spacing)*16)] xl:[--footer-height:calc(var(--spacing)*24)] theme-default">
+    <div class="bg-background relative z-10 flex min-h-svh flex-col" id="inner-body">
+        <header class="bg-background sticky top-0 z-50 w-full" view-transition-name="header">
+    <div class="container-wrapper 3xl:fixed:px-0 px-6">
+        <div class="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
+            <button id="burger-button" data-slot="popover-trigger" onclick="onMobileMenuButtonClick(event)" class="group" type="button" aria-haspopup="dialog" data-state="closed">
+    <div class="relative flex h-8 w-4 items-center justify-center">
+        <div class="relative size-4">
+            <!-- 16px x 16px -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="0" x2="16" y1="5" y2="5" class="group-data-[state=open]:translate-y-[2.25px] group-data-[state=open]:-translate-x-[2.25px] group-data-[state=open]:rotate-45 transition-all duration-300 origin-center"></line>
+                <line x1="0" x2="16" y1="11" y2="11" class="group-data-[state=open]:-translate-y-[2.25px] group-data-[state=open]:-translate-x-[2.25px] group-data-[state=open]:-rotate-45 transition-all duration-300 origin-center"></line>
+            </svg>
+        </div>
+
+        <span class="sr-only">Toggle Menu</span>
+    </div>
+    <span class="flex h-8 items-center text-lg leading-none font-medium">Menu</span>
+</button>
+            <a data-slot="button" class="button ghost gap-2 hidden lg:flex" href="https://docs.seabim-utilities.com/">
+    <span class="flex flex-row justify-center items-center">
+        
+
+
+<img class="size-5" src="../../assets/images/logo_seabim_small.png" alt="icon">
+
+
+
+    </span>
+
+    
+    <h1>SEABIM Editor</h1>
+    
+</a>
+            
+            <nav class="items-center gap-0.5 hidden lg:flex">
+    
+    
+    
+    
+    <a class="ghost button" href="../../demarrage/installation/">
+        Démarrage
+    </a>
+    
+    
+    
+    
+    
+    <a class="ghost button" href="../cloudcompare/">
+        Workflow
+    </a>
+    
+    
+    
+    
+    
+    <a class="ghost button" href="../../modules/header/">
+        Modules
+    </a>
+    
+    
+    
+    
+    
+    <a class="ghost button" href="../../reference/raccourcis/">
+        Référence
+    </a>
+    
+    
+</nav>
+            
+            <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+                <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+                    <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+    <button onclick="onSearchBarClick(event)" data-slot="dialog-trigger" data-variant="outline" data-size="default" class="search secondary" type="button" aria-haspopup="dialog" aria-controls="search-dialog" data-state="closed">
+    <span class="hidden lg:inline-flex">Search documentation...</span>
+    <span class="inline-flex lg:hidden">Search...</span>
+</button>
+</div>
+<dialog id="search-dialog" onclick="onSearchDialogClick(event)" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background rounded-lg shadow-lg border overflow-hidden p-0">
+    <div class="w-lg gap-4">
+        <div class="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
+            <div data-slot="command-input-wrapper" class="flex h-9 items-center gap-2 border-b px-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search size-4 shrink-0 opacity-50">
+    <circle cx="11" cy="11" r="8"></circle>
+    <path d="m21 21-4.3-4.3"></path>
+</svg>
+                <input data-slot="command-input" class="placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50" placeholder="Search documentation..." cmdk-input="" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search documentation" type="search" value="" oninput="onInputHandler(event)">
+            </div>
+        </div>
+        <div id="mkdocs-search-results">
+            <!-- search results go there -->
+        </div>
+    </div>
+</dialog>
+<script>
+    document.removeEventListener("keydown", searchShortcutHandler);
+    document.addEventListener("keydown", searchShortcutHandler);
+</script>
+                </div>
+                
+                
+                <div data-orientation="vertical" role="none" data-slot="separator" class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px">
+</div>
+                <a href="https://github.com/SEABIM/seabim-editor-docs" class="button ghost">
+    <svg viewBox="0 0 438.549 438.549" class="h-4.5">
+    <path fill="currentColor" d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z">
+    </path>
+</svg>
+    
+</a>
+                
+
+
+                
+
+                <div data-orientation="vertical" role="none" data-slot="separator" class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px">
+</div>
+                <button class="ghost icon" title="Toggle layout" onclick="toggleLayout(event)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gallery-horizontal">
+    <path d="M2 3v18"></path>
+    <rect width="12" height="18" x="6" y="3" rx="2"></rect>
+    <path d="M22 3v18"></path>
+</svg>
+</button>
+                <div data-orientation="vertical" role="none" data-slot="separator" class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px">
+</div>
+                <button class="ghost icon" onclick="onThemeSwitch(event)" title="Toggle theme">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4.5">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+    <path d="M12 3l0 18"></path>
+    <path d="M12 9l4.65 -4.65"></path>
+    <path d="M12 14.3l7.37 -7.37"></path>
+    <path d="M12 19.6l8.85 -8.85"></path>
+</svg>
+</button>
+            </div>
+        </div>
+    </div>
+</header>
+        <main class="flex flex-1 flex-col">
+            <div class="container-wrapper flex flex-1 flex-col px-2">
+                <div class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex w-full 3xl:fixed:container 3xl:fixed:px-3 min-h-min flex-1 items-start px-0 [--sidebar-width:220px] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--sidebar-width:240px] lg:[--top-spacing:calc(var(--spacing)*4)]" data-slot="sidebar-wrapper" style="--sidebar-width:calc(var(--spacing) * 72);--sidebar-width-icon:3rem;">
+                    <div class="w-(--sidebar-width) flex-col text-sidebar-foreground sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden max-h-[calc(100svh-10rem)] overscroll-none bg-transparent [--sidebar-menu-width:--spacing(56)] lg:flex" data-slot="sidebar">
+                        <div class="h-9"></div>
+                        <div class="absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b from-background via-background/80 to-background/50 blur-xs">
+                        </div>
+                        <div class="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border to-transparent lg:flex">
+                        </div>
+                        <div class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden mx-auto no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2" data-sidebar="content" data-slot="sidebar-content" view-transition-name="sidebar">
+                            
+
+
+
+
+
+
+
+
+
+
+
+<div data-slot="sidebar-group" data-sidebar="group" class="relative flex w-full min-w-0 flex-col p-2 pt-6">
+    <div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm">
+        <ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-0.5">
+            
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../cloudcompare/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+        
+        Bases de CloudCompare
+        
+        
+        
+        
+    </a>
+</li>
+            
+            
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="true" data-sidebar="menu-button" data-size="default" href="./" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+        
+        Projet-type pas à pas
+        
+        
+        
+        
+    </a>
+</li>
+            
+            
+            
+            
+            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../formats-fichiers/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
+        
+        Formats de fichiers
+        
+        
+        
+        
+    </a>
+</li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t from-background via-background/80 to-background/50 blur-xs">
+</div>
+
+                        </div>
+                    </div>
+                    <div class="h-full w-full">
+                        <div class="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full" data-slot="docs">
+                            <div class="flex min-w-0 flex-1 flex-col">
+                                <div class="h-(--top-spacing) shrink-0"></div>
+                                
+                                
+                                <article class="w-full" view-transition-name="page">
+  <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2">
+      <div id="page-header" class="flex items-start justify-between">
+        <h1 class="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
+          Projet-type pas à pas
+        </h1>
+        <div class="flex items-start gap-2">
+          
+          <button id="copy-page" onclick="fetch(`https://docs.seabim-utilities.com/workflow/projet-type.fr.md`).then((r) =&gt; r.text()).then((text) =&gt; navigator.clipboard.write([new ClipboardItem({ 'text/plain': text })]))" data-slot="button" class="secondary cursor-pointer sm">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-copy ">
+        <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z">
+        </path>
+        <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"></path>
+    </svg>
+    <span class="max-md:hidden">Copy Page</span>
+</button>
+          
+          
+          <a id="previous-button" class="button secondary icon sm" href="../cloudcompare/">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-left">
+    <path d="M5 12l14 0"></path>
+    <path d="M5 12l6 6"></path>
+    <path d="M5 12l6 -6"></path>
+</svg>
+    <span class="sr-only">Previous</span>
+</a>
+          
+          
+          <a id="next-button" class="button secondary icon sm" href="../formats-fichiers/">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
+    <path d="M5 12l14 0"></path>
+    <path d="M13 18l6 -6"></path>
+    <path d="M13 6l6 6"></path>
+</svg>
+    <span class="sr-only">Next</span>
+</a>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div class="flex justify-end items-center">
+      
+
+      
+      <div class="grow text-muted-foreground pt-4 flex flex-row justify-end items-center">
+    <span id="updated_at" class="text-sm opacity-50 hover:opacity-100 transition-opacity duration-200" title="last update (local time)"></span>
+</div>
+
+<script>
+    const updatedAt = document.getElementById("updated_at");
+    if (updatedAt) {
+        const date = new Date('2026-10-30T10:42:33+04:00');
+        updatedAt.textContent = date.toLocaleDateString();
+    }
+</script>
+
+      
+    </div>
+  </div>
+  <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
+    <h1 id="cheminement-dun-projet-type">Cheminement d'un projet-type<a class="headerlink" href="#cheminement-dun-projet-type" title="Permanent link">¶</a></h1>
+<p>Cette page présente les étapes d'un projet type de reconstruction 3D, du nuage
+de points aux rendus clients, et les subtilités fréquemment rencontrées. Elle
+sert aussi de guide pour un premier projet.</p>
+<h2 id="launch">1. Lancer CloudCompare puis SEABIM Editor<a class="headerlink" href="#launch" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/logo_cloudcompare.png" data-desc-position="bottom"><img alt="CloudCompare" src="../../assets/images/prise-en-main/logo_cloudcompare.png"></a></p>
+<p>Au lancement de CloudCompare, un logo « SEABIM » s'affiche et témoigne du bon
+démarrage de SEABIM Editor. Ouvrir ensuite le launcher avec l'icône SEABIM de
+la barre d'outils des plugins :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/fenetre_seabim.png" data-desc-position="bottom"><img alt="Icône SEABIM Editor dans la barre d'outils des plugins" src="../../assets/images/prise-en-main/fenetre_seabim.png"></a></p>
+<p>La licence est vérifiée à l'ouverture du launcher. Si le poste n'est pas encore
+activé, suivre la procédure <a href="../../demarrage/activation-licence/">Activation de la
+licence</a>. Le launcher s'ouvre sur l'onglet
+<code>Accueil</code> (voir <a href="../../demarrage/interface/">Interface</a>).</p>
+<h2 id="working-folder">2. Organiser le projet<a class="headerlink" href="#working-folder" title="Permanent link">¶</a></h2>
+<h3 id="21-dossier-de-travail">2.1. Dossier de travail<a class="headerlink" href="#21-dossier-de-travail" title="Permanent link">¶</a></h3>
+<p>Créer l'arborescence du dossier pour rassembler dans un même répertoire tous
+les éléments du projet :</p>
+<ul>
+<li>un dossier avec les données brutes ;</li>
+<li>un dossier pour le plan de pose ;</li>
+<li>un dossier, à conserver, avec la session de travail en <code>.bin</code> ;</li>
+<li>un dossier avec les rendus clients.</li>
+</ul>
+<p>Quand l'équipe travaille sur un dossier partagé, chacun crée son projet en
+local en reprenant <strong>la même arborescence</strong> que le dossier partagé.</p>
+<div class="admonition warning">
+<p class="admonition-title">Noms de dossiers et de fichiers</p>
+<p>Pas d'espaces ni de caractères spéciaux dans les noms : voir
+<a href="../formats-fichiers/">Formats de fichiers</a>.</p>
+</div>
+<h3 id="save">2.2. Sauvegarder à chaque jalon<a class="headerlink" href="#save" title="Permanent link">¶</a></h3>
+<p>Onglet <strong>Export</strong> → <a href="../../modules/output/#save-json"><code>Sauvegarder un JSON</code></a>
+enregistre la structure. Sauvegarder à chaque jalon du projet, en nommant le
+fichier selon la <a href="../formats-fichiers/#json-naming">nomenclature des structures</a>,
+par exemple <code>2026-05-28_14.30.00_mbes_3m3_MAIN_INT_p1_find.json</code> :</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Jalon</th>
+<th>Moment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>find</code></td>
+<td>Après la détection automatique.</td>
+</tr>
+<tr>
+<td><code>filtered</code></td>
+<td>Après le premier filtrage.</td>
+</tr>
+<tr>
+<td><code>manual_n</code></td>
+<td>Après chaque version <code>n</code> du traitement manuel.</td>
+</tr>
+<tr>
+<td><code>manual_n_AB</code></td>
+<td>Après le contrôle de la version <code>n</code> par <code>AB</code> (initiales).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Copier ensuite le JSON sur le dossier partagé. Le fichier <code>autosave.json</code>
+tenu par le launcher ne remplace pas ces sauvegardes nommées.</p>
+<h2 id="point-cloud">3. Le nuage de points : bathymétrique, LiDAR, photogrammétrique<a class="headerlink" href="#point-cloud" title="Permanent link">¶</a></h2>
+<p>Pour charger un nuage de points, le glisser-déposer dans la fenêtre de
+CloudCompare.</p>
+<h3 id="offset">3.1. Offset<a class="headerlink" href="#offset" title="Permanent link">¶</a></h3>
+<p>CloudCompare demande un offset de projet :</p>
+<ul>
+<li>si un offset a déjà été défini pour ce projet, veiller à reprendre <strong>le
+  même</strong> ;</li>
+<li>sinon, en choisir un proche de la zone de travail.</li>
+</ul>
+<p><strong>Attention : il y a un offset par projet !</strong> Le détail est donné dans
+<a href="../cloudcompare/#offset">Prise en main de CloudCompare</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Retrouver l'offset d'un projet</p>
+<p>Sélectionner un bloc : l'offset du projet figure sur la ligne
+<code>Global shift</code> de la fenêtre Propriétés de CloudCompare.</p>
+</div>
+<h3 id="cloud-processing">3.2. Traitement du nuage de points<a class="headerlink" href="#cloud-processing" title="Permanent link">¶</a></h3>
+<p>Si nécessaire, le nuage de points peut être traité pour plus de fluidité et un
+meilleur affichage.</p>
+<h4 id="cutting">3.2.1. Découper<a class="headerlink" href="#cutting" title="Permanent link">¶</a></h4>
+<p>Le découpage du nuage de points peut se faire par taille de blocs, par zone
+géographique (linéaire, musoir, etc.) ou autre. Pour les nuages
+photogrammétriques et bathymétriques :</p>
+<ol>
+<li>découper d'abord le nuage par <strong>taille de bloc</strong> (volume) ;</li>
+<li>puis le découper en sous-parties <code>p1</code>, <code>p2</code>, … de <strong>500 mètres maximum</strong>,
+   pour une bonne fluidité.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/nuage_avant_pcv.png" data-desc-position="bottom"><img alt="Nuage de points à découper" src="../../assets/images/prise-en-main/nuage_avant_pcv.png"></a></p>
+<p><strong>NB :</strong> conserver pour chaque zone le <strong>nuage complet</strong>, avant le découpage en
+<code>pX</code> : il sert au rendu client.</p>
+<div class="admonition warning">
+<p class="admonition-title">Recouvrement obligatoire</p>
+<p>Toujours garder un recouvrement entre deux nuages découpés, sinon le
+traitement peut produire des erreurs.</p>
+</div>
+<h4 id="322-echantillonner">3.2.2. Échantillonner<a class="headerlink" href="#322-echantillonner" title="Permanent link">¶</a></h4>
+<p>Pour les données photogrammétriques très denses, un ré-échantillonnage à
+<strong>2 cm (0,02 m)</strong> est recommandé pour la fluidité de CloudCompare et le temps
+de calcul de la détection automatique. Il n'est pas nécessaire de
+ré-échantillonner des données bathymétriques ou LiDAR.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/sampling_interface.png" data-desc-position="bottom"><img alt="Fenêtre d'échantillonnage" src="../../assets/images/prise-en-main/sampling_interface.png"></a></p>
+<h3 id="cloud-display">3.3. Affichage du nuage de points<a class="headerlink" href="#cloud-display" title="Permanent link">¶</a></h3>
+<p>Lancer la fonction <code>PCV</code> de CloudCompare dans la barre d'outils des plugins :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/nuage_apres_pcv.png" data-desc-position="bottom"><img alt="Nuage de points après PCV" src="../../assets/images/prise-en-main/nuage_apres_pcv.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Avant de lancer ces traitements</p>
+<ul>
+<li>Le nuage de points à traiter doit être <strong>sélectionné dans le DB Tree</strong>.</li>
+<li>Respecter la nomenclature des fichiers (découpage, ré-échantillonnage,
+  etc.) : voir <a href="../formats-fichiers/#pcd-naming">Formats de fichiers</a>.</li>
+<li>Les fonctions de découpage, de fusion et d'échantillonnage sont
+  détaillées dans <a href="../cloudcompare/#common-functions">Prise en main de CloudCompare</a>.</li>
+</ul>
+</div>
+<h2 id="model">4. Modèle 3D<a class="headerlink" href="#model" title="Permanent link">¶</a></h2>
+<h3 id="first-model">4.1. Construction d'un premier modèle 3D<a class="headerlink" href="#first-model" title="Permanent link">¶</a></h3>
+<h4 id="detection">4.1.1. Détecter les blocs dans un nuage de points<a class="headerlink" href="#detection" title="Permanent link">¶</a></h4>
+<p>Onglet <strong>Import</strong> → <a href="../../modules/input/#find-blocks-in-a-point-cloud"><code>Détecter les blocs dans un nuage</code></a>
+(licence BlockFinder) :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/etape411.png" data-desc-position="bottom"><img alt="Détecter les blocs dans un nuage" src="../../assets/images/prise-en-main/etape411.png"></a></p>
+<p><strong>Le type et le volume du bloc sont indispensables</strong> pour lancer correctement
+la détection.</p>
+<p>S'il y a deux nuages de points, lancer la détection sur chacun séparément :
+l'algorithme est entraîné spécifiquement pour chaque type de bloc et chaque
+type de nuage, et diffère selon qu'il s'agit de photogrammétrie ou de MBES.
+Plusieurs détections peuvent tourner en parallèle, dans des fenêtres
+CloudCompare distinctes.</p>
+<p>Sauvegarder le résultat (jalon <code>find</code>, voir <a href="#save">§ 2.2</a>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Résultat à filtrer</p>
+<p>La détection trouve la vraie position de la majorité des blocs, mais
+produit aussi quelques blocs mal positionnés et en manque d'autres. Un
+filtrage et un traitement manuel sont donc nécessaires (voir
+<a href="#processing">Traitement</a>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Taux de détection</p>
+<p>Le taux de détection dépend de la qualité du nuage de points en entrée.
+Sur la base des nombreux essais réalisés sur divers projets, le taux de
+reconstruction automatique dépasse 99 % sur un bon nuage
+photogrammétrique, et 95 % sur un bon nuage bathymétrique ou LiDAR. Il est
+plus faible sur les zones de moindre qualité, comme l'interface air-eau ou
+les blocs partiellement cachés derrière des enrochements. Si le taux est
+faible sur une zone standard, vérifier la qualité du nuage de points.</p>
+</div>
+<h4 id="412-sans-detection-automatique-ajouter-un-bloc-initial">4.1.2. Sans détection automatique : ajouter un bloc initial<a class="headerlink" href="#412-sans-detection-automatique-ajouter-un-bloc-initial" title="Permanent link">¶</a></h4>
+<p>Onglet <strong>Import</strong> → <a href="../../modules/input/#load-init-block"><code>Charger un bloc initial</code></a> :
+crée le premier bloc d'un projet.</p>
+<p>Cette action sert quand la détection automatique n'est pas utilisée pour un
+type de bloc, quand la licence n'inclut pas BlockFinder, ou pour modéliser un
+bloc qui comporte peu d'entités, comme un bloc de pied de type Accroberm.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/etape412.png" data-desc-position="bottom"><img alt="Charger un bloc initial" src="../../assets/images/prise-en-main/etape412.png"></a></p>
+<p>Sélectionner le nuage de points, puis renseigner le type et le volume du bloc.
+Si le bloc ne se place pas au bon endroit, il faut le déplacer (voir
+<a href="#registration">Recalage</a>). Les blocs suivants se créent un par un, en
+dupliquant un bloc existant puis en le recalant (voir
+<a href="#add-missing-block">Ajouter un bloc manquant</a>).</p>
+<h3 id="existing-model">4.2. Import d'un modèle 3D existant<a class="headerlink" href="#existing-model" title="Permanent link">¶</a></h3>
+<h4 id="421-import-dun-json">4.2.1. Import d'un JSON<a class="headerlink" href="#421-import-dun-json" title="Permanent link">¶</a></h4>
+<p>Onglet <strong>Import</strong> → <a href="../../modules/input/#load-json"><code>Charger un JSON</code></a> : importe
+uniquement la structure 3D d'un modèle existant.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/etape421.png" data-desc-position="bottom"><img alt="Charger un JSON" src="../../assets/images/prise-en-main/etape421.png"></a></p>
+<h4 id="422-import-dun-bin">4.2.2. Import d'un BIN<a class="headerlink" href="#422-import-dun-bin" title="Permanent link">¶</a></h4>
+<p>Toute la session de travail est importée : glisser le <code>.bin</code> directement dans
+la fenêtre de CloudCompare.</p>
+<h3 id="merge">4.3. Import d'un deuxième JSON<a class="headerlink" href="#merge" title="Permanent link">¶</a></h3>
+<p>Il est parfois nécessaire d'assembler des JSON, notamment si la pose de blocs
+a continué dans une zone où un premier modèle a été construit : le nouveau
+modèle vient alors compléter le premier.</p>
+<p>On utilise <a href="../../modules/input/#load-json"><code>Charger un JSON</code></a>. Si les zones se
+recouvrent, la fenêtre <strong>Fusionner les structures</strong> demande comment résoudre
+les conflits :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/Merge_structures.png" data-desc-position="bottom"><img alt="Fusionner les structures" src="../../assets/images/prise-en-main/Merge_structures.png"></a></p>
+<ul>
+<li><strong>Garder les deux blocs</strong> ;</li>
+<li><strong>Priorité au nouveau modèle</strong> ;</li>
+<li><strong>Priorité à l'ancien modèle</strong>.</li>
+</ul>
+<p>Le <strong>seuil de distance</strong>, exprimé en proportion de la taille du bloc, fixe à
+partir de quelle proximité deux blocs sont considérés comme un doublon.</p>
+<div class="admonition tip">
+<p class="admonition-title">Points d'attention</p>
+<p>Faire particulièrement attention aux <strong>interfaces entre différents
+volumes</strong>, à la <strong>ligne d'eau</strong>, à la <strong>berme</strong> et à la <strong>butée de pied</strong>.</p>
+</div>
+<p>Si certains blocs ne s'affichent pas, lancer
+<a href="../../modules/header/#update-view"><code>Rafraîchir la vue</code></a> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-r">R</kbd></span>).</p>
+<h2 id="naming">5. Nommage des blocs<a class="headerlink" href="#naming" title="Permanent link">¶</a></h2>
+<p>Avant le chargement du plan de pose, chaque bloc porte un numéro unique
+attribué par défaut. Pour une meilleure ergonomie, il est nécessaire de
+renommer les blocs.</p>
+<h3 id="placement-plan">5.1. Chargement du plan de pose<a class="headerlink" href="#placement-plan" title="Permanent link">¶</a></h3>
+<p>En chargeant le plan de pose de la zone de travail, chaque bloc est associé à
+une cible et à un plot. Onglet <strong>Édition</strong> →
+<a href="../../modules/edit/#find-names"><code>Trouver les noms</code></a> :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/find_names.png" data-desc-position="bottom"><img alt="Trouver les noms" src="../../assets/images/prise-en-main/find_names.png"></a></p>
+<h3 id="prefix-renaming">5.2. Sans plan de pose<a class="headerlink" href="#prefix-renaming" title="Permanent link">¶</a></h3>
+<p>Pour faciliter l'identification des blocs, on les renomme en leur ajoutant un
+préfixe. <strong>Sélectionner les blocs à renommer</strong>, puis onglet <strong>Métadonnées</strong> →
+<a href="../../modules/metadata/#rename-blocks-with-prefix-batch"><code>Renommer les blocs avec un préfixe (lot)</code></a>.
+On choisit alors un préfixe (par zone ou par volume, par exemple) et le début
+de la numérotation :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/Rename_prefix.png" data-desc-position="bottom"><img alt="Renommer les blocs avec un préfixe" src="../../assets/images/prise-en-main/Rename_prefix.png"></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Le renommage remplace le panneau et le numéro de bloc : ne pas l'appliquer
+à des blocs déjà nommés par un plan de pose.</p>
+</div>
+<p><strong>NB :</strong> pour ranger les blocs par nom, sélectionner le dossier qui contient
+l'ensemble des blocs, puis clic droit → <code>Sort children by name (A-Z)</code>.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/tri_nom.png" data-desc-position="bottom"><img alt="Tri des blocs par nom" src="../../assets/images/prise-en-main/tri_nom.png"></a></p>
+<h2 id="processing">6. Traitement<a class="headerlink" href="#processing" title="Permanent link">¶</a></h2>
+<p>À l'issue de la détection automatique, la structure peut contenir des blocs
+vrais mais aussi des blocs faux. Les filtres de contrôle qualité permettent de
+les mettre en évidence.</p>
+<h3 id="spot-errors">6.1. Repérer les blocs faux ou mal recalés<a class="headerlink" href="#spot-errors" title="Permanent link">¶</a></h3>
+<p>Après une détection ou un recalage, les actions du module
+<a href="../../modules/quality/">Contrôle qualité</a> vérifient la cohérence et la
+fiabilité du modèle.</p>
+<ul>
+<li>
+<p><a href="../../modules/quality/#overlap"><code>Recouvrement</code></a> et
+  <a href="../../modules/quality/#check-for-duplicates"><code>Vérification des doublons</code></a>
+  (distance au plus proche voisin) mettent en évidence les blocs faux :
+  chevauchements et doublons.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/legende_overlap.png" data-desc-position="bottom"><img alt="Recouvrement" src="../../assets/images/prise-en-main/legende_overlap.png"></a></p>
+<p><em>Le recouvrement met en évidence les blocs mal placés qui se rentrent
+dedans.</em></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/legende_local-density.png" data-desc-position="bottom"><img alt="Vérification des doublons" src="../../assets/images/prise-en-main/legende_local-density.png"></a></p>
+<p><em>La vérification des doublons met en évidence les blocs à forte densité
+locale, souvent des doublons.</em></p>
+</li>
+<li>
+<p><a href="../../modules/quality/#compute-accuracy"><code>Calculer la précision</code></a> et
+  <a href="../../modules/quality/#compute-differential"><code>Calculer le différentiel</code></a>
+  (en affichant bien le nuage de points concerné) identifient les blocs peu
+  fiables, donc mal recalés, qui demandent une attention particulière.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/diff_projet.png" data-desc-position="bottom"><img alt="Précision et différentiel" src="../../assets/images/prise-en-main/diff_projet.png"></a></p>
+<p><em>Ici, la précision et le différentiel mettent en évidence les blocs mal
+recalés.</em></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lorsqu'on applique ces filtres, il est intéressant de garder le modèle 3D
+affiché derrière pour bien visualiser les défauts.</p>
+</div>
+<p><strong>Les erreurs récurrentes :</strong></p>
+<ul>
+<li>doublons lors de la fusion de deux modèles ayant une zone de recouvrement ;</li>
+<li>faux blocs issus de la détection automatique ;</li>
+<li>petit et grand côtés inversés au recalage des Accropode™ II.</li>
+</ul>
+<h3 id="remove-false-blocks">6.2. Supprimer les blocs faux<a class="headerlink" href="#remove-false-blocks" title="Permanent link">¶</a></h3>
+<h4 id="621-filtrage-manuel">6.2.1. Filtrage manuel<a class="headerlink" href="#621-filtrage-manuel" title="Permanent link">¶</a></h4>
+<p>Les blocs faux mis en évidence par le contrôle qualité peuvent être supprimés
+à la main :</p>
+<ul>
+<li><a href="../../modules/edit/#safe-delete"><code>Suppression sécurisée</code></a> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span>) :
+  supprime les blocs sélectionnés en conservant un point d'annulation ;
+  <a href="../../modules/header/#undo"><code>Annuler la dernière action</code></a> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span>) les
+  restaure si nécessaire.</li>
+<li>La suppression directe dans CloudCompare (touche <span class="keys"><kbd class="key-delete">Del</kbd></span>) est
+  <strong>définitive</strong> : pas de retour en arrière possible.</li>
+</ul>
+<h4 id="622-filtrage-automatique">6.2.2. Filtrage automatique<a class="headerlink" href="#622-filtrage-automatique" title="Permanent link">¶</a></h4>
+<p>Juste après une détection, un premier filtrage élimine la plupart des faux
+blocs. Onglet <strong>Édition</strong> → <a href="../../modules/edit/#filter-blocks"><code>Filtrer les blocs</code></a> :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/etape622.png" data-desc-position="bottom"><img alt="Filtrer les blocs" src="../../assets/images/prise-en-main/etape622.png"></a></p>
+<p>Trois critères, activables séparément, trient rapidement les blocs vrais et
+faux :</p>
+<ul>
+<li><strong>Distance</strong> : supprime les blocs qui se chevauchent à une distance
+  inférieure au seuil ;</li>
+<li><strong>Précision</strong> : supprime les blocs peu précis, selon leur score médian ;</li>
+<li><strong>Nombre de points</strong> : supprime les blocs construits sur trop peu de points.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/filter_block.png" data-desc-position="bottom"><img alt="Fenêtre Filtrer les blocs" src="../../assets/images/prise-en-main/filter_block.png"></a></p>
+<p>Le critère <strong>Précision</strong> suppose d'avoir lancé
+<a href="../../modules/quality/#compute-accuracy"><code>Calculer la précision</code></a> au préalable.
+Le filtrage ne supprime pas définitivement les blocs : il s'annule avec
+<a href="../../modules/header/#undo"><code>Annuler la dernière action</code></a> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span>).</p>
+<p>Sauvegarder le résultat (jalon <code>filtered</code>, voir <a href="#save">§ 2.2</a>).</p>
+<h3 id="add-missing-block">6.3. Ajouter un bloc manquant<a class="headerlink" href="#add-missing-block" title="Permanent link">¶</a></h3>
+<ol>
+<li>Sélectionner un bloc existant proche du bloc manquant.</li>
+<li>Le dupliquer avec la fonction <code>Clone</code> de CloudCompare.</li>
+<li>Le déplacer au plus près de la position supposée (bien valider à la fin du
+   déplacement).</li>
+<li>Le recaler avec <a href="../../modules/edit/#register-selection---adaptive-dist"><code>Recaler la sélection</code></a>
+   (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span>), voir <a href="#registration">Recalage</a>.</li>
+</ol>
+<p>Les fonctions de base de CloudCompare (clone, déplacement, etc.) sont
+rappelées dans <a href="../cloudcompare/#common-functions">Prise en main de CloudCompare</a>.</p>
+<p>Si le bloc existe sur l'ouvrage mais ne peut pas être modélisé depuis le nuage,
+utiliser plutôt <a href="../../modules/edit/#mark-missing-block"><code>Marquer un bloc manquant</code></a>.</p>
+<h3 id="registration">6.4. Recalage<a class="headerlink" href="#registration" title="Permanent link">¶</a></h3>
+<p>Pour recaler des blocs trouvés par la détection, repris ou ajoutés à la main :</p>
+<ol>
+<li>Sélectionner le bloc et utiliser la fonction de déplacement de CloudCompare.</li>
+<li>
+<p>Placer le bloc au plus près de la position supposée et valider la position
+   dans la fenêtre de déplacement :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/deplacement.png" data-desc-position="bottom"><img alt="Déplacement d'un bloc" src="../../assets/images/prise-en-main/deplacement.png"></a></p>
+<p>Pendant le déplacement, la barre <span class="keys"><kbd class="key-space">Space</kbd></span> met le bloc en pause, le temps
+de changer d'angle de vue pour un meilleur placement.</p>
+</li>
+<li>
+<p>Lancer <a href="../../modules/edit/#register-selection---adaptive-dist"><code>Recaler la sélection</code></a>
+   (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-e">E</kbd></span>). À l'issue du recalage, le bloc prend une couleur qui traduit
+   la précision du recalage, du rouge au vert :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/adaptive_register.png" data-desc-position="bottom"><img alt="Bloc recalé" src="../../assets/images/prise-en-main/adaptive_register.png"></a></p>
+<p><em>Ici, le bloc est devenu vert foncé : bon recalage.</em></p>
+</li>
+</ol>
+<p>Si le nuage de points est bruité, le mode <strong>Distance personnalisée</strong> de
+<a href="../../modules/edit/#modes-de-recalage"><code>Recaler la sélection</code></a> force une
+distance maximale entre le bloc et le nuage. Le bloc doit alors être déplacé
+au préalable à sa position exacte.</p>
+<p>Variante : <a href="../../modules/edit/#help-register"><code>Aider le recalage</code></a> ouvre un
+panneau pour translater ou tourner le bloc sélectionné, puis le recale à la
+validation. Si un bloc reste mal placé, le retirer avec la
+<a href="../../modules/edit/#safe-delete"><code>Suppression sécurisée</code></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>N'ajouter des blocs que lorsque la position est sûre.</p>
+</div>
+<h2 id="quality-control">7. Contrôle qualité<a class="headerlink" href="#quality-control" title="Permanent link">¶</a></h2>
+<p>Pour reconstruire correctement un modèle 3D, il est important d'effectuer le
+contrôle qualité. Comme détaillé plus haut, chaque filtre a son rôle.</p>
+<h3 id="accuracy">7.1. Calculer la précision<a class="headerlink" href="#accuracy" title="Permanent link">¶</a></h3>
+<p><a href="../../modules/quality/#compute-accuracy"><code>Calculer la précision</code></a> donne
+d'abord une idée de la précision du recalage par rapport au nuage de points.
+Les blocs qui ressortent en rouge et en jaune nécessitent un recalage
+supplémentaire.</p>
+<p>Lorsque le nuage de points est bruité ou de moins bonne qualité, la précision
+baisse : des blocs de la ligne d'eau ressortent alors.</p>
+<h3 id="differential">7.2. Calculer le différentiel<a class="headerlink" href="#differential" title="Permanent link">¶</a></h3>
+<p><a href="../../modules/quality/#compute-differential"><code>Calculer le différentiel</code></a> met
+en évidence les différences entre le modèle 3D recalé et le nuage de points.
+Les zones qui ressortent en jaune ou en rouge traduisent un problème et
+peuvent être recalées (souvent des appendices mal identifiés, ou des grands et
+petits côtés inversés sur les Accropode™ II).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Masquer le modèle 3D pour bien voir les zones qui ressortent en rouge et
+en jaune.</p>
+</div>
+<h3 id="duplicates">7.3. Vérification des doublons<a class="headerlink" href="#duplicates" title="Permanent link">¶</a></h3>
+<p><a href="../../modules/quality/#check-for-duplicates"><code>Vérification des doublons</code></a>
+calcule la distance de chaque bloc à son plus proche voisin. Un bloc rouge
+signale un doublon potentiel. Pour le vérifier, jouer sur l'affichage de la
+sélection : sélectionner le bloc puis appuyer sur <span class="keys"><kbd class="key-a">A</kbd></span> ou <span class="keys"><kbd class="key-v">V</kbd></span>. Si un bloc
+reste visible, c'est un doublon : on peut en supprimer un.</p>
+<h3 id="overlap">7.4. Recouvrement<a class="headerlink" href="#overlap" title="Permanent link">¶</a></h3>
+<p><a href="../../modules/quality/#overlap"><code>Recouvrement</code></a> identifie les blocs qui se
+chevauchent. Ils demandent une attention particulière, car ils traduisent un
+mauvais recalage, ou une casse et donc un mouvement dans la zone.</p>
+<p>Le module <a href="../../modules/quality/">Contrôle qualité</a> détaille ces actions.</p>
+<p>Une fois la version contrôlée, la sauvegarder (jalon <code>manual_n_AB</code>, voir
+<a href="#save">§ 2.2</a>). Si des corrections restent à faire, elles partent dans une
+nouvelle version <code>manual_n+1</code>.</p>
+<h2 id="filters">8. Filtres d'analyse<a class="headerlink" href="#filters" title="Permanent link">¶</a></h2>
+<p>Pour l'analyse et le suivi des ouvrages, certaines zones peuvent être plus
+exposées ou plus sensibles que d'autres, et évoluer avec le temps (tassement,
+tempête, etc.). Les filtres de SEABIM Editor sont une aide à l'analyse et au
+contrôle : ils mettent ces zones en évidence, identifient les points d'intérêt
+et facilitent l'analyse par un spécialiste.</p>
+<div class="admonition warning">
+<p class="admonition-title">Une aide à l'analyse</p>
+<p>Ce ne sont que des outils de calcul et d'aide à l'analyse : ils donnent
+une tendance, mais ne permettent en aucun cas de conclure de façon ferme
+et définitive sur la conformité ou non d'une zone.</p>
+</div>
+<h3 id="filter-parameters">8.1. Paramètres des filtres<a class="headerlink" href="#filter-parameters" title="Permanent link">¶</a></h3>
+<p>Les paramètres des filtres se modifient dans
+<a href="../../modules/header/#settings"><code>Paramètres</code></a> (<span class="keys"><kbd class="key-control">Ctrl</kbd></span>,). On y change par
+exemple la tolérance attendue pour un hors-profil ou pour le calcul des
+aérations.</p>
+<h3 id="filter-results">8.2. Résultats des filtres<a class="headerlink" href="#filter-results" title="Permanent link">¶</a></h3>
+<p>Les filtres du module <a href="../../modules/filters/">Filtres</a> génèrent des champs
+scalaires. Le résultat s'affiche sur le modèle 3D à la fin du calcul,
+s'enregistre dans les métadonnées de chaque bloc et peut être revisualisé :</p>
+<ul>
+<li>avec <a href="../../modules/header/#change-color-scale"><code>Changer l'échelle de couleurs</code></a>
+  (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-l">L</kbd></span>), qui permet aussi d'adapter l'échelle de couleurs de chaque
+  filtre au projet. Cocher <strong>Enregistrer comme défaut pour ce champ
+  scalaire</strong> conserve la modification sur le poste ;</li>
+<li>
+<p>dans la fenêtre Propriétés de CloudCompare, rubrique <code>Scalar Fields</code> : la
+  flèche de droite ouvre la liste des champs scalaires de la sélection. Cela
+  ne fonctionne que pour un bloc sélectionné seul dans une session de
+  travail ;</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/proprietes_sf.png" data-desc-position="bottom"><img alt="Champs scalaires dans les propriétés" src="../../assets/images/prise-en-main/proprietes_sf.png"></a></p>
+</li>
+<li>
+<p>dans le rendu final, en changeant l'affichage du modèle 3D complet dans la
+  fenêtre Propriétés, comme ci-dessus ;</p>
+</li>
+<li>avec <a href="../../modules/metadata/#show-metadata-block"><code>Afficher les métadonnées (bloc)</code></a>
+  (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-m">M</kbd></span>), qui regroupe toutes les valeurs numériques des filtres
+  appliqués.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Vérifier la console</p>
+<p>Pour confirmer qu'une fonction s'est terminée sans erreur, regarder la
+console en bas de la fenêtre CloudCompare : <code>Process finished</code> doit
+apparaître à la fin de l'opération, sinon l'erreur y est détaillée.</p>
+</div>
+<h2 id="verification">9. Assembler et vérifier<a class="headerlink" href="#verification" title="Permanent link">¶</a></h2>
+<p>Une fois toutes les sous-parties traitées :</p>
+<ol>
+<li>Réassembler le projet complet : nuages de points complets et modèles des
+   différentes parties (<code>bathy</code> et <code>photog</code>, différentes tailles de bloc),
+   fusionnés avec <a href="../../modules/input/#load-json"><code>Charger un JSON</code></a> (voir
+   <a href="#merge">§ 4.3</a>).</li>
+<li>Lancer sur l'ensemble le différentiel, la vérification des doublons et le
+   recouvrement (voir <a href="#quality-control">Contrôle qualité</a>).</li>
+<li>Ajuster si nécessaire, en veillant à utiliser <strong>le bon nuage</strong> lors d'une
+   nouvelle édition manuelle.</li>
+</ol>
+<p>Faire particulièrement attention aux <strong>interfaces entre différents volumes</strong>,
+à la <strong>ligne d'eau</strong>, à la <strong>berme</strong> et à la <strong>butée de pied</strong>.</p>
+<h2 id="exports">10. Exports et rendus<a class="headerlink" href="#exports" title="Permanent link">¶</a></h2>
+<p>Tous les filtres doivent être lancés ou visualisés avant l'export. Sans plan de
+pose, réindexer d'abord les blocs avec
+<a href="../../modules/metadata/#rename-blocks-with-prefix-batch"><code>Renommer les blocs avec un préfixe (lot)</code></a>
+pour obtenir une numérotation continue (voir <a href="#prefix-renaming">§ 5.2</a>).</p>
+<p>Les exports se font depuis le module <a href="../../modules/output/">Export</a> :</p>
+<ul>
+<li><a href="../../modules/output/#export-csv"><code>Exporter un CSV</code></a>, en <strong>format
+  standard</strong> : une liste de l'ensemble des blocs et des informations
+  associées.</li>
+<li>
+<p><a href="../../modules/output/#export-csv"><code>Exporter un CSV</code></a>, en <strong>sélection
+  personnalisée</strong> : on choisit les champs à exporter (positions, filtres, nom,
+  etc.).</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/export_custom_CSV.png" data-desc-position="bottom"><img alt="Exporter un CSV en sélection personnalisée" src="../../assets/images/prise-en-main/export_custom_CSV.png"></a></p>
+</li>
+<li>
+<p><a href="../../modules/output/#export-final-render"><code>Exporter le rendu final</code></a> : le
+  projet se visualise ensuite directement dans CloudCompare, sans SEABIM
+  Editor. On choisit les informations exportées dans le rendu final :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/export_final_render.png" data-desc-position="bottom"><img alt="Exporter le rendu final" src="../../assets/images/prise-en-main/export_final_render.png"></a></p>
+</li>
+</ul>
+<h2 id="final-render">11. Visualisation d'un rendu final<a class="headerlink" href="#final-render" title="Permanent link">¶</a></h2>
+<p>Le rendu final se visualise directement dans CloudCompare, sans lancer
+SEABIM Editor. Il contient :</p>
+<ul>
+<li>une section 3D :<ul>
+<li>le modèle 3D et les champs scalaires choisis à l'export ;</li>
+<li>la couche issue du calcul des aérations ;</li>
+<li>la couche issue du calcul de densité ;</li>
+<li>la couche issue du calcul de déplacement ;</li>
+</ul>
+</li>
+<li>le nuage de points et le différentiel associé.</li>
+</ul>
+<p>Exemple :</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/prise-en-main/arborescence_finalrender.png" data-desc-position="bottom"><img alt="Arborescence d'un rendu final" src="../../assets/images/prise-en-main/arborescence_finalrender.png"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour l'export des blocs adjacents, ne pas exporter les filtres : cocher
+seulement <code>panel</code>.</p>
+</div>
+<p>Dans le rendu final, l'affichage des blocs s'applique à l'ensemble du modèle
+3D : changer le champ scalaire dans la fenêtre Propriétés de CloudCompare
+s'applique à tout le modèle.</p>
+  </div>
+</article>
+                                <div id="bottom-navigation" class="mx-auto flex h-16 w-full max-w-2xl items-center justify-between gap-2 px-4 md:px-0">
+    
+    <a class="button secondary" href="../cloudcompare/">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-left">
+    <path d="M5 12l14 0"></path>
+    <path d="M5 12l6 6"></path>
+    <path d="M5 12l6 -6"></path>
+</svg>
+    <span class="max-[500px]:hidden truncate">Bases de CloudCompare</span>
+</a>
+    
+    
+    <a class="button secondary" href="../formats-fichiers/">
+    <span class="max-[500px]:hidden truncate">Formats de fichiers</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-arrow-right">
+    <path d="M5 12l14 0"></path>
+    <path d="M13 18l6 -6"></path>
+    <path d="M13 6l6 6"></path>
+</svg>
+</a>
+    
+</div>
+                                
+                                
+                            </div>
+                            
+                            <dialog id="bottom-sidebar" onclick="onBottomSidebarDialogClick(event)" class="bg-transparent" style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 58px); min-width: max-content; --radix-popper-transform-origin: 0% 0px; will-change: transform; z-index: 50; --radix-popper-available-width: 504px; --radix-popper-available-height: 857px; --radix-popper-anchor-width: 72.94999694824219px; --radix-popper-anchor-height: 32px;">
+    <div data-side="bottom" data-align="start" data-state="open" role="dialog" data-slot="popover-content" class="text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 origin-(--radix-popover-content-transform-origin) border outline-hidden bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100" style="--radix-popover-content-transform-origin: var(--radix-popper-transform-origin); --radix-popover-content-available-width: var(--radix-popper-available-width); --radix-popover-content-available-height: var(--radix-popper-available-height); --radix-popover-trigger-width: var(--radix-popper-anchor-width); --radix-popover-trigger-height: var(--radix-popper-anchor-height);" tabindex="-1">
+        <div class="flex flex-col gap-12 overflow-auto px-6 py-6">
+            
+            
+            
+
+            
+            <div class="flex flex-col gap-4">
+                <div class="text-muted-foreground text-sm font-medium">Menu</div>
+                <div class="flex flex-col gap-3">
+                    
+                    <a class="text-2xl font-medium" href="../..">
+                        
+                        Accueil
+                        
+                    </a>
+                    
+                </div>
+            </div>
+            
+
+            
+            <div class="flex flex-col gap-8">
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Démarrage</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/installation/">
+                            
+                            Installation
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/activation-licence/">
+                            
+                            Activation de la licence
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/interface/">
+                            
+                            Interface
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../demarrage/accueil/">
+                            
+                            Page d'accueil
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Workflow</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../cloudcompare/">
+                            
+                            Bases de CloudCompare
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="./">
+                            
+                            Projet-type pas à pas
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../formats-fichiers/">
+                            
+                            Formats de fichiers
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Modules</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../../modules/header/">
+                            
+                            Header (barre supérieure)
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/input/">
+                            
+                            Import
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/edit/">
+                            
+                            Edition
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/quality/">
+                            
+                            Contrôle qualité
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/filters/">
+                            
+                            Filtres
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/metadata/">
+                            
+                            Métadonnées
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/output/">
+                            
+                            Export
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../modules/sync/">
+                            
+                            Synchronisation
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <div class="text-muted-foreground text-sm font-medium">Référence</div>
+                    
+                    <div class="flex flex-col gap-3">
+                        
+                        <a class="text-2xl font-medium" href="../../reference/raccourcis/">
+                            
+                            Raccourcis
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../reference/glossaire/">
+                            
+                            Glossaire
+                            
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            
+
+        </div>
+    </div>
+</dialog>
+                            <div class="sticky top-[calc(var(--header-height)+1px)] ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+                                <div class="h-(--top-spacing) shrink-0"></div>
+                                
+                                
+                                <div id="toc" view-transition-name="toc" class="no-scrollbar overflow-y-auto px-8">
+    <div class="flex flex-col gap-2 p-4 pt-0 text-sm">
+        <p class="text-muted-foreground bg-background sticky top-0 h-6 text-xs">On This Page</p>
+        
+        
+        
+        
+        <a href="#launch" data-active="false" data-depth="2">
+            1. Lancer CloudCompare puis SEABIM Editor
+        </a>
+        
+
+        
+        <a href="#working-folder" data-active="false" data-depth="2">
+            2. Organiser le projet
+        </a>
+        
+        
+        <a href="#21-dossier-de-travail" data-active="false" data-depth="3">
+            2.1. Dossier de travail
+        </a>
+        
+        <a href="#save" data-active="false" data-depth="3">
+            2.2. Sauvegarder à chaque jalon
+        </a>
+        
+        
+
+        
+        <a href="#point-cloud" data-active="false" data-depth="2">
+            3. Le nuage de points : bathymétrique, LiDAR, photogrammétrique
+        </a>
+        
+        
+        <a href="#offset" data-active="false" data-depth="3">
+            3.1. Offset
+        </a>
+        
+        <a href="#cloud-processing" data-active="false" data-depth="3">
+            3.2. Traitement du nuage de points
+        </a>
+        
+        <a href="#cloud-display" data-active="false" data-depth="3">
+            3.3. Affichage du nuage de points
+        </a>
+        
+        
+
+        
+        <a href="#model" data-active="false" data-depth="2">
+            4. Modèle 3D
+        </a>
+        
+        
+        <a href="#first-model" data-active="false" data-depth="3">
+            4.1. Construction d'un premier modèle 3D
+        </a>
+        
+        <a href="#existing-model" data-active="false" data-depth="3">
+            4.2. Import d'un modèle 3D existant
+        </a>
+        
+        <a href="#merge" data-active="false" data-depth="3">
+            4.3. Import d'un deuxième JSON
+        </a>
+        
+        
+
+        
+        <a href="#naming" data-active="false" data-depth="2">
+            5. Nommage des blocs
+        </a>
+        
+        
+        <a href="#placement-plan" data-active="false" data-depth="3">
+            5.1. Chargement du plan de pose
+        </a>
+        
+        <a href="#prefix-renaming" data-active="false" data-depth="3">
+            5.2. Sans plan de pose
+        </a>
+        
+        
+
+        
+        <a href="#processing" data-active="false" data-depth="2">
+            6. Traitement
+        </a>
+        
+        
+        <a href="#spot-errors" data-active="false" data-depth="3">
+            6.1. Repérer les blocs faux ou mal recalés
+        </a>
+        
+        <a href="#remove-false-blocks" data-active="false" data-depth="3">
+            6.2. Supprimer les blocs faux
+        </a>
+        
+        <a href="#add-missing-block" data-active="false" data-depth="3">
+            6.3. Ajouter un bloc manquant
+        </a>
+        
+        <a href="#registration" data-active="false" data-depth="3">
+            6.4. Recalage
+        </a>
+        
+        
+
+        
+        <a href="#quality-control" data-active="false" data-depth="2">
+            7. Contrôle qualité
+        </a>
+        
+        
+        <a href="#accuracy" data-active="false" data-depth="3">
+            7.1. Calculer la précision
+        </a>
+        
+        <a href="#differential" data-active="false" data-depth="3">
+            7.2. Calculer le différentiel
+        </a>
+        
+        <a href="#duplicates" data-active="false" data-depth="3">
+            7.3. Vérification des doublons
+        </a>
+        
+        <a href="#overlap" data-active="false" data-depth="3">
+            7.4. Recouvrement
+        </a>
+        
+        
+
+        
+        <a href="#filters" data-active="false" data-depth="2">
+            8. Filtres d'analyse
+        </a>
+        
+        
+        <a href="#filter-parameters" data-active="false" data-depth="3">
+            8.1. Paramètres des filtres
+        </a>
+        
+        <a href="#filter-results" data-active="false" data-depth="3">
+            8.2. Résultats des filtres
+        </a>
+        
+        
+
+        
+        <a href="#verification" data-active="false" data-depth="2">
+            9. Assembler et vérifier
+        </a>
+        
+
+        
+        <a href="#exports" data-active="false" data-depth="2">
+            10. Exports et rendus
+        </a>
+        
+
+        
+        <a href="#final-render" data-active="false" data-depth="2">
+            11. Visualisation d'un rendu final
+        </a>
+        
+
+        
+        
+        
+        
+
+    </div>
+    <div class="h-12"></div>
+
+</div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer view-transition-name="footer" class="group-has-[.section-soft]/body:bg-surface/40 3xl:fixed:bg-transparent dark:bg-transparent">
+    <div class="container-wrapper px-4 xl:px-6">
+        <div class="flex h-(--footer-height) items-center justify-between">
+            <div class="text-muted-foreground w-full text-center text-xs leading-loose sm:text-sm">
+                
+                <a href="https://github.com/asiffer/mkdocs-shadcn">shadcn theme</a> provided by
+                <a href="https://github.com/asiffer">@asiffer</a>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+     
+
+<script src="../../assets/js/lang-switch.js"></script>
+
+     
+
+<script src="../../search/main.js"></script>
+
+
+    
+
+    <script integrity="sha384-JLNLRFGzvOp0up707XKgSnAjjt1w5BF/+lbeLQvlf6mNwf0m89IXFdpNAk4t6Hcs" src="../../js/copy-button.js"></script>
+    <script integrity="sha384-JBx6cBEiyhK1KPwZgBHiI6GDaAmvlOxMQFyWAZTEpW5Ifo5XQ2LBcJ61GVOumwF1" src="../../js/sidebar.js"></script>
+    <script integrity="sha384-fNURFMRt0p/HqXnQnV4+CT9dX1GiU5F0fC3pFbg7gfoANytoUMErSW7suWSBkSuF" src="../../js/slider.js"></script>
+    <script>updatePygmentsStylesheet();</script>
+    
+    
+    
+    <script type="speculationrules">
+{
+  "prerender": [
+    {
+      "where": {
+          "selector_matches": ["#next-button", "#previous-button"]
+      }
+    }
+  ]
+}
+</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+</script></body></html>

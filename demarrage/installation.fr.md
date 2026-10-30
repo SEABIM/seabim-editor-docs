@@ -8,9 +8,9 @@ WIBU.
 ## Pré-installation { #pre-installation }
 
 !!! warning "Repartir d'une installation propre"
-Si **CloudCompare est déjà installé** sur le poste (toute version),
-désinstallez-le d'abord via **Panneau de configuration → Programmes
-et fonctionnalités → CloudCompare → Désinstaller**.
+    Si **CloudCompare est déjà installé** sur le poste (toute version),
+    désinstallez-le d'abord via **Panneau de configuration → Programmes
+    et fonctionnalités → CloudCompare → Désinstaller**.
 
     Après la désinstallation, **supprimez manuellement le dossier**
     `C:\Program Files\CloudCompare` s'il subsiste : le désinstalleur
@@ -30,16 +30,16 @@ et fonctionnalités → CloudCompare → Désinstaller**.
 | CodeMeter Runtime (licence) | dernière version | <https://www.wibu.com/support/user/user-software/file/download/17996.html> |
 
 !!! warning "CloudCompare 2.13 obligatoire"
-Le plugin est compilé pour la version 2.13 de CloudCompare. Il ne
-chargera pas dans une version 2.12 ou antérieure, et n'a pas été testé
-sur les builds 2.14+.
+    Le plugin est compilé pour la version 2.13 de CloudCompare. Il ne
+    chargera pas dans une version 2.12 ou antérieure, et n'a pas été testé
+    sur les builds 2.14+.
 
 !!! note "Vérifier l'accès au serveur de mise à jour"
-SEABIM Editor a besoin de joindre son serveur de mise à jour. Depuis le
-poste, ouvrez <https://update.seabim-utilities.com/health> dans un
-navigateur : la page doit afficher **`ok`**. Si elle ne répond pas,
-vérifiez la connexion Internet, le pare-feu et le proxy de l'entreprise
-avant de poursuivre.
+    SEABIM Editor a besoin de joindre son serveur de mise à jour. Depuis le
+    poste, ouvrez <https://update.seabim-utilities.com/health> dans un
+    navigateur : la page doit afficher **`ok`**. Si elle ne répond pas,
+    vérifiez la connexion Internet, le pare-feu et le proxy de l'entreprise
+    avant de poursuivre.
 
 ## Installation pas à pas
 

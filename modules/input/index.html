@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-17T14:09:08+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -476,10 +476,10 @@ JSON, détection automatique de blocs et import depuis un CSV externe.</p>
 <p>C'est typiquement le premier onglet utilisé en début de session.</p>
 <div class="admonition info">
 <p class="admonition-title">Disponibilité des actions</p>
-</div>
 <p>Certaines actions sont conditionnées par la licence WIBU :
 <code>Détecter les blocs dans un nuage</code> n'apparaît que si le bit
 BlockFinder est actif dans la Feature Map du client.</p>
+</div>
 <h2 id="load-init-block">Charger un bloc initial<a class="headerlink" href="#load-init-block" title="Permanent link">¶</a></h2>
 <p>Crée un <strong>bloc d'amorçage</strong> ancré sur le nuage de points actuellement
 sélectionné dans CloudCompare. Ce bloc sert de référence pour les
@@ -502,7 +502,6 @@ jalon — cf. <a href="../../workflow/formats-fichiers/#json-naming">Nomenclatur
 et on continue le travail là où il s'était arrêté.</p>
 <div class="admonition tip">
 <p class="admonition-title">Sauvegarde automatique</p>
-</div>
 <p>Si la session précédente s'est mal terminée (crash CloudCompare,
 extinction brutale), le launcher conserve un <code>autosave.json</code> dans le
 dossier de données utilisateur. Le lien <strong>Restaurer la dernière
@@ -511,6 +510,7 @@ directement — inutile d'aller le chercher via <em>Charger un JSON</em>.
 Ce fichier est réécrit au maximum toutes les 100 secondes, et
 uniquement après une modification de la structure : il peut donc être
 légèrement antérieur à l'incident.</p>
+</div>
 <h2 id="find-blocks-in-a-point-cloud">Détecter les blocs dans un nuage<a class="headerlink" href="#find-blocks-in-a-point-cloud" title="Permanent link">¶</a></h2>
 <p>Détecte automatiquement les blocs d'un <strong>type et d'un volume donnés</strong> dans
 le nuage de points sélectionné. La structure produite peut ensuite être
@@ -518,18 +518,26 @@ nettoyée via <a href="../edit/#filter-blocks"><code>Filtrer les blocs</code></a
 <a href="../edit/#register-selection---adaptive-dist"><code>Recaler la sélection - Distance adaptative</code></a>.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_find_blocs.png" data-desc-position="bottom"><img alt="Détecter les blocs dans un nuage" src="../../assets/images/cc_find_blocs.png"></a></p>
 <p>C'est le point d'entrée du workflow de <strong>reconstruction automatique</strong>
-décrit dans la <a href="../../workflow/procedure-courante/#auto-reconstruction">procédure courante § Reconstruction automatique</a>.
+décrit dans le <a href="../../workflow/projet-type/#detection">cheminement d'un projet-type § Détection</a>.
 Plusieurs détections peuvent tourner en parallèle dans des fenêtres
 CloudCompare distinctes pour traiter différentes zones simultanément.</p>
-<p>!!! tip "Bonnes pratiques de détection" - Lancer la détection sur un nuage <strong>découpé en zones de 500 m
-maximum</strong> (cf. <a href="../../workflow/procedure-courante/#cutting">découpage des nuages</a>)
-pour limiter le temps de calcul et faciliter le traitement par lots. - Toujours appliquer un <a href="../edit/#filter-blocks"><code>Filtrer les blocs</code></a> juste après la détection pour éliminer les faux positifs avant le recalage manuel.</p>
+<div class="admonition tip">
+<p class="admonition-title">Bonnes pratiques de détection</p>
+<ul>
+<li>Lancer la détection sur un nuage <strong>découpé en zones de 500 m
+  maximum</strong> (cf. <a href="../../workflow/projet-type/#cutting">découpage des nuages</a>)
+  pour limiter le temps de calcul et faciliter le traitement par lots.</li>
+<li>Toujours appliquer un <a href="../edit/#filter-blocks"><code>Filtrer les blocs</code></a> juste
+  après la détection pour éliminer les faux positifs avant le recalage
+  manuel.</li>
+</ul>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Action gardée par licence</p>
-</div>
 <p>Cette action n'est disponible que si la licence du poste inclut le
 feature <strong>BlockFinder</strong>. En l'absence de ce droit, le bouton
 n'apparaît pas dans l'onglet Import.</p>
+</div>
 <h2 id="import-csv">Importer un CSV<a class="headerlink" href="#import-csv" title="Permanent link">¶</a></h2>
 <p>Importe un fichier CSV décrivant les blocs à ajouter à la structure.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_import_csv.png" data-desc-position="bottom"><img alt="Importer un CSV" src="../../assets/images/cc_import_csv.png"></a></p>
@@ -647,12 +655,6 @@ CSV</a>.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../../demarrage/premier-projet/">
-                            
-                            Premier projet
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
@@ -674,9 +676,15 @@ CSV</a>.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Procédure courante
+                            Bases de CloudCompare
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Projet-type pas à pas
                             
                         </a>
                         

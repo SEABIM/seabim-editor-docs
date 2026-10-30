@@ -10,10 +10,10 @@ Sauvegarde la structure courante dans un fichier JSON. Le format est celui
 décrit dans la section [Fichier de structure JSON](../workflow/formats-fichiers.md#json-structure).
 
 !!! tip "Sauvegarde fréquente recommandée"
-Le module SEABIM Editor maintient un fichier `autosave.json` dans le
-dossier de données, mais une sauvegarde manuelle nommée selon la
-[nomenclature](../workflow/formats-fichiers.md#json-naming)
-est essentielle aux jalons de travail (`find`, `filtered`, `manual_n`).
+    Le module SEABIM Editor maintient un fichier `autosave.json` dans le
+    dossier de données, mais une sauvegarde manuelle nommée selon la
+    [nomenclature](../workflow/formats-fichiers.md#json-naming)
+    est essentielle aux jalons de travail (`find`, `filtered`, `manual_n`).
 
 ## Exporter un CSV { #export-csv }
 
@@ -70,7 +70,7 @@ blocs sont retenus de ce côté.
 ### Champs à exporter
 
 Les champs scalaires sont regroupés en sections pliables : **Propriétés
-principales** (`panel`), **Contrôle qualité**, **Filtres de placement**,
+principales** (`panel`, `package_nr`), **Contrôle qualité**, **Filtres de placement**,
 **Déplacement** et **Autres**. Cochez ceux à conserver dans le rendu livré. Un
 champ **non calculé** sur les blocs apparaît grisé et marqué « (non calculé) » :
 il n'y a rien à exporter pour ce champ.
@@ -98,9 +98,9 @@ il n'y a rien à exporter pour ce champ.
     ![Section Déplacement de l'export](../assets/images/cc_export_disp_refscale.png)
 
 !!! note "Étape finale du workflow"
-    Cette action est l'étape finale décrite dans la [procédure
-    courante](../workflow/procedure-courante.md#final-render). Elle est
-    précédée d'une **réindexation** (action [`Renommer les blocs avec un
+    Cette action est l'étape finale décrite dans le [cheminement d'un
+    projet-type](../workflow/projet-type.md#exports). Sans plan de pose, elle
+    est précédée d'une **réindexation** (action [`Renommer les blocs avec un
     préfixe (lot)`](metadata.md#rename-blocks-with-prefix-batch) du module
     [Métadonnées](metadata.md)) qui assure une numérotation continue avant la
     livraison.

@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-29T10:26:14+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -738,32 +738,44 @@ written on the block and readable from
   worth replaying, with the deep search if needed.</li>
 </ul>
 <h2 id="filter-blocks">Filter blocks<a class="headerlink" href="#filter-blocks" title="Permanent link">¶</a></h2>
-<p>Removes blocks that do not meet quality thresholds: <strong>median distance</strong>
-to the cloud, <strong>accuracy</strong>, or <strong>point count</strong> of correspondence.</p>
+<p>Removes, among the <strong>selected blocks</strong>, those that do not meet quality
+thresholds: <strong>distance</strong> between blocks, <strong>accuracy</strong> and <strong>point count</strong>.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../assets/images/cc_edit_filter.png" data-desc-position="bottom"><img alt="Filter blocks" src="../../../assets/images/cc_edit_filter.png"></a></p>
-<p>Dialog parameters:</p>
+<p>Dialog criteria:</p>
 <div class="table-wrapper"><table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Criterion</th>
+<th>Effect</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Score threshold</code></td>
-<td>Upper threshold on the median of point distances around the block, in meters. Blocks whose score exceeds the threshold are removed.</td>
+<td><code>Distance</code></td>
+<td>If the centers of two blocks are closer than this threshold, only the one with the lowest median score is kept.</td>
 </tr>
 <tr>
-<td><code>Distance threshold</code></td>
-<td>Threshold on the distance between block centers, in meters. If two blocks are closer than this threshold, the one with the lowest median distance is kept.</td>
+<td><code>Accuracy</code></td>
+<td>Removes blocks whose median score (median distance from the cloud points to the block) <strong>exceeds</strong> this threshold. Blocks without a score are kept.</td>
 </tr>
 <tr>
-<td><code>Accuracy threshold</code></td>
-<td>Threshold on accuracy (quality scalar field). Blocks below are removed.</td>
+<td><code>Point count</code></td>
+<td>Removes blocks whose number of nearby cloud points (<code>count_score</code>) is below this threshold.</td>
 </tr>
 </tbody>
 </table></div>
+<p>Each criterion is set with its slider or by typing a value, and turned on or
+off with its <code>ON</code> / <code>OFF</code> button; clearing the value and pressing Enter also
+turns it off. The preview updates when the slider is released, coloring the
+blocks that would be removed: nothing is removed before <code>Apply</code>. <code>Reset</code>
+restores the default values.</p>
+<p><code>Apply</code> sets an undo point: <a href="../header/#undo"><code>Undo</code></a> (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-z">Z</kbd></span>) restores the
+removed blocks.</p>
+<div class="admonition note">
+<p class="admonition-title">Compute accuracy first</p>
+<p>The <code>Accuracy</code> criterion relies on the median score of each block: run
+<a href="../quality/#compute-accuracy"><code>Compute accuracy</code></a> beforehand.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">First filtering after detection</p>
 <p>This action is typically used right after automatic detection to
@@ -946,12 +958,6 @@ groups.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../../demarrage/premier-projet/">
-                            
-                            First project
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
@@ -973,9 +979,15 @@ groups.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Standard procedure
+                            CloudCompare basics
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Project walkthrough
                             
                         </a>
                         

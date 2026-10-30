@@ -59,14 +59,14 @@ selection - Adaptive dist`](edit.md#register-selection---adaptive-dist).
 ![Find blocks](../assets/images/cc_find_blocs.png)
 
 This is the entry point of the **automatic reconstruction** workflow
-described in [Standard procedure § Automatic
-reconstruction](../workflow/procedure-courante.md#auto-reconstruction).
+described in [Typical project walkthrough §
+Detection](../workflow/projet-type.md#detection).
 Several detections may run in parallel in distinct CloudCompare windows
 to process different zones simultaneously.
 
 !!! tip "Detection best practices"
     - Run detection on a cloud **cut into zones of 500 m max** (see [cloud
-      cutting](../workflow/procedure-courante.md#cutting))
+      cutting](../workflow/projet-type.md#cutting))
       to limit computation time and ease batch processing.
     - Always apply [`Filter blocks`](edit.md#filter-blocks) right after
       detection to remove false positives before manual registration.

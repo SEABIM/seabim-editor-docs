@@ -11,7 +11,7 @@ des métadonnées et export vers les formats de livraison.
 
 - [Installer le plugin](demarrage/installation.md)
 - [Activer la licence](demarrage/activation-licence.md)
-- [Créer son premier projet](demarrage/premier-projet.md)
+- [Créer son premier projet](workflow/projet-type.md)
 - [Découvrir l'interface](demarrage/interface.md)
 
 ## Référence par module
@@ -31,7 +31,8 @@ chaque module regroupe plusieurs actions accessibles depuis le launcher.
 
 ## Workflow et concepts
 
-- [Procédure courante de travail](workflow/procedure-courante.md)
+- [Prise en main de CloudCompare](workflow/cloudcompare.md)
+- [Cheminement d'un projet-type](workflow/projet-type.md)
 - [Formats de fichiers échangés](workflow/formats-fichiers.md)
 
 ## Ressources

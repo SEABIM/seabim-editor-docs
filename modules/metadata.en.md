@@ -41,11 +41,12 @@ Example: `B-0001`, `B-0002`, … for every selected block, where `B-` is
 the prefix and `0001`, `0002`… is the sequential index.
 
 !!! note "Prerequisite for the final render"
-    This action is mentioned in the [standard
-    procedure](../workflow/procedure-courante.md#final-render) as the
-    **reindexing** step preceding [`Export final
-    render`](output.md#export-final-render). It guarantees that the final
-    numbering is continuous and gap-free.
+    Without a placement plan, this action is the **reindexing** step before
+    [`Export final render`](output.md#export-final-render) (see the [typical
+    project walkthrough](../workflow/projet-type.md#exports)). It guarantees
+    that the final numbering is continuous and gap-free. It replaces the
+    panel and the block number: do not apply it to blocks already named from
+    a placement plan.
 
 ## Metadata editor (Block) { #metadata-editor-block }
 

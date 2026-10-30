@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-01T08:20:28+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -478,11 +478,11 @@ personnalisées), et génération du rendu final prêt pour livraison.</p>
 décrit dans la section <a href="../../workflow/formats-fichiers/#json-structure">Fichier de structure JSON</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Sauvegarde fréquente recommandée</p>
-</div>
 <p>Le module SEABIM Editor maintient un fichier <code>autosave.json</code> dans le
 dossier de données, mais une sauvegarde manuelle nommée selon la
 <a href="../../workflow/formats-fichiers/#json-naming">nomenclature</a>
 est essentielle aux jalons de travail (<code>find</code>, <code>filtered</code>, <code>manual_n</code>).</p>
+</div>
 <h2 id="export-csv">Exporter un CSV<a class="headerlink" href="#export-csv" title="Permanent link">¶</a></h2>
 <p>Exporte les blocs de la structure en CSV. L'action couvre deux cas dans une
 modale unifiée :</p>
@@ -548,7 +548,7 @@ qu'un seul type (ou volume), la section correspondante est masquée et tous les
 blocs sont retenus de ce côté.</p>
 <h3 id="champs-a-exporter">Champs à exporter<a class="headerlink" href="#champs-a-exporter" title="Permanent link">¶</a></h3>
 <p>Les champs scalaires sont regroupés en sections pliables : <strong>Propriétés
-principales</strong> (<code>panel</code>), <strong>Contrôle qualité</strong>, <strong>Filtres de placement</strong>,
+principales</strong> (<code>panel</code>, <code>package_nr</code>), <strong>Contrôle qualité</strong>, <strong>Filtres de placement</strong>,
 <strong>Déplacement</strong> et <strong>Autres</strong>. Cochez ceux à conserver dans le rendu livré. Un
 champ <strong>non calculé</strong> sur les blocs apparaît grisé et marqué « (non calculé) » :
 il n'y a rien à exporter pour ce champ.</p>
@@ -577,9 +577,9 @@ destinataire.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Étape finale du workflow</p>
-<p>Cette action est l'étape finale décrite dans la <a href="../../workflow/procedure-courante/#final-render">procédure
-courante</a>. Elle est
-précédée d'une <strong>réindexation</strong> (action <a href="../metadata/#rename-blocks-with-prefix-batch"><code>Renommer les blocs avec un
+<p>Cette action est l'étape finale décrite dans le <a href="../../workflow/projet-type/#exports">cheminement d'un
+projet-type</a>. Sans plan de pose, elle
+est précédée d'une <strong>réindexation</strong> (action <a href="../metadata/#rename-blocks-with-prefix-batch"><code>Renommer les blocs avec un
 préfixe (lot)</code></a> du module
 <a href="../metadata/">Métadonnées</a>) qui assure une numérotation continue avant la
 livraison.</p>
@@ -654,12 +654,6 @@ livraison.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../../demarrage/premier-projet/">
-                            
-                            Premier projet
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
@@ -681,9 +675,15 @@ livraison.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Procédure courante
+                            Bases de CloudCompare
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Projet-type pas à pas
                             
                         </a>
                         

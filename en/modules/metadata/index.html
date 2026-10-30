@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-29T15:13:17+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -503,11 +503,12 @@ render.</p>
 the prefix and <code>0001</code>, <code>0002</code>… is the sequential index.</p>
 <div class="admonition note">
 <p class="admonition-title">Prerequisite for the final render</p>
-<p>This action is mentioned in the <a href="../../workflow/procedure-courante/#final-render">standard
-procedure</a> as the
-<strong>reindexing</strong> step preceding <a href="../output/#export-final-render"><code>Export final
-render</code></a>. It guarantees that the final
-numbering is continuous and gap-free.</p>
+<p>Without a placement plan, this action is the <strong>reindexing</strong> step before
+<a href="../output/#export-final-render"><code>Export final render</code></a> (see the <a href="../../workflow/projet-type/#exports">typical
+project walkthrough</a>). It guarantees
+that the final numbering is continuous and gap-free. It replaces the
+panel and the block number: do not apply it to blocks already named from
+a placement plan.</p>
 </div>
 <h2 id="metadata-editor-block">Metadata editor (Block)<a class="headerlink" href="#metadata-editor-block" title="Permanent link">¶</a></h2>
 <p><strong>Category: Block</strong></p>
@@ -635,12 +636,6 @@ count. The action changes nothing.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../../demarrage/premier-projet/">
-                            
-                            First project
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
@@ -662,9 +657,15 @@ count. The action changes nothing.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Standard procedure
+                            CloudCompare basics
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Project walkthrough
                             
                         </a>
                         

@@ -215,18 +215,31 @@ written on the block and readable from
 
 ## Filter blocks { #filter-blocks }
 
-Removes blocks that do not meet quality thresholds: **median distance**
-to the cloud, **accuracy**, or **point count** of correspondence.
+Removes, among the **selected blocks**, those that do not meet quality
+thresholds: **distance** between blocks, **accuracy** and **point count**.
 
 ![Filter blocks](../assets/images/cc_edit_filter.png)
 
-Dialog parameters:
+Dialog criteria:
 
-| Parameter            | Description                                                                                                                                                |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Score threshold`    | Upper threshold on the median of point distances around the block, in meters. Blocks whose score exceeds the threshold are removed.                        |
-| `Distance threshold` | Threshold on the distance between block centers, in meters. If two blocks are closer than this threshold, the one with the lowest median distance is kept. |
-| `Accuracy threshold` | Threshold on accuracy (quality scalar field). Blocks below are removed.                                                                                    |
+| Criterion     | Effect                                                                                                                                       |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Distance`    | If the centers of two blocks are closer than this threshold, only the one with the lowest median score is kept.                              |
+| `Accuracy`    | Removes blocks whose median score (median distance from the cloud points to the block) **exceeds** this threshold. Blocks without a score are kept. |
+| `Point count` | Removes blocks whose number of nearby cloud points (`count_score`) is below this threshold.                                                  |
+
+Each criterion is set with its slider or by typing a value, and turned on or
+off with its `ON` / `OFF` button; clearing the value and pressing Enter also
+turns it off. The preview updates when the slider is released, coloring the
+blocks that would be removed: nothing is removed before `Apply`. `Reset`
+restores the default values.
+
+`Apply` sets an undo point: [`Undo`](header.md#undo) (++ctrl+z++) restores the
+removed blocks.
+
+!!! note "Compute accuracy first"
+    The `Accuracy` criterion relies on the median score of each block: run
+    [`Compute accuracy`](quality.md#compute-accuracy) beforehand.
 
 !!! tip "First filtering after detection"
     This action is typically used right after automatic detection to

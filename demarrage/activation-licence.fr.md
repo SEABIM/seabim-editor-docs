@@ -3,7 +3,7 @@
 Cette page décrit la procédure d'activation d'une licence SEABIM Editor à
 l'aide de **CodeMeter Runtime** de WIBU-SYSTEMS. Elle s'effectue **une
 seule fois**, après l'[installation du plugin](installation.md) et avant
-de pouvoir créer un [premier projet](premier-projet.md).
+de pouvoir créer un [premier projet](../workflow/projet-type.md).
 
 Deux formes de licence coexistent :
 
@@ -87,7 +87,7 @@ informations de votre licence : l'activation est réussie.
 ![Licence active dans SEABIM Editor](../assets/images/licence_12.png)
 
 À ce stade, vous pouvez enchaîner sur la création de votre [premier
-projet](premier-projet.md).
+projet](../workflow/projet-type.md).
 
 ## Variante : activation sur clé CmStick
 

@@ -3,6 +3,11 @@
 SEABIM Editor requires the manipulation of several file types. Using the
 right formats is required to ensure the software works correctly.
 
+!!! warning "No spaces or special characters"
+    Spaces and special characters in file names can make some functions crash
+    on launch. Also save the CloudCompare project in a folder whose path
+    contains none.
+
 ## Point clouds { #point-clouds }
 
 Point clouds hold a set of coordinates in space, sometimes with extra
@@ -13,6 +18,10 @@ information: colors, scalar fields or normals.
     LAS, BIN, …). SEABIM Editor then works on the cloud already present in
     the scene. The `.pcd` below is the recommended **naming / delivery**
     convention, not a technical constraint of the plugin.
+
+The cloud must be in a format CloudCompare can read (XYZ, LAS/LAZ, E57, PCD,
+etc.). RCP/RCS files from the Autodesk suite cannot be imported directly into
+CloudCompare.
 
 ### Recommended naming convention { #pcd-naming }
 
@@ -51,18 +60,23 @@ information can be extracted.
 | `offset`       | Translation to bring the block back to global coordinates. Positions are described in a local frame to avoid precision loss.             |
 | `translation`  | Block position in the local frame after subtracting the global offset.                                                                   |
 | `rotation`     | Block rotation matrix relative to the reference block.                                                                                   |
+| `version`      | Version of SEABIM Editor that loaded the block into the scene.                                                                           |
 
 ### Optional keys
 
 | Key               | Description                                                                                                        |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `plot_number`     | Block plot number.                                                                                                 |
-| `bloc_number`     | Block target number.                                                                                               |
+| `block_number`    | Block target number.                                                                                               |
+| `block_name`      | Block name in the CloudCompare DB Tree, for instance after renaming with a prefix.                                 |
 | `source`          | Way the block was produced.                                                                                        |
 | `cloud`           | Name of the cloud used to obtain the block's position.                                                             |
 | `correspondences` | Number of correspondence points between the model and the cloud for the block during the detection phase.          |
 | `median_score`    | Median distance of the points located within a given distance of the block.                                        |
 | `count_score`     | Number of points located within a given distance of the block.                                                     |
+| `nb_points`       | Number of cloud points matched with the block during automatic detection.                                          |
+| `fitness`         | Share of matched points during the detection registration, between 0 and 1.                                       |
+| `rmse`            | Root mean square error of the matches during the detection registration.                                          |
 
 Values associated with the various control filters ([Filters
 module](../modules/filters.md), [Quality control
@@ -130,3 +144,13 @@ clouds or 3D models. 3D models and renders produced by SEABIM Editor are
 written in this format.
 
 These files can be opened or dropped directly into a CloudCompare window.
+
+To keep the interface smooth, keeping a `.bin` under **900 MB** is
+recommended. To do so, a point cloud can be cut to the working area or
+resampled (see [CloudCompare basics](cloudcompare.md#sampling)).
+
+!!! warning "Saving the whole project"
+    CloudCompare does **not** save a working session like a standard
+    software: it saves **what is selected** in the DB Tree. A point cloud or a
+    3D layer can thus be saved separately. To save the whole project, **select
+    the root folder of the project**, then click Save.

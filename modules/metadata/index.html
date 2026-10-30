@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -460,7 +460,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-29T15:13:17+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -489,10 +489,10 @@ entière.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../assets/images/cc_meta_change.png" data-desc-position="bottom"><img alt="Changer un paramètre" src="../../assets/images/cc_meta_change.png"></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Action destructive</p>
-</div>
 <p>L'opération écrase la valeur précédente sur tous les blocs concernés.
 Sauvegarder (action <a href="../output/#save-json"><code>Sauvegarder un JSON</code></a>)
 avant un traitement massif, et utiliser <a href="../header/#undo"><code>Annuler la dernière action</code></a> si besoin de revenir en arrière.</p>
+</div>
 <h2 id="rename-blocks-with-prefix-batch">Renommer les blocs avec un préfixe (lot)<a class="headerlink" href="#rename-blocks-with-prefix-batch" title="Permanent link">¶</a></h2>
 <p><strong>Catégorie : Lot</strong></p>
 <p>Applique un <strong>préfixe</strong> à la sélection et <strong>réindexe</strong> les blocs derrière
@@ -504,10 +504,13 @@ le rendu de livraison.</p>
 est le préfixe et <code>0001</code>, <code>0002</code>… est l'index séquentiel.</p>
 <div class="admonition note">
 <p class="admonition-title">Préalable au rendu final</p>
+<p>Sans plan de pose, cette action sert d'étape de <strong>réindexation</strong> avant
+l'action <a href="../output/#export-final-render"><code>Exporter le rendu final</code></a> (voir
+le <a href="../../workflow/projet-type/#exports">cheminement d'un projet-type</a>).
+Elle garantit que la numérotation finale est continue et sans trou. Elle
+remplace le panneau et le numéro de bloc : ne pas l'appliquer à des blocs
+déjà nommés par un plan de pose.</p>
 </div>
-<p>Cette action est citée dans la <a href="../../workflow/procedure-courante/#final-render">procédure courante</a>
-comme étape de <strong>réindexation</strong> précédant l'action <a href="../output/#export-final-render"><code>Exporter le rendu final</code></a>. Elle garantit que la
-numérotation finale est continue et sans trou.</p>
 <h2 id="metadata-editor-block">Éditeur de métadonnées (bloc)<a class="headerlink" href="#metadata-editor-block" title="Permanent link">¶</a></h2>
 <p><strong>Catégorie : Bloc</strong></p>
 <p>Ouvre un éditeur permettant de <strong>modifier n'importe quel champ
@@ -635,12 +638,6 @@ trie par valeur ou par effectif. L'action ne modifie rien.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../../demarrage/premier-projet/">
-                            
-                            Premier projet
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../../demarrage/interface/">
                             
                             Interface
@@ -662,9 +659,15 @@ trie par valeur ou par effectif. L'action ne modifie rien.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Procédure courante
+                            Bases de CloudCompare
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Projet-type pas à pas
                             
                         </a>
                         

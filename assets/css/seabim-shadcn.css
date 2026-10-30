@@ -82,6 +82,22 @@ article blockquote {
   border-inline-start-color: var(--primary);
 }
 
+/* Entrées de la barre latérale : le thème fixe leur hauteur à 30 px, si bien
+   qu'un libellé sur deux lignes déborde sur l'entrée suivante. */
+[data-sidebar="menu-button"] {
+  height: auto;
+  min-height: 30px;
+  padding-block: 6px;
+  line-height: 1.3;
+}
+
+/* Titre de page : le thème le coupe au milieu d'un mot (word-break: break-all)
+   à côté des boutons « Copy Page » ; on ne coupe qu'entre les mots. Même
+   sélecteur que le thème, pour l'emporter par ordre de chargement. */
+article #page-header h1 {
+  word-break: normal;
+}
+
 /* ---------- Sélecteur de langue (injecté par lang-switch.js) ---------- */
 
 .seabim-lang-switch {

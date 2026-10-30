@@ -31,8 +31,8 @@ partir d'un nuage de points.
 
 **Butée de pied**
 : Section inférieure d'une digue, en contact avec le sol marin. Zone
-d'attention particulière lors de la vérification ([procédure
-courante § Vérification](../workflow/procedure-courante.md#verification)).
+d'attention particulière lors de la vérification ([cheminement d'un
+projet-type § Assembler et vérifier](../workflow/projet-type.md#verification)).
 
 ## C
 

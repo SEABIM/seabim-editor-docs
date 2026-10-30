@@ -23,9 +23,9 @@ entière.
 ![Changer un paramètre](../assets/images/cc_meta_change.png)
 
 !!! warning "Action destructive"
-L'opération écrase la valeur précédente sur tous les blocs concernés.
-Sauvegarder (action [`Sauvegarder un JSON`](output.md#save-json))
-avant un traitement massif, et utiliser [`Annuler la dernière action`](header.md#undo) si besoin de revenir en arrière.
+    L'opération écrase la valeur précédente sur tous les blocs concernés.
+    Sauvegarder (action [`Sauvegarder un JSON`](output.md#save-json))
+    avant un traitement massif, et utiliser [`Annuler la dernière action`](header.md#undo) si besoin de revenir en arrière.
 
 ## Renommer les blocs avec un préfixe (lot) { #rename-blocks-with-prefix-batch }
 
@@ -42,9 +42,12 @@ Exemple : `B-0001`, `B-0002`, … pour tous les blocs sélectionnés, où `B-`
 est le préfixe et `0001`, `0002`… est l'index séquentiel.
 
 !!! note "Préalable au rendu final"
-Cette action est citée dans la [procédure courante](../workflow/procedure-courante.md#final-render)
-comme étape de **réindexation** précédant l'action [`Exporter le rendu final`](output.md#export-final-render). Elle garantit que la
-numérotation finale est continue et sans trou.
+    Sans plan de pose, cette action sert d'étape de **réindexation** avant
+    l'action [`Exporter le rendu final`](output.md#export-final-render) (voir
+    le [cheminement d'un projet-type](../workflow/projet-type.md#exports)).
+    Elle garantit que la numérotation finale est continue et sans trou. Elle
+    remplace le panneau et le numéro de bloc : ne pas l'appliquer à des blocs
+    déjà nommés par un plan de pose.
 
 ## Éditeur de métadonnées (bloc) { #metadata-editor-block }
 

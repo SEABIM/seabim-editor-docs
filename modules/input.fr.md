@@ -7,9 +7,9 @@ JSON, détection automatique de blocs et import depuis un CSV externe.
 C'est typiquement le premier onglet utilisé en début de session.
 
 !!! info "Disponibilité des actions"
-Certaines actions sont conditionnées par la licence WIBU :
-`Détecter les blocs dans un nuage` n'apparaît que si le bit
-BlockFinder est actif dans la Feature Map du client.
+    Certaines actions sont conditionnées par la licence WIBU :
+    `Détecter les blocs dans un nuage` n'apparaît que si le bit
+    BlockFinder est actif dans la Feature Map du client.
 
 ## Charger un bloc initial { #load-init-block }
 
@@ -41,14 +41,14 @@ jalon — cf. [Nomenclature des structures](../workflow/formats-fichiers.md#json
 et on continue le travail là où il s'était arrêté.
 
 !!! tip "Sauvegarde automatique"
-Si la session précédente s'est mal terminée (crash CloudCompare,
-extinction brutale), le launcher conserve un `autosave.json` dans le
-dossier de données utilisateur. Le lien **Restaurer la dernière
-sauvegarde automatique**, sur la page d'accueil, le recharge
-directement — inutile d'aller le chercher via *Charger un JSON*.
-Ce fichier est réécrit au maximum toutes les 100 secondes, et
-uniquement après une modification de la structure : il peut donc être
-légèrement antérieur à l'incident.
+    Si la session précédente s'est mal terminée (crash CloudCompare,
+    extinction brutale), le launcher conserve un `autosave.json` dans le
+    dossier de données utilisateur. Le lien **Restaurer la dernière
+    sauvegarde automatique**, sur la page d'accueil, le recharge
+    directement — inutile d'aller le chercher via *Charger un JSON*.
+    Ce fichier est réécrit au maximum toutes les 100 secondes, et
+    uniquement après une modification de la structure : il peut donc être
+    légèrement antérieur à l'incident.
 
 ## Détecter les blocs dans un nuage { #find-blocks-in-a-point-cloud }
 
@@ -60,18 +60,22 @@ nettoyée via [`Filtrer les blocs`](edit.md#filter-blocks) et affinée par
 ![Détecter les blocs dans un nuage](../assets/images/cc_find_blocs.png)
 
 C'est le point d'entrée du workflow de **reconstruction automatique**
-décrit dans la [procédure courante § Reconstruction automatique](../workflow/procedure-courante.md#auto-reconstruction).
+décrit dans le [cheminement d'un projet-type § Détection](../workflow/projet-type.md#detection).
 Plusieurs détections peuvent tourner en parallèle dans des fenêtres
 CloudCompare distinctes pour traiter différentes zones simultanément.
 
-!!! tip "Bonnes pratiques de détection" - Lancer la détection sur un nuage **découpé en zones de 500 m
-maximum** (cf. [découpage des nuages](../workflow/procedure-courante.md#cutting))
-pour limiter le temps de calcul et faciliter le traitement par lots. - Toujours appliquer un [`Filtrer les blocs`](edit.md#filter-blocks) juste après la détection pour éliminer les faux positifs avant le recalage manuel.
+!!! tip "Bonnes pratiques de détection"
+    - Lancer la détection sur un nuage **découpé en zones de 500 m
+      maximum** (cf. [découpage des nuages](../workflow/projet-type.md#cutting))
+      pour limiter le temps de calcul et faciliter le traitement par lots.
+    - Toujours appliquer un [`Filtrer les blocs`](edit.md#filter-blocks) juste
+      après la détection pour éliminer les faux positifs avant le recalage
+      manuel.
 
 !!! warning "Action gardée par licence"
-Cette action n'est disponible que si la licence du poste inclut le
-feature **BlockFinder**. En l'absence de ce droit, le bouton
-n'apparaît pas dans l'onglet Import.
+    Cette action n'est disponible que si la licence du poste inclut le
+    feature **BlockFinder**. En l'absence de ce droit, le bouton
+    n'apparaît pas dans l'onglet Import.
 
 ## Importer un CSV { #import-csv }
 

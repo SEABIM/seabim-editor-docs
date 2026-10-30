@@ -23,12 +23,12 @@ scalaire `accuracy`.
 ![Calculer la précision](../assets/images/cc_quality_accuracy.png)
 
 !!! tip "Usage typique"
-Lancer `Calculer la précision` après un **recalage** (action [`Recaler
+    Lancer `Calculer la précision` après un **recalage** (action [`Recaler
     la sélection - Distance
     adaptative`](edit.md#register-selection---adaptive-dist) du module
-[Édition](edit.md)) pour vérifier que les blocs sont bien ajustés. Les
-blocs en rouge (précision élevée) méritent un nouveau recalage ou une
-inspection manuelle.
+    [Édition](edit.md)) pour vérifier que les blocs sont bien ajustés. Les
+    blocs en rouge (précision élevée) méritent un nouveau recalage ou une
+    inspection manuelle.
 
 ## Calculer le différentiel { #compute-differential }
 
@@ -67,7 +67,7 @@ volume du bloc en intersection avec ses voisins**.
 ![Recouvrement](../assets/images/cc_quality_recouvrement.png)
 
 !!! note "Différence avec Contacts"
-[`Contacts`](filters.md#contacts-all-blocks) compte les blocs qui se
-**touchent**. `Recouvrement` détecte les blocs qui se
-**superposent** (ce qui est physiquement impossible et donc forcément
-un défaut de pose).
+    [`Contacts`](filters.md#contacts-all-blocks) compte les blocs qui se
+    **touchent**. `Recouvrement` détecte les blocs qui se
+    **superposent** (ce qui est physiquement impossible et donc forcément
+    un défaut de pose).

@@ -10,10 +10,10 @@ L'onglet est affiché en **grille** (11 boutons) plutôt qu'en liste, pour
 faciliter la sélection rapide d'un filtre.
 
 !!! tip "Visualiser un filtre"
-Après calcul d'un filtre, ouvrir l'action [`Changer l'échelle de
+    Après calcul d'un filtre, ouvrir l'action [`Changer l'échelle de
     couleurs`](header.md#change-color-scale) (++ctrl+l++) et sélectionner
-le nom du filtre dans la liste des champs scalaires pour appliquer une
-coloration sur les blocs.
+    le nom du filtre dans la liste des champs scalaires pour appliquer une
+    coloration sur les blocs.
 
 ## Hors profil { #out-profile }
 

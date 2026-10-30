@@ -156,7 +156,7 @@
     
     
     
-    <a class="ghost button" href="../../workflow/procedure-courante/">
+    <a class="ghost button" href="../../workflow/cloudcompare/">
         Workflow
     </a>
     
@@ -306,20 +306,6 @@
             
             
             <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
-    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../premier-projet/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
-        
-        Premier projet
-        
-        
-        
-        
-    </a>
-</li>
-            
-            
-            
-            
-            <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
     <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button" data-size="default" href="../interface/" class="peer/menu-button flex items-center gap-2 rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground [&amp;&gt;span:last-child]:truncate [&amp;&gt;svg]:size-4 [&amp;&gt;svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md data-[active=true]:border-accent data-[active=true]:bg-accent 3xl:fixed:w-full 3xl:fixed:max-w-48">
         
         Interface
@@ -418,7 +404,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-09-08T09:47:43+04:00');
+        const date = new Date('2026-10-30T10:42:33+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -435,19 +421,17 @@ WIBU.</p>
 <h2 id="pre-installation">Pré-installation<a class="headerlink" href="#pre-installation" title="Permanent link">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Repartir d'une installation propre</p>
-</div>
 <p>Si <strong>CloudCompare est déjà installé</strong> sur le poste (toute version),
 désinstallez-le d'abord via <strong>Panneau de configuration → Programmes
 et fonctionnalités → CloudCompare → Désinstaller</strong>.</p>
-<div class="language-text highlight"><pre><span></span><code>Après la désinstallation, **supprimez manuellement le dossier**
-`C:\Program Files\CloudCompare` s'il subsiste : le désinstalleur
+<p>Après la désinstallation, <strong>supprimez manuellement le dossier</strong>
+<code>C:\Program Files\CloudCompare</code> s'il subsiste : le désinstalleur
 laisse souvent des fichiers résiduels (anciennes DLL de plugin,
 scripts Python) qui peuvent empêcher SEABIM Editor de se charger
-correctement.
-
-Vous pourrez ensuite installer proprement CloudCompare 2.13
-(étape ci-dessous).
-</code></pre></div>
+correctement.</p>
+<p>Vous pourrez ensuite installer proprement CloudCompare 2.13
+(étape ci-dessous).</p>
+</div>
 <h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">¶</a></h2>
 <div class="table-wrapper"><table>
 <thead>
@@ -477,18 +461,18 @@ Vous pourrez ensuite installer proprement CloudCompare 2.13
 </table></div>
 <div class="admonition warning">
 <p class="admonition-title">CloudCompare 2.13 obligatoire</p>
-</div>
 <p>Le plugin est compilé pour la version 2.13 de CloudCompare. Il ne
 chargera pas dans une version 2.12 ou antérieure, et n'a pas été testé
 sur les builds 2.14+.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Vérifier l'accès au serveur de mise à jour</p>
-</div>
 <p>SEABIM Editor a besoin de joindre son serveur de mise à jour. Depuis le
 poste, ouvrez <a href="https://update.seabim-utilities.com/health">https://update.seabim-utilities.com/health</a> dans un
 navigateur : la page doit afficher <strong><code>ok</code></strong>. Si elle ne répond pas,
 vérifiez la connexion Internet, le pare-feu et le proxy de l'entreprise
 avant de poursuivre.</p>
+</div>
 <h2 id="installation-pas-a-pas">Installation pas à pas<a class="headerlink" href="#installation-pas-a-pas" title="Permanent link">¶</a></h2>
 <h3 id="1-installer-cloudcompare-213">1. Installer CloudCompare 2.13<a class="headerlink" href="#1-installer-cloudcompare-213" title="Permanent link">¶</a></h3>
 <p>Téléchargez l'installeur Windows depuis le site officiel CloudCompare et
@@ -679,12 +663,6 @@ le disque — pas seulement l'envoi, la collecte elle-même s'arrête.</p>
                             
                         </a>
                         
-                        <a class="text-2xl font-medium" href="../premier-projet/">
-                            
-                            Premier projet
-                            
-                        </a>
-                        
                         <a class="text-2xl font-medium" href="../interface/">
                             
                             Interface
@@ -706,9 +684,15 @@ le disque — pas seulement l'envoi, la collecte elle-même s'arrête.</p>
                     
                     <div class="flex flex-col gap-3">
                         
-                        <a class="text-2xl font-medium" href="../../workflow/procedure-courante/">
+                        <a class="text-2xl font-medium" href="../../workflow/cloudcompare/">
                             
-                            Procédure courante
+                            Bases de CloudCompare
+                            
+                        </a>
+                        
+                        <a class="text-2xl font-medium" href="../../workflow/projet-type/">
+                            
+                            Projet-type pas à pas
                             
                         </a>
                         

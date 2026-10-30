@@ -8,9 +8,9 @@ license.
 ## Pre-installation { #pre-installation }
 
 !!! warning "Start from a clean install"
-If **CloudCompare is already installed** on the machine (any version),
-uninstall it first via **Control Panel → Programs and Features →
-CloudCompare → Uninstall**.
+    If **CloudCompare is already installed** on the machine (any version),
+    uninstall it first via **Control Panel → Programs and Features →
+    CloudCompare → Uninstall**.
 
     After uninstalling, **manually delete the folder**
     `C:\Program Files\CloudCompare` if it still exists: the uninstaller
@@ -28,14 +28,14 @@ CloudCompare → Uninstall**.
 | CodeMeter Runtime (license) | latest         | <https://www.wibu.com/support/user/user-software/file/download/17996.html> |
 
 !!! warning "CloudCompare 2.13 required"
-The plugin is compiled for CloudCompare 2.13. It will not load in
-version 2.12 or earlier, and has not been tested on 2.14+ builds.
+    The plugin is compiled for CloudCompare 2.13. It will not load in
+    version 2.12 or earlier, and has not been tested on 2.14+ builds.
 
 !!! note "Check access to the update server"
-SEABIM Editor needs to reach its update server. From the workstation,
-open <https://update.seabim-utilities.com/health> in a browser: the page
-must display **`ok`**. If it does not respond, check the Internet
-connection, the firewall and the company proxy before continuing.
+    SEABIM Editor needs to reach its update server. From the workstation,
+    open <https://update.seabim-utilities.com/health> in a browser: the page
+    must display **`ok`**. If it does not respond, check the Internet
+    connection, the firewall and the company proxy before continuing.
 
 ## Step by step installation
 

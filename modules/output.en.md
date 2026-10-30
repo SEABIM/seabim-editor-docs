@@ -68,7 +68,7 @@ the matching section is hidden and all blocks are kept on that side.
 ### Fields to export
 
 Scalar fields are grouped into collapsible sections: **Block main properties**
-(`panel`), **Quality control**, **Placement filters**, **Displacement** and
+(`panel`, `package_nr`), **Quality control**, **Placement filters**, **Displacement** and
 **Other**. Check the ones to keep in the delivered render. A field **not
 computed** on the blocks appears greyed out and marked "(not computed)": there
 is nothing to export for it.
@@ -95,9 +95,9 @@ is nothing to export for it.
     ![Export Displacement section](../assets/images/cc_export_disp_refscale.png)
 
 !!! note "Final step of the workflow"
-    This action is the final step described in the [standard
-    procedure](../workflow/procedure-courante.md#final-render). It is
-    preceded by a **reindexing** (action [`Rename blocks with prefix
+    This action is the final step described in the [typical project
+    walkthrough](../workflow/projet-type.md#exports). Without a placement
+    plan, it is preceded by a **reindexing** (action [`Rename blocks with prefix
     (Batch)`](metadata.md#rename-blocks-with-prefix-batch) of the
     [Metadata](metadata.md) module) which ensures continuous numbering
     without gaps before delivery.

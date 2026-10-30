@@ -41,8 +41,8 @@ Business and technical terms used throughout the SEABIM Editor documentation.
 
 **Toe** _(butée de pied)_
 :   Lowest section of a breakwater, in contact with the seabed. A focus
-    area during the verification step ([standard procedure §
-    Verification](../workflow/procedure-courante.md#verification)).
+    area during the verification step ([typical project walkthrough §
+    Assemble and verify](../workflow/projet-type.md#verification)).
 
 ## C
 

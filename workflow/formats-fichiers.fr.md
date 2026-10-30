@@ -4,6 +4,11 @@ L'utilisation de SEABIM Editor nécessite la manipulation de plusieurs types
 de fichiers. L'utilisation des formats adaptés est nécessaire pour garantir
 le bon fonctionnement du logiciel.
 
+!!! warning "Pas d'espaces ni de caractères spéciaux"
+    Les espaces et les caractères spéciaux dans les noms de fichiers peuvent
+    faire planter certaines fonctions au lancement. Enregistrer aussi le projet
+    CloudCompare dans un dossier dont le chemin n'en contient pas.
+
 ## Nuages de points { #point-clouds }
 
 Les nuages de points contiennent un ensemble de coordonnées dans l'espace,
@@ -16,6 +21,10 @@ ou normales.
     déjà présent dans la scène. Le `.pcd` ci-dessous est la convention de
     **nommage / livraison** recommandée, non une contrainte technique du
     plugin.
+
+Le nuage doit être dans un format lisible par CloudCompare (XYZ, LAS/LAZ,
+E57, PCD, etc.). Les fichiers RCP/RCS de la suite Autodesk ne s'importent pas
+directement dans CloudCompare.
 
 ### Nomenclature recommandée { #pcd-naming }
 
@@ -55,18 +64,23 @@ les informations suivantes.
 | `offset`       | Translation pour replacer le bloc en coordonnées globales. Les positions sont décrites dans un repère local pour éviter une perte de précision. |
 | `translation`  | Position du bloc dans le repère local après soustraction de l'offset global.                                                                    |
 | `rotation`     | Matrice de rotation du bloc par rapport au bloc de référence.                                                                                   |
+| `version`      | Version de SEABIM Editor ayant chargé le bloc dans la scène.                                                                                    |
 
 ### Clés facultatives
 
 | Clé               | Description                                                                                                |
 | ----------------- | ---------------------------------------------------------------------------------------------------------- |
 | `plot_number`     | Numéro de plot du bloc.                                                                                    |
-| `bloc_number`     | Numéro de cible du bloc.                                                                                   |
+| `block_number`    | Numéro de cible du bloc.                                                                                   |
+| `block_name`      | Nom du bloc dans l'arborescence CloudCompare, par exemple après un renommage avec un préfixe.              |
 | `source`          | Mode d'obtention du bloc.                                                                                  |
 | `cloud`           | Nom du nuage utilisé pour obtenir la position du bloc.                                                     |
 | `correspondences` | Nombre de points de correspondance entre le modèle et le nuage pour le bloc lors de la phase de détection. |
 | `median_score`    | Distance médiane de l'ensemble des points situés à une distance donnée du bloc.                            |
 | `count_score`     | Nombre de points situés à une distance donnée du bloc.                                                     |
+| `nb_points`       | Nombre de points du nuage en correspondance avec le bloc lors de la détection automatique.                 |
+| `fitness`         | Part des points en correspondance lors du recalage de détection, entre 0 et 1.                             |
+| `rmse`            | Erreur quadratique moyenne des correspondances lors du recalage de détection.                              |
 
 Les valeurs associées aux différents filtres de contrôle ([module Filtres](../modules/filters.md), [module Contrôle qualité](../modules/quality.md))
 sont également stockées dans le fichier de structure.
@@ -135,3 +149,15 @@ et les rendus issus de SEABIM Editor sont écrits dans ce format.
 
 Ces fichiers peuvent être ouverts ou glissés directement dans une fenêtre
 CloudCompare.
+
+Pour garder une interface fluide, il est recommandé de garder un `.bin` sous
+**900 Mo**. Pour cela, on peut découper un nuage de points à la zone de
+travail ou le ré-échantillonner (voir
+[Prise en main de CloudCompare](cloudcompare.md#sampling)).
+
+!!! warning "Sauvegarder tout le projet"
+    CloudCompare ne sauvegarde **pas** une session de travail comme un
+    logiciel classique : il sauvegarde **ce qui est sélectionné** dans
+    l'arborescence. On peut ainsi sauvegarder séparément un nuage de points ou
+    une couche 3D. Pour sauvegarder le projet entier, **sélectionner le
+    dossier racine du projet**, puis cliquer sur Sauvegarder.

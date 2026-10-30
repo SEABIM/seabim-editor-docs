@@ -11,7 +11,7 @@ control, metadata management and export to delivery formats.
 
 - [Install the plugin](demarrage/installation.md)
 - [Activate the license](demarrage/activation-licence.md)
-- [Create your first project](demarrage/premier-projet.md)
+- [Create your first project](workflow/projet-type.md)
 - [Explore the interface](demarrage/interface.md)
 
 ## Module reference
@@ -31,7 +31,8 @@ module groups several actions accessible from the launcher.
 
 ## Workflow & concepts
 
-- [Standard work procedure](workflow/procedure-courante.md)
+- [CloudCompare basics](workflow/cloudcompare.md)
+- [Typical project walkthrough](workflow/projet-type.md)
 - [File formats](workflow/formats-fichiers.md)
 
 ## Resources
