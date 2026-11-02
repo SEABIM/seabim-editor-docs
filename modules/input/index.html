@@ -462,7 +462,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-30T10:42:33+04:00');
+        const date = new Date('2026-11-02T09:52:48+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -512,6 +512,16 @@ directement — inutile d'aller le chercher via <em>Charger un JSON</em>.
 Ce fichier est réécrit au maximum toutes les 100 secondes, et
 uniquement après une modification de la structure : il peut donc être
 légèrement antérieur à l'incident.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Fichier calculé dans d'autres unités</p>
+<p>Si les blocs du fichier n'ont pas été calculés dans les unités de la
+session, une alerte le signale avant le chargement : les tailles de blocs
+et les seuils de calcul ne correspondraient pas. Le mode est déduit des
+blocs eux-mêmes : leur taille révèle les pieds ou les mètres, et un volume
+inférieur à 0,01 m³ (10 000 cm³) signe une maquette LAB. Basculez la
+session avec les boutons du <a href="../header/#switch-units">header</a>, puis
+rechargez le fichier, ou chargez-le quand même.</p>
 </div>
 <h2 id="find-blocks-in-a-point-cloud">Détecter les blocs dans un nuage<a class="headerlink" href="#find-blocks-in-a-point-cloud" title="Permanent link">¶</a></h2>
 <p>Détecte automatiquement les blocs d'un <strong>type et d'un volume donnés</strong> dans

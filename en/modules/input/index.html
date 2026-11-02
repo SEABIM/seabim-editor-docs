@@ -462,7 +462,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-30T10:42:33+04:00');
+        const date = new Date('2026-11-02T09:52:48+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -511,6 +511,16 @@ folder. The <strong>Restore last autosave</strong> link, on the home page, loads
 back directly — no need to pick it through <em>Load JSON</em>. That file is
 rewritten at most once every 100 seconds, and only after a structure
 change, so it may be slightly older than the incident.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">File computed in other units</p>
+<p>If the blocks of the file were not computed in the units of the session,
+an alert says so before loading: block sizes and computation thresholds
+would not match. The mode is inferred from the blocks themselves: their
+size reveals feet or meters, and a volume below 0.01 m³ (10,000 cm³)
+marks a LAB model. Switch the session with the
+<a href="../header/#switch-units">header</a> buttons, then load the file again, or
+load it anyway.</p>
 </div>
 <h2 id="find-blocks-in-a-point-cloud">Find blocks in a point cloud<a class="headerlink" href="#find-blocks-in-a-point-cloud" title="Permanent link">¶</a></h2>
 <p>Automatically detects blocks of a <strong>given type and volume</strong> in the

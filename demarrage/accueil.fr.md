@@ -17,7 +17,9 @@ aux **mises à jour** et aux **documents légaux**.
   licence](activation-licence.md)).
 - **Badges optionnels** :
     - **Version LAB activée** — les volumes de blocs sont exprimés en cm³ et
-      les échelles sont expérimentales.
+      les échelles sont expérimentales. Avec une licence LAB + normal, le
+      badge suit le mode choisi (cf. [`Basculer en mode LAB /
+      normal`](../modules/header.md#switch-lab)).
     - **Unités impériales (pieds)** — l'unité de longueur de travail est le
       pied (cf. [`Basculer mètres / pieds`](../modules/header.md#switch-units)).
 

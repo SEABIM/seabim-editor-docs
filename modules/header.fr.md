@@ -152,6 +152,24 @@ Bascule l'**unité de longueur de travail** entre les **mètres** et les
     [`Détecter les blocs dans un nuage`](input.md#find-blocks-in-a-point-cloud)**
     pour que les tailles de blocs soient recalculées dans la nouvelle unité.
 
+## Basculer en mode LAB / normal { #switch-lab }
+
+**Raccourci : ++ctrl+shift+u++**
+
+Présent uniquement avec une licence **LAB + normal**. Bascule entre le
+**mode LAB** (volumes en cm³, seuils à l'échelle maquette) et le **mode
+normal**. Le libellé du bouton reflète le mode vers lequel on bascule. Le
+choix est conservé dans `parameters.json` (paramètre `lab_mode`) et retrouvé
+au lancement suivant.
+
+Une licence LAB seule travaille toujours en mode LAB, une licence normale
+toujours en mode normal : le bouton n'apparaît pas.
+
+!!! warning "Relancer la détection après une bascule"
+    Comme pour les unités, les tailles des blocs déjà détectés ne sont pas
+    recalculées. Après avoir basculé, **relancez
+    [`Détecter les blocs dans un nuage`](input.md#find-blocks-in-a-point-cloud)**.
+
 ## Paramètres { #settings }
 
 **Raccourci : ++ctrl++,**
@@ -209,7 +227,7 @@ dans la session courante, regroupés par origine :
 - Les actions du header (Annuler, Rétablir, Rafraîchir la vue, Changer
   l'échelle de couleurs, Afficher/masquer l'échelle, Afficher par type,
   Transparence de la sélection, Basculer mètres / pieds,
-  Paramètres, Réduire la fenêtre, Affichage des raccourcis).
+  Basculer en mode LAB / normal (licence LAB + normal), Paramètres, Réduire la fenêtre, Affichage des raccourcis).
 - Les actions des modules ayant un raccourci déclaré (par exemple
   [`Recaler la sélection - Distance
   adaptative`](edit.md#register-selection---adaptive-dist) avec

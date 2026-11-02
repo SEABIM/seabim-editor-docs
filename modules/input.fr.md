@@ -50,6 +50,15 @@ et on continue le travail là où il s'était arrêté.
     uniquement après une modification de la structure : il peut donc être
     légèrement antérieur à l'incident.
 
+!!! warning "Fichier calculé dans d'autres unités"
+    Si les blocs du fichier n'ont pas été calculés dans les unités de la
+    session, une alerte le signale avant le chargement : les tailles de blocs
+    et les seuils de calcul ne correspondraient pas. Le mode est déduit des
+    blocs eux-mêmes : leur taille révèle les pieds ou les mètres, et un volume
+    inférieur à 0,01 m³ (10 000 cm³) signe une maquette LAB. Basculez la
+    session avec les boutons du [header](header.md#switch-units), puis
+    rechargez le fichier, ou chargez-le quand même.
+
 ## Détecter les blocs dans un nuage { #find-blocks-in-a-point-cloud }
 
 Détecte automatiquement les blocs d'un **type et d'un volume donnés** dans

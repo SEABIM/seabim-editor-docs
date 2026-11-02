@@ -16,7 +16,9 @@ and the **legal documents**.
   out (see [License activation](activation-licence.md)).
 - **Optional badges**:
     - **LAB version activated** — block volumes are expressed in cm³ and the
-      scales are experimental.
+      scales are experimental. With a LAB + normal licence, the badge follows
+      the chosen mode (see [`Switch to LAB / normal
+      mode`](../modules/header.md#switch-lab)).
     - **Imperial units (feet)** — the working length unit is the foot (see
       [`Switch to meters / feet`](../modules/header.md#switch-units)).
 

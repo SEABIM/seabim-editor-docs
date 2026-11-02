@@ -462,7 +462,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-27T15:58:21+04:00');
+        const date = new Date('2026-11-02T09:52:48+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -591,6 +591,20 @@ have already been detected. After switching, <strong>re-run
 <a href="../input/#find-blocks-in-a-point-cloud"><code>Find blocks in a point cloud</code></a></strong>
 so block sizes are recomputed in the new unit.</p>
 </div>
+<h2 id="switch-lab">Switch to LAB / normal mode<a class="headerlink" href="#switch-lab" title="Permanent link">¶</a></h2>
+<p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-u">U</kbd></span></strong></p>
+<p>Only present with a <strong>LAB + normal</strong> licence. Toggles between <strong>LAB mode</strong>
+(volumes in cm³, model-scale thresholds) and <strong>normal mode</strong>. The button
+label reflects the mode you are switching to. The choice is kept in
+<code>parameters.json</code> (<code>lab_mode</code> parameter) and restored at the next launch.</p>
+<p>A LAB-only licence always works in LAB mode, a normal licence always in
+normal mode: the button does not appear.</p>
+<div class="admonition warning">
+<p class="admonition-title">Re-run detection after switching</p>
+<p>As with units, the sizes of blocks already detected are not recomputed.
+After switching, <strong>re-run
+<a href="../input/#find-blocks-in-a-point-cloud"><code>Find blocks in a point cloud</code></a></strong>.</p>
+</div>
 <h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">¶</a></h2>
 <p><strong>Shortcut: <span class="keys"><kbd class="key-control">Ctrl</kbd></span>,</strong></p>
 <p>Opens the <strong>Settings</strong> dialog which edits the plugin's internal
@@ -638,7 +652,8 @@ current session, grouped by origin:</p>
 <ul>
 <li>The header actions (Undo, Redo, Update view, Change color scale,
   Toggle color scale, Display by type, Toggle transparency,
-  Switch to meters / feet, Settings, Reduce window,
+  Switch to meters / feet, Switch to LAB / normal mode (LAB + normal
+  licence), Settings, Reduce window,
   Shortcuts help).</li>
 <li>The actions of the modules that declare a shortcut (for example
   <a href="../edit/#register-selection---adaptive-dist"><code>Register selection - Adaptive
@@ -911,6 +926,12 @@ when the focus is on a child dialog.</p>
         
         <a href="#switch-units" data-active="false" data-depth="2">
             Switch to meters / feet
+        </a>
+        
+
+        
+        <a href="#switch-lab" data-active="false" data-depth="2">
+            Switch to LAB / normal mode
         </a>
         
 

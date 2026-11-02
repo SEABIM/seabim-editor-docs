@@ -147,6 +147,23 @@ in meters, and vice versa).
     [`Find blocks in a point cloud`](input.md#find-blocks-in-a-point-cloud)**
     so block sizes are recomputed in the new unit.
 
+## Switch to LAB / normal mode { #switch-lab }
+
+**Shortcut: ++ctrl+shift+u++**
+
+Only present with a **LAB + normal** licence. Toggles between **LAB mode**
+(volumes in cm³, model-scale thresholds) and **normal mode**. The button
+label reflects the mode you are switching to. The choice is kept in
+`parameters.json` (`lab_mode` parameter) and restored at the next launch.
+
+A LAB-only licence always works in LAB mode, a normal licence always in
+normal mode: the button does not appear.
+
+!!! warning "Re-run detection after switching"
+    As with units, the sizes of blocks already detected are not recomputed.
+    After switching, **re-run
+    [`Find blocks in a point cloud`](input.md#find-blocks-in-a-point-cloud)**.
+
 ## Settings { #settings }
 
 **Shortcut: ++ctrl++,**
@@ -201,7 +218,8 @@ current session, grouped by origin:
 
 - The header actions (Undo, Redo, Update view, Change color scale,
   Toggle color scale, Display by type, Toggle transparency,
-  Switch to meters / feet, Settings, Reduce window,
+  Switch to meters / feet, Switch to LAB / normal mode (LAB + normal
+  licence), Settings, Reduce window,
   Shortcuts help).
 - The actions of the modules that declare a shortcut (for example
   [`Register selection - Adaptive

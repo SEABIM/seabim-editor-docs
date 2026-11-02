@@ -49,6 +49,15 @@ continue the work where it was left off.
     rewritten at most once every 100 seconds, and only after a structure
     change, so it may be slightly older than the incident.
 
+!!! warning "File computed in other units"
+    If the blocks of the file were not computed in the units of the session,
+    an alert says so before loading: block sizes and computation thresholds
+    would not match. The mode is inferred from the blocks themselves: their
+    size reveals feet or meters, and a volume below 0.01 m³ (10,000 cm³)
+    marks a LAB model. Switch the session with the
+    [header](header.md#switch-units) buttons, then load the file again, or
+    load it anyway.
+
 ## Find blocks in a point cloud { #find-blocks-in-a-point-cloud }
 
 Automatically detects blocks of a **given type and volume** in the

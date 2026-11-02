@@ -462,7 +462,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-27T15:58:21+04:00');
+        const date = new Date('2026-11-02T09:52:48+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -596,6 +596,21 @@ blocs déjà détectées. Après avoir basculé, <strong>relancez
 <a href="../input/#find-blocks-in-a-point-cloud"><code>Détecter les blocs dans un nuage</code></a></strong>
 pour que les tailles de blocs soient recalculées dans la nouvelle unité.</p>
 </div>
+<h2 id="switch-lab">Basculer en mode LAB / normal<a class="headerlink" href="#switch-lab" title="Permanent link">¶</a></h2>
+<p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-u">U</kbd></span></strong></p>
+<p>Présent uniquement avec une licence <strong>LAB + normal</strong>. Bascule entre le
+<strong>mode LAB</strong> (volumes en cm³, seuils à l'échelle maquette) et le <strong>mode
+normal</strong>. Le libellé du bouton reflète le mode vers lequel on bascule. Le
+choix est conservé dans <code>parameters.json</code> (paramètre <code>lab_mode</code>) et retrouvé
+au lancement suivant.</p>
+<p>Une licence LAB seule travaille toujours en mode LAB, une licence normale
+toujours en mode normal : le bouton n'apparaît pas.</p>
+<div class="admonition warning">
+<p class="admonition-title">Relancer la détection après une bascule</p>
+<p>Comme pour les unités, les tailles des blocs déjà détectés ne sont pas
+recalculées. Après avoir basculé, <strong>relancez
+<a href="../input/#find-blocks-in-a-point-cloud"><code>Détecter les blocs dans un nuage</code></a></strong>.</p>
+</div>
 <h2 id="settings">Paramètres<a class="headerlink" href="#settings" title="Permanent link">¶</a></h2>
 <p><strong>Raccourci : <span class="keys"><kbd class="key-control">Ctrl</kbd></span>,</strong></p>
 <p>Ouvre la modale <strong>Paramètres</strong> qui édite les paramètres internes du
@@ -646,7 +661,7 @@ dans la session courante, regroupés par origine :</p>
 <li>Les actions du header (Annuler, Rétablir, Rafraîchir la vue, Changer
   l'échelle de couleurs, Afficher/masquer l'échelle, Afficher par type,
   Transparence de la sélection, Basculer mètres / pieds,
-  Paramètres, Réduire la fenêtre, Affichage des raccourcis).</li>
+  Basculer en mode LAB / normal (licence LAB + normal), Paramètres, Réduire la fenêtre, Affichage des raccourcis).</li>
 <li>Les actions des modules ayant un raccourci déclaré (par exemple
   <a href="../edit/#register-selection---adaptive-dist"><code>Recaler la sélection - Distance
   adaptative</code></a> avec
@@ -918,6 +933,12 @@ n'importe quel onglet, même si le focus est sur une modale enfant.</p>
         
         <a href="#switch-units" data-active="false" data-depth="2">
             Basculer mètres / pieds
+        </a>
+        
+
+        
+        <a href="#switch-lab" data-active="false" data-depth="2">
+            Basculer en mode LAB / normal
         </a>
         
 
