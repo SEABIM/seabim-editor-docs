@@ -462,7 +462,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-30T10:42:33+04:00');
+        const date = new Date('2026-11-03T10:33:59+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -475,12 +475,13 @@
 <p>Le module <strong>Métadonnées</strong> regroupe les outils d'<strong>édition des métadonnées
 des blocs</strong> : changement de valeur d'un paramètre, renumérotation, et
 consultation / édition fine d'un bloc unitaire.</p>
-<p>Les 5 actions sont réparties en trois catégories :</p>
+<p>Les 6 actions sont réparties en trois catégories :</p>
 <ul>
 <li><strong>Lot</strong> : agit sur tous les blocs actuellement sélectionnés dans la
   scène CloudCompare.</li>
 <li><strong>Bloc</strong> : agit sur le bloc unique sélectionné.</li>
-<li><strong>Statistiques</strong> : décompte en lecture seule, sur la sélection ou toute la scène.</li>
+<li><strong>Statistiques</strong> : décompte et contrôle en lecture seule, sur la sélection ou
+  toute la scène.</li>
 </ul>
 <h2 id="change-parameter-batch">Changer un paramètre (lot)<a class="headerlink" href="#change-parameter-batch" title="Permanent link">¶</a></h2>
 <p><strong>Catégorie : Lot</strong></p>
@@ -570,6 +571,25 @@ de consultation rapide sans risque de modification.</p>
 <p>Chaque tableau somme au total affiché en tête : les blocs sans valeur sont
 comptés sur la ligne <code>(non renseigné)</code>. Un clic sur l'en-tête d'une colonne
 trie par valeur ou par effectif. L'action ne modifie rien.</p>
+<h2 id="check-unique-names">Vérifier l'unicité des noms<a class="headerlink" href="#check-unique-names" title="Permanent link">¶</a></h2>
+<p><strong>Catégorie : Statistiques</strong></p>
+<p>Vérifie que <strong>chaque bloc porte un nom différent</strong>. Le nom contrôlé est celui
+affiché dans le DB tree. Le périmètre suit la même règle que
+<a href="#block-counts"><code>Comptage des blocs</code></a> : la sélection, ou toute la scène si rien
+n'est sélectionné.</p>
+<ul>
+<li><strong>Tous les noms sont uniques</strong> : un message de confirmation, sans fenêtre.</li>
+<li><strong>Des noms se répètent</strong> : une fenêtre liste chaque nom en double et le nombre
+  de blocs qui le portent. Les blocs sans nom sont regroupés sur la ligne
+  <code>(sans nom)</code>.</li>
+</ul>
+<p>Les espaces en début et en fin de nom sont ignorés : <code>P1_01</code> et <code>P1_01</code> sont
+signalés comme doublon. L'action ne modifie rien.</p>
+<div class="admonition tip">
+<p class="admonition-title">Plusieurs JSON dans la scène</p>
+<p>Deux relevés d'un même ouvrage chargés côte à côte portent les mêmes noms.
+Sélectionner un seul dossier JSON pour ne contrôler que ses blocs.</p>
+</div>
   </div>
 </article>
                                 <div id="bottom-navigation" class="mx-auto flex h-16 w-full max-w-2xl items-center justify-between gap-2 px-4 md:px-0">
@@ -815,6 +835,12 @@ trie par valeur ou par effectif. L'action ne modifie rien.</p>
         
         <a href="#block-counts" data-active="false" data-depth="2">
             Comptage des blocs
+        </a>
+        
+
+        
+        <a href="#check-unique-names" data-active="false" data-depth="2">
+            Vérifier l'unicité des noms
         </a>
         
 

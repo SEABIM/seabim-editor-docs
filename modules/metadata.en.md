@@ -4,12 +4,13 @@ The **Metadata** module groups the tools for **editing block metadata**:
 changing a parameter value, renumbering, and consulting / fine-editing
 a single block.
 
-The 5 actions are split into three categories:
+The 6 actions are split into three categories:
 
 - **Batch**: acts on every block currently selected in the CloudCompare
   scene.
 - **Block**: acts on the single selected block.
-- **Statistics**: read-only count, over the selection or the whole scene.
+- **Statistics**: read-only count and check, over the selection or the whole
+  scene.
 
 ## Change parameter (Batch) { #change-parameter-batch }
 
@@ -120,3 +121,23 @@ tab (top-level DB tree folder created by [`Load JSON`](input.md#load-json)).
 Each table adds up to the total shown at the top: blocks without a value are
 counted on the `(not set)` row. Clicking a column header sorts by value or by
 count. The action changes nothing.
+
+## Check unique names { #check-unique-names }
+
+**Category: Statistics**
+
+Checks that **every block has a different name**. The name checked is the one
+shown in the DB tree. The scope follows the same rule as
+[`Block counts`](#block-counts): the selection, or the whole scene if nothing is
+selected.
+
+- **All names are unique**: a confirmation message, no window.
+- **Some names repeat**: a window lists each duplicated name and the number of
+  blocks carrying it. Blocks without a name are grouped on the `(no name)` row.
+
+Leading and trailing spaces are ignored: `P1_01` and `P1_01 ` are reported as a
+duplicate. The action changes nothing.
+
+!!! tip "Several JSON in the scene"
+    Two surveys of the same structure loaded side by side carry the same names.
+    Select a single JSON folder to check only its blocks.

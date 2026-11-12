@@ -4,12 +4,13 @@ Le module **Métadonnées** regroupe les outils d'**édition des métadonnées
 des blocs** : changement de valeur d'un paramètre, renumérotation, et
 consultation / édition fine d'un bloc unitaire.
 
-Les 5 actions sont réparties en trois catégories :
+Les 6 actions sont réparties en trois catégories :
 
 - **Lot** : agit sur tous les blocs actuellement sélectionnés dans la
   scène CloudCompare.
 - **Bloc** : agit sur le bloc unique sélectionné.
-- **Statistiques** : décompte en lecture seule, sur la sélection ou toute la scène.
+- **Statistiques** : décompte et contrôle en lecture seule, sur la sélection ou
+  toute la scène.
 
 ## Changer un paramètre (lot) { #change-parameter-batch }
 
@@ -122,3 +123,24 @@ Compte les blocs **par type**, **par package** et **par plot**, plus un onglet
 Chaque tableau somme au total affiché en tête : les blocs sans valeur sont
 comptés sur la ligne `(non renseigné)`. Un clic sur l'en-tête d'une colonne
 trie par valeur ou par effectif. L'action ne modifie rien.
+
+## Vérifier l'unicité des noms { #check-unique-names }
+
+**Catégorie : Statistiques**
+
+Vérifie que **chaque bloc porte un nom différent**. Le nom contrôlé est celui
+affiché dans le DB tree. Le périmètre suit la même règle que
+[`Comptage des blocs`](#block-counts) : la sélection, ou toute la scène si rien
+n'est sélectionné.
+
+- **Tous les noms sont uniques** : un message de confirmation, sans fenêtre.
+- **Des noms se répètent** : une fenêtre liste chaque nom en double et le nombre
+  de blocs qui le portent. Les blocs sans nom sont regroupés sur la ligne
+  `(sans nom)`.
+
+Les espaces en début et en fin de nom sont ignorés : `P1_01` et `P1_01 ` sont
+signalés comme doublon. L'action ne modifie rien.
+
+!!! tip "Plusieurs JSON dans la scène"
+    Deux relevés d'un même ouvrage chargés côte à côte portent les mêmes noms.
+    Sélectionner un seul dossier JSON pour ne contrôler que ses blocs.

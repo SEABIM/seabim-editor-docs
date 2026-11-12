@@ -462,7 +462,7 @@
 <script>
     const updatedAt = document.getElementById("updated_at");
     if (updatedAt) {
-        const date = new Date('2026-10-30T10:42:33+04:00');
+        const date = new Date('2026-11-03T10:33:59+04:00');
         updatedAt.textContent = date.toLocaleDateString();
     }
 </script>
@@ -475,12 +475,13 @@
 <p>The <strong>Metadata</strong> module groups the tools for <strong>editing block metadata</strong>:
 changing a parameter value, renumbering, and consulting / fine-editing
 a single block.</p>
-<p>The 5 actions are split into three categories:</p>
+<p>The 6 actions are split into three categories:</p>
 <ul>
 <li><strong>Batch</strong>: acts on every block currently selected in the CloudCompare
   scene.</li>
 <li><strong>Block</strong>: acts on the single selected block.</li>
-<li><strong>Statistics</strong>: read-only count, over the selection or the whole scene.</li>
+<li><strong>Statistics</strong>: read-only count and check, over the selection or the whole
+  scene.</li>
 </ul>
 <h2 id="change-parameter-batch">Change parameter (Batch)<a class="headerlink" href="#change-parameter-batch" title="Permanent link">¶</a></h2>
 <p><strong>Category: Batch</strong></p>
@@ -568,6 +569,24 @@ tab (top-level DB tree folder created by <a href="../input/#load-json"><code>Loa
 <p>Each table adds up to the total shown at the top: blocks without a value are
 counted on the <code>(not set)</code> row. Clicking a column header sorts by value or by
 count. The action changes nothing.</p>
+<h2 id="check-unique-names">Check unique names<a class="headerlink" href="#check-unique-names" title="Permanent link">¶</a></h2>
+<p><strong>Category: Statistics</strong></p>
+<p>Checks that <strong>every block has a different name</strong>. The name checked is the one
+shown in the DB tree. The scope follows the same rule as
+<a href="#block-counts"><code>Block counts</code></a>: the selection, or the whole scene if nothing is
+selected.</p>
+<ul>
+<li><strong>All names are unique</strong>: a confirmation message, no window.</li>
+<li><strong>Some names repeat</strong>: a window lists each duplicated name and the number of
+  blocks carrying it. Blocks without a name are grouped on the <code>(no name)</code> row.</li>
+</ul>
+<p>Leading and trailing spaces are ignored: <code>P1_01</code> and <code>P1_01</code> are reported as a
+duplicate. The action changes nothing.</p>
+<div class="admonition tip">
+<p class="admonition-title">Several JSON in the scene</p>
+<p>Two surveys of the same structure loaded side by side carry the same names.
+Select a single JSON folder to check only its blocks.</p>
+</div>
   </div>
 </article>
                                 <div id="bottom-navigation" class="mx-auto flex h-16 w-full max-w-2xl items-center justify-between gap-2 px-4 md:px-0">
@@ -813,6 +832,12 @@ count. The action changes nothing.</p>
         
         <a href="#block-counts" data-active="false" data-depth="2">
             Block counts
+        </a>
+        
+
+        
+        <a href="#check-unique-names" data-active="false" data-depth="2">
+            Check unique names
         </a>
         
 
